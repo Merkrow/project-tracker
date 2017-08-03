@@ -1,0 +1,12 @@
+<div class="skill-component">
+  <span><b>{{ skill.Name }}</b></span>
+  <span *ngIf="!edit">{{ staticData.Level[skillLevelId] }}</span>
+  <select *ngIf="edit" [(ngModel)]="skillLevelId" (ngModelChange)="updateLevel($event)">
+    <option [ngValue]="1">Trainee</option>
+    <option [ngValue]="2">Junior</option>
+    <option [ngValue]="3">Middle</option>
+    <option [ngValue]="4">Senior</option>
+  </select>
+  <button *ngIf="!edit" (click)="toggleEdit()">Edit</button>
+  <button *ngIf="edit" (click)="submitChanges()">Submit Changes</button>
+</div>

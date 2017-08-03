@@ -17,4 +17,9 @@ export class SkillsService {
     .map(data => data);
   }
 
+  updateUserSkills(params): Observable<Skill> {
+    return this.apiService.put(`/api/skills`, params)
+    .map(data => data);
+  }
+
 }

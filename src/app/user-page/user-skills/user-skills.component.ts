@@ -19,6 +19,15 @@ export class UserSkillsComponent implements OnInit {
     })
   }
 
+  updateSkill(skill) {
+    this.skills = this.skills.map(prev => {
+      if (prev.Id === skill.Id) {
+        return skill;
+      }
+      return prev;
+    })
+  }
+
   @Input() employeeId: number;
 
 }

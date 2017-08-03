@@ -8,6 +8,8 @@ import { UserPageComponent } from './user-page.component';
 import { UserInfoComponent } from './user-info/user-info.component';
 import { UserSkillsComponent } from './user-skills/user-skills.component';
 import { UserProjectsComponent } from './user-projects/user-projects.component';
+import { SkillComponent } from './user-skills/skill/skill.component';
+import { UserTasksComponent } from './user-projects/user-tasks/user-tasks.component';
 
 
 const authRouting: ModuleWithProviders = RouterModule.forChild([
@@ -29,6 +31,8 @@ const authRouting: ModuleWithProviders = RouterModule.forChild([
     UserInfoComponent,
     UserSkillsComponent,
     UserProjectsComponent,
+    SkillComponent,
+    UserTasksComponent,
   ],
   exports: [
   ]

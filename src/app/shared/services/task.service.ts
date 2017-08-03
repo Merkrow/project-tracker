@@ -17,4 +17,9 @@ export class TaskService {
     .map(data => data);
   }
 
+  getTasksByUserId(userId): Observable<Task[]> {
+    return this.apiService.get(`/api/tasks/search?taskSearch.responsibleId=${userId}`)
+    .map(data => data);
+  }
+
 }
