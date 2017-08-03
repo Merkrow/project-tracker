@@ -1,0 +1,71 @@
+<nav class="navbar navbar-light">
+  <div class="container">
+
+    <!-- Show this for logged out users -->
+    <ul *ngIf="!isAuthenticated"
+      class="nav navbar-nav pull-xs-right">
+
+      <li class="nav-item">
+        <a class="nav-link"
+          routerLink="/main">
+          Main
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link"
+          routerLink="/login"
+          routerLinkActive="active">
+          Sign in
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link"
+          routerLink="/register"
+          routerLinkActive="active">
+          Sign up
+        </a>
+      </li>
+
+    </ul>
+
+    <!-- Show this for logged in users -->
+    <ul *ngIf="isAuthenticated"
+      class="nav navbar-nav pull-xs-right">
+
+      <li class="nav-item">
+        <a class="nav-link"
+          routerLink="/main"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }">
+          Main
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link"
+          routerLink="/"
+          routerLinkActive="active">
+          <i class="ion-gear-a"></i>&nbsp;Admin
+        </a>
+      </li>
+
+      <li class="nav-item nav-link">
+        <a class="nav-link">
+          Hello, {{ currentUser.FullName }}
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link"
+          routerLink="/"
+          routerLinkActive="active"
+          (click)="userService.purgeAuth()">
+          <i class="ion-compose"></i>&nbsp;Logout
+        </a>
+      </li>
+
+    </ul>
+
+  </div>
+</nav>

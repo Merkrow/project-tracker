@@ -1,0 +1,11 @@
+<div class="main-container">
+  <div class="interval">
+    <span>Timesheets</span>
+    <div>
+      <button (click)="prevDay()">Back</button><span *ngFor="let time of interval">{{ time.format('MM/DD') }}</span><button (click)="nextDay()">Forward</button>
+    </div>
+  </div>
+  <ul *ngIf="projects && projects.length">
+    <project-component *ngFor="let project of projects" [interval]="interval" [project]="project"></project-component>
+  </ul>
+</div>

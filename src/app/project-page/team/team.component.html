@@ -1,0 +1,9 @@
+<div class="team-container">
+  <div class="member-row">
+    <span class="member-name">Name</span>
+    <span class="member-position">Position</span>
+    <span class="member-email">Email</span>
+    <span class="member-skype">Skype</span>
+  </div>
+  <team-member-component *ngFor="let member of members" [removeMember]="removeMember.bind(this)" [member]="member"></team-member-component>
+</div>

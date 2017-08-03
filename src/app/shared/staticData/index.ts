@@ -1,0 +1,45 @@
+export default {
+  ticketStatus: {
+    '1': 'Open',
+    '2': 'Development',
+    '3': 'Ready for QA',
+    '4': 'Test',
+    '5': 'Closed',
+  },
+  projectPosition: {
+    '1': 'PM',
+    '2': 'Developer',
+    '3': 'QA',
+  },
+  Loc: {
+    '1': 'New York',
+    '2': 'London',
+    '3': 'Kharkiv',
+    '4': 'St.Petersburg',
+    '5': 'Voronezh',
+    '6': 'Kherson',
+    '7': 'Zug',
+    '8': 'Kyiv',
+    '9': 'Dnepr',
+    '10': 'Odessa',
+    '11': 'Lublin',
+    '12': 'Buenos Aires',
+    '13': 'Wroclaw',
+    '14': 'Riga',
+    '15': 'Sofia',
+    '16': 'Wroclaw',
+  },
+  Level: {
+    '1': 'Trainee',
+    '2': 'Junior',
+    '3': 'Middle',
+    '4': 'Senior',
+  },
+  ticketType: {
+    '1': 'Technical task',
+    '2': 'Bug',
+    '3': 'Improvement',
+    '4': 'New feature',
+    '5': 'Task',
+  }
+}

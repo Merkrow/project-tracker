@@ -1,0 +1,11 @@
+<div>{{ task.Name }}</div>
+
+<div>
+  <ul *ngIf="renderChild">
+    <task-cell-component *ngFor="let cell of cells"
+      [cell]="cell"
+      [taskId]="task.Id"
+      [addTimesheet]="addTimesheet.bind(this)"
+      [updateTimesheet]="updateTimesheet.bind(this)"></task-cell-component>
+  </ul>
+</div>
