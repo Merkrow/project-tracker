@@ -1,0 +1,24 @@
+<div class="task-page" *ngIf="!isSubmitting">
+  <h2>Task {{ task.Name }}</h2>
+  <div class="task-info">
+
+    <div class="task-info-left">
+      <div><b>Project: </b><span [routerLink]="['/projects', project.Id]">{{ project.Name }}</span></div>
+      <div><b>Status: </b>{{ staticData.ticketStatus[task.StatusId] }}</div>
+      <div><b>Type: </b>{{ staticData.ticketType[task.Typeid] }}</div>
+      <div><b>Estimate: </b>{{ task.Estimate }}</div>
+      <div><b>Start Date: </b>{{ task.StartDate }}</div>
+      <div><b>End Date: </b>ASAP</div>
+      <div><b>Description: </b>{{ task.Description }}</div>
+      <button type="button" name="button">New</button>
+      <button type="button" name="button">Edit</button>
+      <button type="button" name="button">Delete</button>
+    </div>
+
+    <div class="task-info-right">
+      <div><b>Reporter: </b>{{ task.Reporter.FullName }}</div>
+      <div><b>Responsible: </b>{{ task.Responsible.FullName }}</div>
+    </div>
+
+  </div>
+</div>

@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { MainModule } from './main/main.module';
 import { AuthModule } from './auth/auth.module';
 import { ProjectPageModule } from './project-page/project-page.module';
+import { TaskPageModule } from './task-page/task-page.module';
 import { UserPageModule } from './user-page/user-page.module';
 import {
   ApiService,
@@ -34,6 +35,7 @@ const rootRouting: ModuleWithProviders = RouterModule.forRoot([], { useHash: tru
     SharedModule,
     ProjectPageModule,
     UserPageModule,
+    TaskPageModule,
     rootRouting,
   ],
   providers: [

@@ -22,4 +22,9 @@ export class TaskService {
     .map(data => data);
   }
 
+  getTaskById(id): Observable<Task> {
+    return this.apiService.get(`/api/tasks/${id}`)
+    .map(data => data);
+  }
+
 }

@@ -1,3 +1,5 @@
+import { Project } from './index';
+
 export class Task {
   Name: string;
   Description: string;
@@ -8,6 +10,12 @@ export class Task {
   ResponsibleId: number;
   TypeId: number;
   ProjectId: number;
+  Reporter: {
+    FullName: string;
+  };
+  Responsible: {
+    FullName: string;
+  };
   ReporterId: number;
   Id: number;
 }
