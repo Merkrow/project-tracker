@@ -32,4 +32,14 @@ export class ProjectsService {
     .map(data => data);
   }
 
+  updateProject(params): Observable<Project> {
+    return this.apiService.put(`/api/projects`, params)
+    .map(data => data);
+  }
+
+  deleteProject(id): Observable<any> {
+    return this.apiService.delete(`/api/projects/${id}`)
+    .map(data => data);
+  }
+
 }

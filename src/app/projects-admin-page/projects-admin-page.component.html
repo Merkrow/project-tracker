@@ -1,3 +1,33 @@
-<p>
-  projects-admin-page works!
-</p>
+<div class="row">
+  <div class="col-md-offset-2 col-md-8">
+    <div class="row">
+      <div class="col-md-5"><input type="text" [(ngModel)]="filterName" (ngModelChange)="filterNameChange($event)"></div>
+      <div class="col-md-offset-6 col-md-1"><button type="button" class="btn btn-primary">Add project</button></div>
+    </div>
+    <div class="col-md-12">
+      <div class="row">
+        <span class="col-md-1">Name</span>
+        <span class="col-md-1">Customer</span>
+        <span class="col-md-3">StartDate</span>
+        <span class="col-md-5">Description</span>
+      </div>
+      <div class="row" *ngFor="let project of projects">
+        <div *ngIf="editingId !== project.Id">
+          <span class="col-md-1"><a [routerLink]="['/projects', project.Id]">{{ project.Name }}</a></span>
+          <span class="col-md-1">{{ project.CustomerName }}</span>
+          <span class="col-md-3">{{ project.StartDate }}</span>
+          <p class="col-md-5">{{ project.Description }}</p>
+          <span class="col-md-1"><button type="button" (click)="setEdit(project.Id)">Edit</button></span>
+          <span class="col-md-1"><button type="button" (click)="deleteProject(project.Id)">X</button></span>
+        </div>
+        <div *ngIf="editingId === project.Id">
+          <span class="col-md-1"><input type="text" [(ngModel)]="edit.Name"></span>
+          <span class="col-md-1"><input type="text" [(ngModel)]="edit.CustomerName"></span>
+          <span class="col-md-3">{{ edit.StartDate }}</span>
+          <span class="col-md-5"><input type="text" [(ngModel)]="edit.Description"></span>
+          <span class="col-md-2"><button type="button" (click)="submitChanges()">Submit</button></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
