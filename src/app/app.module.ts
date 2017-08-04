@@ -10,6 +10,8 @@ import { TaskPageModule } from './task-page/task-page.module';
 import { UserPageModule } from './user-page/user-page.module';
 import { ProjectsAdminPageModule } from './projects-admin-page/projects-admin.module';
 import { UsersAdminPageModule } from './users-admin-page/users-admin.module';
+import { AdminPageModule } from './admin-page/admin.module';
+import { RegistrationModule } from './registration-page/registration.module';
 import {
   ApiService,
   SharedModule,
@@ -38,8 +40,10 @@ const rootRouting: ModuleWithProviders = RouterModule.forRoot([], { useHash: tru
     ProjectPageModule,
     UserPageModule,
     TaskPageModule,
+    AdminPageModule,
     ProjectsAdminPageModule,
     UsersAdminPageModule,
+    RegistrationModule,
     rootRouting,
   ],
   providers: [
