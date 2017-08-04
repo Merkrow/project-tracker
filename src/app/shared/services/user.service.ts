@@ -87,20 +87,17 @@ export class UserService {
     return this.currentUserSubject.value;
   }
 
-  updateUser(params) {
-    return this.apiService.put(`/api/employees`, params)
+  updateUser(user: User) {
+    return this.apiService.put(`/api/employees`, user)
     .map(data => data);
   }
 
   // Update the user on the server (email, pass, etc)
-  update(user): Observable<User> {
-    return this.apiService
-    .put('/user', { user })
-    .map(data => {
-      // Update the currentUser observable
-      this.currentUserSubject.next(data.user);
-      return data.user;
-    });
+
+  postUser(user): Observable<any> {
+    console.log(user);
+    return this.apiService.post(`/api/employees`, user)
+    .map(data => data);
   }
 
 }

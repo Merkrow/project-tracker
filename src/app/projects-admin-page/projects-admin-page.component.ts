@@ -54,6 +54,7 @@ export class ProjectsAdminPageComponent implements OnInit {
         }
         return project;
       });
+      this.projects = this.allProjects;
     })
   }
 
@@ -66,6 +67,7 @@ export class ProjectsAdminPageComponent implements OnInit {
     .subscribe(data => {
       if (data) {
         this.allProjects = this.allProjects.filter(project => project.Id !== data);
+        this.projects = this.allProjects;
       }
     })
   }

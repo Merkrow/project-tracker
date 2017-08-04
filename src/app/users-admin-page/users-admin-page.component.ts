@@ -47,7 +47,8 @@ export class UsersAdminPageComponent implements OnInit {
     this.userService.deleteUser(Id)
     .subscribe(data => {
       if (data) {
-        this.allUsers = this.allUsers.filter(user => user.Id !== Number(data));
+        this.allUsers = this.allUsers.filter(user => user.Id !== data);
+        this.users = this.allUsers;
       }
     });
   }
@@ -63,6 +64,7 @@ export class UsersAdminPageComponent implements OnInit {
         }
         return user;
       })
+      this.users = this.allUsers;
     })
   }
 
