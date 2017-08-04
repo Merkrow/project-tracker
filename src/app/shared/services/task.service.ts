@@ -27,4 +27,14 @@ export class TaskService {
     .map(data => data);
   }
 
+  updateTask(params): Observable<Task> {
+    return this.apiService.put(`/api/tasks`, params)
+    .map(data => data);
+  }
+
+  deleteTask(Id): Observable<any> {
+    return this.apiService.delete(`/api/tasks/${Id}`)
+    .map(data => data);
+  }
+
 }

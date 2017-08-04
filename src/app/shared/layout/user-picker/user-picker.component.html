@@ -1,0 +1,3 @@
+<select *ngIf="!isSubmitting" class="user-picker" [(ngModel)]="chosenUser.Id" (ngModelChange)="updateUser($event)">
+  <option *ngFor="let user of users" [ngValue]="user.Id">{{ user.FullName }}</option>
+</select>

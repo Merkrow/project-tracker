@@ -1,4 +1,4 @@
-<div>{{ task.Name }}</div>
+<div><a class="link" [routerLink]="['/tasks', task.Id]" routerLinkActive="active">{{ task.Name }}</a></div>
 
 <div>
   <ul *ngIf="renderChild">

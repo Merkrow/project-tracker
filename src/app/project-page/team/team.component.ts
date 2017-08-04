@@ -9,6 +9,9 @@ import { TeamService, User } from '../../shared';
 })
 export class TeamComponent implements OnInit {
   members: User[];
+  isSubmitting: boolean = false;
+  addUser: boolean = false;
+  chosenUserId: number;
   constructor(
     private teamService: TeamService,
   ) { }
@@ -21,11 +24,32 @@ export class TeamComponent implements OnInit {
     })
   }
 
+  chooseUser(Id) {
+    this.chosenUserId = Number(Id);
+  }
+
+  toggleAddUser() {
+    if (!this.addUser) {
+      this.addUser = true;
+      return;
+    }
+    this.teamService.addMember({ projectId: this.projectId, employeeId: this.chosenUserId })
+    .subscribe(data => {
+      this.members = this.members.concat(data).sort((a, b) => a.PositionId - b.PositionId);
+    })
+  }
+
+  cancelAddUser() {
+    this.addUser = false;
+  }
+
   ngOnInit() {
+    this.isSubmitting = true;
     if (this.projectId) {
       this.teamService.getTeam(this.projectId)
       .subscribe(data => {
         this.members = data.sort((a, b) => a.PositionId - b.PositionId);
+        this.isSubmitting = false;
       })
     }
   }

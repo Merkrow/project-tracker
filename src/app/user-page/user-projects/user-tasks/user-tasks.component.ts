@@ -15,9 +15,10 @@ export class UserTasksComponent implements OnInit {
   ngOnInit() {
     this.taskService.getTaskByProjectId(this.projectId)
     .subscribe(data => {
-      this.tasks = data;
+      this.tasks = data.filter(task => task.ResponsibleId === this.employeeId);
     })
   }
 
   @Input() projectId: number;
+  @Input() employeeId: number;
 }

@@ -5,6 +5,7 @@ import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 
 import { ListErrorsComponent } from './list-errors.component';
+import { UserPickerComponent } from './layout/user-picker/user-picker.component';
 
 @NgModule({
   imports: [
@@ -16,6 +17,7 @@ import { ListErrorsComponent } from './list-errors.component';
   ],
   declarations: [
     ListErrorsComponent,
+    UserPickerComponent,
   ],
   exports: [
     CommonModule,
@@ -23,6 +25,7 @@ import { ListErrorsComponent } from './list-errors.component';
     ReactiveFormsModule,
     HttpModule,
     ListErrorsComponent,
+    UserPickerComponent,
     RouterModule,
   ]
 })

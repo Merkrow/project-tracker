@@ -4,21 +4,24 @@
 
     <div class="task-info-left">
       <div><b>Project: </b><span [routerLink]="['/projects', project.Id]">{{ project.Name }}</span></div>
-      <div><b>Status: </b>{{ staticData.ticketStatus[task.StatusId] }}</div>
-      <div><b>Type: </b>{{ staticData.ticketType[task.Typeid] }}</div>
+      <div *ngIf="!editing"><b>Status: </b>{{ staticData.ticketStatus[task.StatusId] }}</div>
+      <task-picker-component *ngIf="editing" [pickType]="'status'" [initialTask]="task.StatusId" [chooseTaskId]="chooseTaskId.bind(this)"></task-picker-component>
+      <div *ngIf="!editing"><b>Type: </b>{{ staticData.ticketType[task.TypeId] }}</div>
+      <task-picker-component *ngIf="editing" [pickType]="'type'" [initialTask]="task.TypeId" [chooseTaskId]="chooseTaskId.bind(this)"></task-picker-component>
       <div><b>Estimate: </b>{{ task.Estimate }}</div>
       <div><b>Start Date: </b>{{ task.StartDate }}</div>
       <div><b>End Date: </b>ASAP</div>
       <div><b>Description: </b>{{ task.Description }}</div>
       <button type="button" name="button">New</button>
-      <button type="button" name="button">Edit</button>
-      <button type="button" name="button">Delete</button>
+      <button type="button" *ngIf="!editing" (click)="toggleEdit()" name="button">Edit</button>
+      <button type="button" *ngIf="editing" (click)="submitEdit()" name="button">Submit Edit</button>
+      <button type="button" name="button" (click)="deleteTask()">Delete</button>
     </div>
 
     <div class="task-info-right">
       <div><b>Reporter: </b>{{ task.Reporter.FullName }}</div>
-      <div><b>Responsible: </b>{{ task.Responsible.FullName }}</div>
+      <user-picker-component *ngIf="editing"[employeeId]="task.Responsible.Id" [chooseUser]="chooseUser.bind(this)"></user-picker-component>
+      <div *ngIf="!editing"><b>Responsible: </b>{{ task.Responsible.FullName }}</div>
     </div>
-
   </div>
 </div>

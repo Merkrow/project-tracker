@@ -61,6 +61,11 @@ export class UserService {
     this.isAuthenticatedSubject.next(false);
   }
 
+  getUsers(): Observable<User[]> {
+    return this.apiService.get(`/api/employees`)
+    .map(data => data);
+  }
+
   attemptAuth(type, credentials): Observable<User> {
     const endPoint = type === 'login' ? '/login' : '';
     return this.apiService.post(`/api/employees${endPoint}`, credentials)
@@ -71,6 +76,11 @@ export class UserService {
         return data;
       }
     );
+  }
+
+  deleteUser(id): Observable<any> {
+    return this.apiService.delete(`/api/employees/${id}`)
+    .map(data => data);
   }
 
   getCurrentUser(): User {

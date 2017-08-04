@@ -1,4 +1,7 @@
-<div class="team-container">
+<div *ngIf="!isSubmitting" class="team-container">
+  <user-picker-component *ngIf="addUser" [filters]="members" [chooseUser]="chooseUser.bind(this)"></user-picker-component>
+  <button *ngIf="addUser" type="button" (click)="cancelAddUser()">X</button>
+  <button (click)="toggleAddUser()" type="button">Add user</button>
   <div class="member-row">
     <span class="member-name">Name</span>
     <span class="member-position">Position</span>

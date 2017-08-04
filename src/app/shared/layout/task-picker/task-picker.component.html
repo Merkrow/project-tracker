@@ -1,0 +1,11 @@
+<div [ngSwitch]="pickType">
+
+  <select class="task-picker" *ngSwitchCase="'status'" [(ngModel)]="chosenTask" (ngModelChange)="changeTask($event)">
+    <option *ngFor="let key of ObjectKeys(data)" [ngValue]="key">{{ data[key] }}</option>
+  </select>
+
+  <select class="task-picker" *ngSwitchCase="'type'" [(ngModel)]="chosenTask" (ngModelChange)="changeTask($event)">
+    <option *ngFor="let key of ObjectKeys(data)" [ngValue]="key">{{ data[key] }}</option>
+  </select>
+
+</div>

@@ -1,0 +1,20 @@
+<div class="users-admin-page">
+  <input type="text" [(ngModel)]="filterName" (ngModelChange)="filterNameChange($event)" /> <button type="button" name="button">Add employee</button>
+  <div class="employees-container">
+    <div><span>Name</span><span>Email</span><span>Skype</span><span>Phone</span></div>
+    <div class="employee-row" *ngFor="let user of users">
+      <div *ngIf="user.Id !== editingId">
+        <span [routerLink]="['/users', user.Id]" routerLinkActive="active">{{ user.FullName }}</span>
+        <span>{{ user.Email}}</span>
+        <span>{{ user.Skype }}</span>
+        <span>{{ user.Phone }}</span>
+        <button type="button" (click)="openEdit(user.Id)">Edit</button>
+        <button type="button" (click)="deleteUser(user.Id)">X</button>
+      </div>
+      <div *ngIf="user.Id === editingId">
+        <input type="text" [(ngModel)]="edit.FullName" />
+        <input type="text" [(ngModel)]="edit.Email" />
+      </div>
+    </div>
+  </div>
+</div>

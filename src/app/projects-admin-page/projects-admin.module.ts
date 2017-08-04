@@ -4,13 +4,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
 import { SharedModule } from '../shared';
-import { TaskPageComponent } from './task-page.component';
-import { TaskPickerComponent } from '../shared/';
+import { ProjectsAdminPageComponent } from './projects-admin-page.component';
 
 const authRouting: ModuleWithProviders = RouterModule.forChild([
   {
-    path: 'tasks/:id',
-    component: TaskPageComponent,
+    path: 'admin/projects',
+    component: ProjectsAdminPageComponent,
   },
 ]);
 
@@ -22,10 +21,9 @@ const authRouting: ModuleWithProviders = RouterModule.forChild([
     authRouting,
   ],
   declarations: [
-    TaskPageComponent,
-    TaskPickerComponent,
+    ProjectsAdminPageComponent,
   ],
   exports: [
   ]
 })
-export class TaskPageModule { }
+export class ProjectsAdminPageModule { }
