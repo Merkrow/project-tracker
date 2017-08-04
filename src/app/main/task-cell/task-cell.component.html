@@ -1,2 +1,4 @@
-<input type="text" [(ngModel)]="LoggedTime" /><button (click)="togglePopup()">+</button>
-<timesheet-popup *ngIf="showPopup" [logTime]="logTime.bind(this)" [Log]="Log" [LoggedTime] = "LoggedTime"></timesheet-popup>
+<div class="col-md-2">
+  <input class="time-input" type="text" [(ngModel)]="LoggedTime" /><button class="submit-button" (click)="togglePopup()">+</button>
+  <timesheet-popup *ngIf="showPopup" [logTime]="logTime.bind(this)" [Log]="Log" [LoggedTime] = "LoggedTime"></timesheet-popup>
+</div>

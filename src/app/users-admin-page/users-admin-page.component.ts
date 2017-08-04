@@ -13,7 +13,8 @@ export class UsersAdminPageComponent implements OnInit {
   filterName: string;
   editingId: any = null;
   edit: {
-    FullName: string,
+    First: string,
+    Last: string,
     Email: string,
     Skype: string,
     Phone: number,
@@ -34,6 +35,8 @@ export class UsersAdminPageComponent implements OnInit {
 
   openEdit(id) {
     this.editingId = Number(id);
+    const { First, Last, Email, Skype, Phone } = this.allUsers.filter(user => user.Id === id)[0];
+    this.edit = { First, Last, Email, Skype, Phone };
   }
 
   closeEdit() {
@@ -47,6 +50,20 @@ export class UsersAdminPageComponent implements OnInit {
         this.allUsers = this.allUsers.filter(user => user.Id !== Number(data));
       }
     });
+  }
+
+  submitChanges() {
+    const User = this.allUsers.filter(user => user.Id === this.editingId)[0];
+    this.closeEdit();
+    this.userService.updateUser(Object.assign(User, this.edit, { FullName: `${this.edit.First} ${this.edit.Last}` }))
+    .subscribe(data => {
+      this.allUsers = this.allUsers.map(user => {
+        if (user.Id === data.Id) {
+          return data;
+        }
+        return user;
+      })
+    })
   }
 
   filterNameChange(val) {

@@ -1,7 +1,7 @@
-<div class="member-row">
-  <span class="member-name" [routerLink]="['/users', member.Id]" routerLinkActive="active">{{ member.FullName }}</span>
-  <span class="member-position">{{ member.Position.Name }}</span>
-  <span class="member-email">{{ member.Email }}</span>
-  <span class="member-skype">{{ member.Skype }}</span>
-  <button (click)="removeMember(member.Id)">X</button>
+<div class="member-row row">
+  <a class="member-name col-md-3" [routerLink]="['/users', member.Id]" routerLinkActive="active">{{ member.FullName }}</a>
+  <span class="member-position col-md-2">{{ member.Position.Name }}</span>
+  <span class="member-email col-md-3">{{ member.Email }}</span>
+  <span class="member-skype col-md-3">{{ member.Skype }}</span>
+  <div class=" col-md-1"><button (click)="removeMember(member.Id)">X</button></div>
 </div>

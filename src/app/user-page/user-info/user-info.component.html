@@ -1,8 +1,8 @@
-<div class="user-info-container" *ngIf="employee">
-  <span><b>Birthday: </b>{{ employee.Birthday }}</span>
-  <span><b>Email: </b>{{ employee.Email }}</span>
-  <span><b>Location: </b>{{ employee.LocationId }}</span>
-  <span><b>Address: </b>{{ employee.Address }}</span>
-  <span><b>Skype: </b>{{ employee.Skype }}</span>
-  <span><b>Phone: </b>{{ employee.Phone }}</span>
+<div class="user-info-container col-md-offset-2 col-md-2" *ngIf="employee">
+  <div><b>Birthday: </b>{{ employee.Birthday }}</div>
+  <div><b>Email: </b>{{ employee.Email }}</div>
+  <div><b>Location: </b>{{ staticData.Loc[employee.LocationId] }}</div>
+  <div><b>Address: </b>{{ employee.Address }}</div>
+  <div><b>Skype: </b>{{ employee.Skype }}</div>
+  <div><b>Phone: </b>{{ employee.Phone }}</div>
 </div>

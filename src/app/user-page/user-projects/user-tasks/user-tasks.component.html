@@ -1,1 +1,4 @@
-<div *ngFor="let task of tasks"><span [routerLink]="['/tasks', task.Id]">{{ task.Name }}</span><span>{{ task.Description }}</span></div>
+<div *ngFor="let task of tasks" class="row">
+  <a class="col-md-3" [routerLink]="['/tasks', task.Id]">{{ task.Name }}</a>
+  <span class="col-md-9">{{ task.Description }}</span>
+</div>

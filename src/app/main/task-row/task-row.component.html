@@ -1,11 +1,18 @@
-<div><a class="link" [routerLink]="['/tasks', task.Id]" routerLinkActive="active">{{ task.Name }}</a></div>
+<div class="row">
 
-<div>
-  <ul *ngIf="renderChild">
-    <task-cell-component *ngFor="let cell of cells"
-      [cell]="cell"
-      [taskId]="task.Id"
-      [addTimesheet]="addTimesheet.bind(this)"
-      [updateTimesheet]="updateTimesheet.bind(this)"></task-cell-component>
-  </ul>
+  <div class="col-md-3"><a class="link" [routerLink]="['/tasks', task.Id]" routerLinkActive="active">{{ task.Name }}</a></div>
+
+  <div class="col-md-9">
+    <div class="row" *ngIf="renderChild">
+      <div class="col-md-offset-1 col-md-10">
+        <div class="row">
+          <task-cell-component *ngFor="let cell of cells"
+            [cell]="cell"
+            [taskId]="task.Id"
+            [addTimesheet]="addTimesheet.bind(this)"
+            [updateTimesheet]="updateTimesheet.bind(this)"></task-cell-component>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

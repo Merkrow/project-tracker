@@ -31,8 +31,8 @@ export class UserService {
       this.apiService.post('/api/employees/login', credentials)
       .subscribe(
        data => {
-         const { Address, Birthday, Email, FullName, Id, ImageUrl, LocationId, Phone, PositionId, Projects, Roles, Password } = data;
-         this.setAuth({ Address, Birthday, Email, FullName, Id, ImageUrl, LocationId, Phone, PositionId, Projects, Roles, }, Password);
+         const { Password } = data;
+         this.setAuth(data, Password);
          return data;
        },
        err => this.purgeAuth()
@@ -71,8 +71,8 @@ export class UserService {
     return this.apiService.post(`/api/employees${endPoint}`, credentials)
     .map(
       data => {
-        const { Address, Birthday, Email, FullName, Id, ImageUrl, LocationId, Phone, PositionId, Projects, Roles, Password } = data;
-        this.setAuth({ Address, Birthday, Email, FullName, Id, ImageUrl, LocationId, Phone, PositionId, Projects, Roles, }, Password);
+        const { Password } = data;
+        this.setAuth(data, Password);
         return data;
       }
     );
@@ -85,6 +85,11 @@ export class UserService {
 
   getCurrentUser(): User {
     return this.currentUserSubject.value;
+  }
+
+  updateUser(params) {
+    return this.apiService.put(`/api/employees`, params)
+    .map(data => data);
   }
 
   // Update the user on the server (email, pass, etc)

@@ -1,5 +1,5 @@
-<div class="project-container" *ngFor="let project of projects">
-  <div [routerLink]="['/projects', project.Id]">{{ project.Name }}</div>
+<div class="project-container row" *ngFor="let project of projects">
+  <div><a [routerLink]="['/projects', project.Id]" class="text-info">{{ project.Name }}</a></div>
   <div className="tasks-container">
     <user-tasks-component [projectId]="project.Id" [employeeId]="employeeId"></user-tasks-component>
   </div>

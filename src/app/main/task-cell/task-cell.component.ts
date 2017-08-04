@@ -6,6 +6,7 @@ import { Timesheet, TimesheetService } from '../../shared';
 @Component({
   selector: 'task-cell-component',
   templateUrl: './task-cell.component.html',
+  styleUrls: ['./task-cell.component.css'],
 })
 export class TaskCellComponent {
   LoggedTime: number;

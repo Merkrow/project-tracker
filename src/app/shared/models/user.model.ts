@@ -3,6 +3,8 @@ export class User {
   Birthday: string;
   Email: string;
   FullName: string;
+  First: string;
+  Last: string;
   Id: number;
   ImageUrl: string;
   LocationId: number;
@@ -10,4 +12,5 @@ export class User {
   PositionId: number;
   Projects: {}[];
   Roles: {}[];
+  Skype: string;
 }

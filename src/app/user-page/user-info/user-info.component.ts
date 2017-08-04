@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 import { UserService, User } from '../../shared';
+import staticData from '../../shared/staticData';
 
 @Component({
   selector: 'user-info-component',
@@ -8,6 +9,7 @@ import { UserService, User } from '../../shared';
 })
 export class UserInfoComponent implements OnInit {
   employee: User;
+  staticData = staticData;
   constructor(
     private userService: UserService,
   ) { }

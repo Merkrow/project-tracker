@@ -1,12 +1,15 @@
-<div *ngIf="!isSubmitting" class="team-container">
-  <user-picker-component *ngIf="addUser" [filters]="members" [chooseUser]="chooseUser.bind(this)"></user-picker-component>
-  <button *ngIf="addUser" type="button" (click)="cancelAddUser()">X</button>
-  <button (click)="toggleAddUser()" type="button">Add user</button>
-  <div class="member-row">
-    <span class="member-name">Name</span>
-    <span class="member-position">Position</span>
-    <span class="member-email">Email</span>
-    <span class="member-skype">Skype</span>
+<div *ngIf="!isSubmitting" class="team-container row">
+  <div class="col-md-2">Team</div>
+  <div class="col-md-offset-9">
+    <user-picker-component *ngIf="addUser" [filters]="members" [chooseUser]="chooseUser.bind(this)"></user-picker-component>
+    <button *ngIf="addUser" type="button" (click)="cancelAddUser()" class="btn btn-danger">X</button>
+    <button (click)="toggleAddUser()" type="button" class="btn btn-primary">Add to team</button>
+  </div>
+  <div class="member-row row text-primary">
+    <span class="member-name col-md-3">Name</span>
+    <span class="member-position col-md-2">Position</span>
+    <span class="member-email col-md-3">Email</span>
+    <span class="member-skype col-md-3">Skype</span>
   </div>
   <team-member-component *ngFor="let member of members" [removeMember]="removeMember.bind(this)" [member]="member"></team-member-component>
 </div>

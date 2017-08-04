@@ -1,19 +1,35 @@
-<div class="users-admin-page">
-  <input type="text" [(ngModel)]="filterName" (ngModelChange)="filterNameChange($event)" /> <button type="button" name="button">Add employee</button>
-  <div class="employees-container">
-    <div><span>Name</span><span>Email</span><span>Skype</span><span>Phone</span></div>
-    <div class="employee-row" *ngFor="let user of users">
+<div class="users-admin-page row">
+  <div class="col-md-offset-2 col-md-8">
+    <div class="row">
+      <div class="col-md-4">
+        <input type="text" [(ngModel)]="filterName" (ngModelChange)="filterNameChange($event)" />
+      </div>
+      <div class="col-md-3 col-md-offset-5">
+        <button type="button" class="btn btn-primary pull-right" name="button">Add employee</button>
+      </div>
+    </div>
+    <div class="employees-container row">
+      <div class="col-md-2"><span class="text-primary">Name</span></div>
+      <div class="col-md-4"><span class="text-primary">Email</span></div>
+      <div class="col-md-2"><span class="text-primary">Skype</span></div>
+      <div class="col-md-2"><span class="text-primary">Phone</span></div>
+    </div>
+    <div class="employee-row row" *ngFor="let user of users">
       <div *ngIf="user.Id !== editingId">
-        <span [routerLink]="['/users', user.Id]" routerLinkActive="active">{{ user.FullName }}</span>
-        <span>{{ user.Email}}</span>
-        <span>{{ user.Skype }}</span>
-        <span>{{ user.Phone }}</span>
-        <button type="button" (click)="openEdit(user.Id)">Edit</button>
-        <button type="button" (click)="deleteUser(user.Id)">X</button>
+        <span class="col-md-2"><a [routerLink]="['/users', user.Id]" routerLinkActive="active">{{ user.FullName }}</a></span>
+        <span class="col-md-4">{{ user.Email}}</span>
+        <span class="col-md-2">{{ user.Skype }}</span>
+        <span class="col-md-2">{{ user.Phone }}</span>
+        <div class="col-md-1"><button type="button" (click)="openEdit(user.Id)">Edit</button></div>
+        <div class="col-md-1"><button type="button" (click)="deleteUser(user.Id)">X</button></div>
       </div>
       <div *ngIf="user.Id === editingId">
-        <input type="text" [(ngModel)]="edit.FullName" />
+        <input type="text" [(ngModel)]="edit.First" />
+        <input type="text" [(ngModel)]="edit.Last" />
         <input type="text" [(ngModel)]="edit.Email" />
+        <input type="text" [(ngModel)]="edit.Skype" />
+        <input type="text" [(ngModel)]="edit.Phone" />
+        <button type="button" (click)="submitChanges()">Submit</button>
       </div>
     </div>
   </div>
