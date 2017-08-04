@@ -12,6 +12,7 @@ import { ProjectsAdminPageModule } from './projects-admin-page/projects-admin.mo
 import { UsersAdminPageModule } from './users-admin-page/users-admin.module';
 import { AdminPageModule } from './admin-page/admin.module';
 import { RegistrationModule } from './registration-page/registration.module';
+import { AddProjectModule } from './add-project-page/add-project.module';
 import {
   ApiService,
   SharedModule,
@@ -44,6 +45,7 @@ const rootRouting: ModuleWithProviders = RouterModule.forRoot([], { useHash: tru
     ProjectsAdminPageModule,
     UsersAdminPageModule,
     RegistrationModule,
+    AddProjectModule,
     rootRouting,
   ],
   providers: [

@@ -1,3 +1,15 @@
-<p>
-  add-project-page works!
-</p>
+<div class="row">
+  <div class="col-md-offset-2 col-md-8 text-center">
+    <div>Project Name</div>
+    <input type="text" [(ngModel)]="Name">
+    <div>Description</div>
+    <textarea name="name" [(ngModel)]="Description" rows="8" cols="80"></textarea>
+    <div>Customer Name</div>
+    <input type="text" [(ngModel)]="CustomerName">
+    <div>Start Date</div>
+    <input type="text" [(ngModel)]="StartDate">
+    <div>End Date</div>
+    <input type="text" [(ngModel)]="EndDate">
+    <button type="button" (click)="submitProject()">Add Project</button>
+  </div>
+</div>

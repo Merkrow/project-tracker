@@ -42,4 +42,9 @@ export class ProjectsService {
     .map(data => data);
   }
 
+  postProject(project): Observable<any> {
+    return this.apiService.post(`/api/projects`, project)
+    .map(data => data);
+  }
+
 }

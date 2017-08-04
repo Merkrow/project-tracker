@@ -95,7 +95,6 @@ export class UserService {
   // Update the user on the server (email, pass, etc)
 
   postUser(user): Observable<any> {
-    console.log(user);
     return this.apiService.post(`/api/employees`, user)
     .map(data => data);
   }

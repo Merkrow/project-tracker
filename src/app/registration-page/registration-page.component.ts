@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
-import { UserService, User } from '../shared';
+import { UserService } from '../shared';
 import staticData from '../shared/staticData';
 
 @Component({
@@ -23,6 +24,7 @@ export class RegistrationPageComponent implements OnInit {
   staticData = staticData;
   constructor(
     private userService: UserService,
+    private router: Router,
   ) { }
 
   ngOnInit() {
@@ -32,7 +34,9 @@ export class RegistrationPageComponent implements OnInit {
     const { First, Last, Email, LocationId, Birthday, Address, Skype, Phone, PositionId, Password, } = this;
     this.userService.postUser({ First, Last, Email, LocationId: Number(LocationId), Birthday, Address, Skype, Phone, PositionId: Number(PositionId), Password, Projects: [], ImageUrl: '', Roles: [] })
     .subscribe(data => {
-      console.log(data);
+      if (data) {
+        this.router.navigateByUrl('/admin/users');
+      }
     })
   }
 
