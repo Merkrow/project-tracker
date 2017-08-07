@@ -54,9 +54,7 @@ export class UserService {
 
   purgeAuth() {
     this.storage.removeCredentials();
-    // Set current user to an empty object
     this.currentUserSubject.next(new User());
-    // Set auth status to false
     this.isAuthenticatedSubject.next(false);
   }
 
@@ -87,8 +85,6 @@ export class UserService {
   updateUser(user: User) {
     return this.apiService.put(`/api/employees`, user);
   }
-
-  // Update the user on the server (email, pass, etc)
 
   postUser(user): Observable<any> {
     return this.apiService.post(`/api/employees`, user);

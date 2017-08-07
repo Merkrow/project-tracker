@@ -1,4 +1,4 @@
-<a class="col-md-12 text-info" *ngIf="project && project.active" [routerLink]="['/projects', project.Id]">{{ project.CustomerName }}</a>
+<div class="col-md-12 text-info"><a *ngIf="project && project.active" [routerLink]="['/projects', project.Id]">{{ project.CustomerName }}</a></div>
 
 <div class="col-md-12" *ngIf="tasks && tasks.length">
   <task-row-component *ngFor="let task of tasks" [interval]="interval" [task]="task"></task-row-component>
