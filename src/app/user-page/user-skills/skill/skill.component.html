@@ -1,10 +1,11 @@
-<span class="col-md-6"><b>{{ skill.Name }}</b></span>
-<span class="col-md-4" *ngIf="!edit">{{ staticData.Level[skillLevelId] }}</span>
-<select class="col-md-4" *ngIf="edit" [(ngModel)]="skillLevelId" (ngModelChange)="updateLevel($event)">
-  <option [ngValue]="1">Trainee</option>
-  <option [ngValue]="2">Junior</option>
-  <option [ngValue]="3">Middle</option>
-  <option [ngValue]="4">Senior</option>
-</select>
-<button class="col-md-2" *ngIf="!edit" (click)="toggleEdit()">Edit</button>
-<button class="col-md-2" *ngIf="edit" (click)="submitChanges()">Submit Changes</button>
+<span *ngIf="!addingSkill" class="col-md-4"><b>{{ skill.Name }}</b></span>
+<span *ngIf="addingSkill" class="col-md-4">
+  <task-picker-component [arr]="staticData.skillName" [initial]="skillNameId" [chooseId]="updateSkillNameId.bind(this)"></task-picker-component>
+</span>
+<span class="col-md-4" *ngIf="!edit">{{ staticData.Level[skillLevelId - 1] }}</span>
+<span *ngIf="edit" class="col-md-4">
+  <task-picker-component [arr]="staticData.Level" [initial]="skillLevelId" [chooseId]="updateLevel.bind(this)"></task-picker-component>
+</span>
+<span class="col-md-4"><button *ngIf="!edit" class="btn btn-primary" (click)="toggleEdit()">Edit</button></span>
+<button class="col-md-2" *ngIf="edit" class="btn btn-success" (click)="submitChanges()">Submit Changes</button>
+<button class="col-md-2" *ngIf="edit" class="btn btn-danger" (click)="deleteSkill()">X</button>

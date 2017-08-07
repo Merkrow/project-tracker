@@ -6,33 +6,29 @@ import staticData from '../../staticData';
   templateUrl: './task-picker.component.html'
 })
 export class TaskPickerComponent implements OnInit {
-  data: any;
-  ObjectKeys = Object.keys;
-  chosenTask: string;
+  chosenId: number;
 
   constructor(
   ) {}
 
-  changeTask(Id) {
-    this.chooseTaskId({ Id: Number(Id), type: this.pickType });
+  onChange(Id) {
+    if (this.type) {
+      this.chooseId({ Id: Number(Id), type: this.type });
+      return;
+    }
+    this.chooseId({ Id: Number(Id) });
   }
 
   ngOnInit() {
-    this.chosenTask = this.initialTask.toString();
-    switch (this.pickType) {
-      case "status":
-        this.data = staticData.ticketStatus;
-        return;
-      case "type":
-        this.data = staticData.ticketType;
-        return;
-      default:
-        this.data = staticData.ticketStatus;
-        return;
+    if (this.initial) {
+      this.chosenId = (this.initial - 1);
+    } else {
+      this.chosenId = 0;
     }
   }
 
-  @Input() pickType: string;
-  @Input() initialTask: number;
-  @Input() chooseTaskId: any;
+  @Input() initial: number;
+  @Input() chooseId: any;
+  @Input() arr: string[];
+  @Input() type: string;
 }

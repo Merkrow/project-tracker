@@ -20,4 +20,12 @@ export class SkillsService {
     return this.apiService.put(`/api/skills`, params);
   }
 
+  deleteSkill(id, empId): Observable<any> {
+    return this.apiService.delete(`/api/skills?id=${id}&empId=${empId}`);
+  }
+
+  postSkill(params): Observable<Skill> {
+    return this.apiService.post(`/api/skills`, params);
+  }
+
 }

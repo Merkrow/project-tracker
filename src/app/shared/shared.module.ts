@@ -6,6 +6,7 @@ import { RouterModule } from '@angular/router';
 
 import { ListErrorsComponent } from './list-errors.component';
 import { UserPickerComponent } from './layout/user-picker/user-picker.component';
+import { TaskPickerComponent } from './layout/task-picker/task-picker.component';
 
 @NgModule({
   imports: [
@@ -18,6 +19,7 @@ import { UserPickerComponent } from './layout/user-picker/user-picker.component'
   declarations: [
     ListErrorsComponent,
     UserPickerComponent,
+    TaskPickerComponent,
   ],
   exports: [
     CommonModule,
@@ -26,6 +28,7 @@ import { UserPickerComponent } from './layout/user-picker/user-picker.component'
     HttpModule,
     ListErrorsComponent,
     UserPickerComponent,
+    TaskPickerComponent,
     RouterModule,
   ]
 })

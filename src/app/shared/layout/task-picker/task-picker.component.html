@@ -1,11 +1,7 @@
-<div [ngSwitch]="pickType">
+<div>
 
-  <select class="task-picker" *ngSwitchCase="'status'" [(ngModel)]="chosenTask" (ngModelChange)="changeTask($event)">
-    <option *ngFor="let key of ObjectKeys(data)" [ngValue]="key">{{ data[key] }}</option>
-  </select>
-
-  <select class="task-picker" *ngSwitchCase="'type'" [(ngModel)]="chosenTask" (ngModelChange)="changeTask($event)">
-    <option *ngFor="let key of ObjectKeys(data)" [ngValue]="key">{{ data[key] }}</option>
+  <select class="task-picker form-control" [(ngModel)]="chosenId" (ngModelChange)="onChange($event)">
+    <option *ngFor="let item of arr; let i = index" [ngValue]="i">{{ arr[i] }}</option>
   </select>
 
 </div>

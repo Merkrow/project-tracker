@@ -6,7 +6,6 @@ import { DpDatePickerModule } from 'ng2-date-picker';
 
 import { SharedModule } from '../shared';
 import { TaskPageComponent } from './task-page.component';
-import { TaskPickerComponent } from '../shared/';
 
 const authRouting: ModuleWithProviders = RouterModule.forChild([
   {
@@ -25,7 +24,6 @@ const authRouting: ModuleWithProviders = RouterModule.forChild([
   ],
   declarations: [
     TaskPageComponent,
-    TaskPickerComponent,
   ],
   exports: [
   ]

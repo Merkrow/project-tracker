@@ -15,7 +15,7 @@ export class TaskPageComponent implements OnInit {
   task: Task;
   isSubmitting: boolean = false;
   project: Project;
-  staticData: {} = staticData;
+  staticData = staticData;
   save: boolean = true;
   editing: boolean = false;
   edit: {
@@ -95,7 +95,7 @@ export class TaskPageComponent implements OnInit {
     })
   }
 
-  chooseTaskId({ Id, type}) {
+  chooseTaskId({ Id, type }) {
     switch (type) {
       case 'type':
         this.edit.TypeId = Id;

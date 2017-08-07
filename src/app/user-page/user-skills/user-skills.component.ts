@@ -8,6 +8,7 @@ import { SkillsService, Skill } from '../../shared';
 })
 export class UserSkillsComponent implements OnInit {
   skills: Skill[];
+  addingSkill: boolean = false;
   constructor(
     private skillsService: SkillsService,
   ) { }
@@ -17,6 +18,22 @@ export class UserSkillsComponent implements OnInit {
     .subscribe(data => {
       this.skills = data;
     })
+  }
+
+  deleteSkill(Id) {
+    this.skills = this.skills.filter(skill => skill.Id !== Id);
+  }
+
+  toggleAddingSkill() {
+    this.addingSkill = !this.addingSkill;
+  }
+
+  addSkill(skill) {
+    if (!this.skills.find(item => item.Id === skill.Id)) {
+      this.skills = this.skills.concat(skill);
+    } else {
+      this.updateSkill(skill);
+    }
   }
 
   updateSkill(skill) {
