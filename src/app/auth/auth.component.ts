@@ -22,8 +22,8 @@ export class AuthComponent {
     private userService: UserService,
   ) {
     this.authForm = this.fb.group({
-      'Login': ['', Validators.required],
-      'Password': ['', Validators.required]
+      'Login': ['roger.federer@dataart.com', Validators.required],
+      'Password': ['111111', Validators.required]
     });
   }
 
@@ -41,7 +41,7 @@ export class AuthComponent {
     this.userService
     .attemptAuth(this.authType, credentials)
     .subscribe(
-      data => this.router.navigateByUrl('/'),
+      data => this.router.navigateByUrl('/main'),
       err => {
         this.errors = Object.assign(this.errors.errors, err);
         this.isSubmitting = false;
