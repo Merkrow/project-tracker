@@ -1,15 +1,17 @@
 <div class="row">
-  <div class="col-md-offset-2 col-md-8 text-center">
+  <form [formGroup]="projectForm" class="col-md-offset-2 col-md-8 text-center" (ngSubmit)="submitProject()">
     <div>Project Name</div>
-    <input type="text" [(ngModel)]="Name">
+    <input type="text" formControlName="Name">
     <div>Description</div>
-    <textarea name="name" [(ngModel)]="Description" rows="8" cols="80"></textarea>
+    <textarea name="name" formControlName="Description" rows="8" cols="80"></textarea>
     <div>Customer Name</div>
-    <input type="text" [(ngModel)]="CustomerName">
+    <input type="text" formControlName="CustomerName">
+  </form>
+  <div class="col-md-offset-2 col-md-8 text-center">
     <div>Start Date</div>
-    <input type="text" [(ngModel)]="StartDate">
+    <dp-date-picker [(ngModel)]="StartDate"></dp-date-picker>
     <div>End Date</div>
-    <input type="text" [(ngModel)]="EndDate">
-    <button type="button" (click)="submitProject()">Add Project</button>
+    <dp-date-picker [(ngModel)]="EndDate"></dp-date-picker>
+    <button [disabled]="!projectForm.valid" type="button" (click)="submitProject()">Add Project</button>
   </div>
 </div>

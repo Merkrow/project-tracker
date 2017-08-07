@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
+import * as moment from 'moment';
 
 import { ProjectsService } from '../shared';
 
@@ -9,23 +11,30 @@ import { ProjectsService } from '../shared';
   styleUrls: ['./add-project-page.component.css']
 })
 export class AddProjectPageComponent implements OnInit {
-  Name: string;
-  Description: string;
-  CustomerName: string;
-  StartDate: string = "2017-08-03T15:21:08.903Z";
-  EndDate: string = "2017-08-03T15:21:08.903Z";
+  StartDate: string = moment().format('DD-MM-YYYY');
+  EndDate: string = moment().format('DD-MM-YYYY');
+  projectForm: FormGroup;
 
   constructor(
     private projectsService: ProjectsService,
     private router: Router,
-  ) { }
+    private fb: FormBuilder,
+  ) {
+    this.projectForm = this.fb.group({
+      'Name': ['', Validators.required],
+      'Description': [''],
+      'CustomerName': ['', Validators.required],
+    })
+
+  }
 
   ngOnInit() {
   }
 
   submitProject() {
-    const { Name, Description, CustomerName, StartDate, EndDate } = this;
-    this.projectsService.postProject({ Name, Description, CustomerName, StartDate, EndDate, })
+    const project = this.projectForm.value;
+    const { StartDate, EndDate } = this;
+    this.projectsService.postProject(Object.assign(project, { StartDate, EndDate }))
     .subscribe(data => {
       if (data) {
         this.router.navigateByUrl('/admin/projects');

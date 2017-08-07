@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
+import * as moment from 'moment';
 
 import { UserService } from '../shared';
 import staticData from '../shared/staticData';
@@ -10,29 +12,36 @@ import staticData from '../shared/staticData';
   styleUrls: ['./registration-page.component.css']
 })
 export class RegistrationPageComponent implements OnInit {
-  First: string;
-  Last: string;
-  Email: string;
-  LocationId: string = '1';
-  Birthday: string = '2017-08-03T15:21:08.902Z';
-  Address: string;
-  Skype: string;
-  Phone: string;
-  PositionId: string = '1';
-  Password: string;
   ObjectKeys = Object.keys;
   staticData = staticData;
+  Birthday: string = moment().format('DD-MM-YYYY');
+  registrationForm: FormGroup;
+
   constructor(
     private userService: UserService,
     private router: Router,
-  ) { }
+    private fb: FormBuilder,
+  ) {
+    this.registrationForm = this.fb.group({
+      'First': ['', Validators.required],
+      'Last': ['', Validators.required],
+      'Email': ['', Validators.required],
+      'LocationId': ['1', Validators.required],
+      'Address': ['', Validators.required],
+      'Skype': ['', Validators.required],
+      'Phone': ['', Validators.required],
+      'PositionId': ['1', Validators.required],
+      'Password': ['', Validators.required],
+    })
+  }
 
   ngOnInit() {
   }
 
   submitUser() {
-    const { First, Last, Email, LocationId, Birthday, Address, Skype, Phone, PositionId, Password, } = this;
-    this.userService.postUser({ First, Last, Email, LocationId: Number(LocationId), Birthday, Address, Skype, Phone, PositionId: Number(PositionId), Password, Projects: [], ImageUrl: '', Roles: [] })
+    const user = this.registrationForm.value;
+    const { Birthday } = this;
+    this.userService.postUser(Object.assign(user, { Birthday, Projects: [], ImageUrl: '', Roles: [], LocationId: Number(user.LocationId), PositionId: Number(user.PositionId) }))
     .subscribe(data => {
       if (data) {
         this.router.navigateByUrl('/admin/users');

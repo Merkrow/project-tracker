@@ -1,41 +1,30 @@
 <div class="row">
   <div class="col-md-offset-2 col-md-8">
-    <div class="row">
-      <div class="col-md-6 text-right">
-        <div><b>Name: </b></div>
-        <div><b>Last Name: </b></div>
-        <div><b>Email: </b></div>
-        <div><b>Location: </b></div>
-        <div><b>Birthday: </b></div>
-        <div><b>Address: </b></div>
-        <div><b>Skype: </b></div>
-        <div><b>Phone: </b></div>
-        <div><b>Position: </b></div>
-        <div><b>Password: </b></div>
-      </div>
-      <div class="col-md-6 text-left">
-        <div><input type="text" [(ngModel)]="First"></div>
-        <div><input type="text" [(ngModel)]="Last"></div>
-        <div><input type="text" [(ngModel)]="Email"></div>
-        <div>
-          <select [(ngModel)]="LocationId">
+    <div class="row" [formGroup]="registrationForm">
+        <div class="col-md-6 text-right"><b>Name: </b></div><div class="col-md-6 text-left"><input type="text" formControlName="First"></div>
+        <div class="col-md-6 text-right"><b>Last Name: </b></div><div class="col-md-6 text-left"><input type="text" formControlName="Last"></div>
+        <div class="col-md-6 text-right"><b>Email: </b></div><div class="col-md-6 text-left"><input type="text" formControlName="Email"></div>
+        <div class="col-md-6 text-right"><b>Location: </b></div>
+        <div class="col-md-6 text-left">
+          <select formControlName="LocationId">
             <option *ngFor="let key of ObjectKeys(staticData.Loc)" [ngValue]="key">{{ staticData.Loc[key] }}</option>
           </select>
         </div>
-        <div><input type="text" [(ngModel)]="Birthday"></div>
-        <div><input type="text" [(ngModel)]="Address"></div>
-        <div><input type="text" [(ngModel)]="Skype"></div>
-        <div><input type="text" [(ngModel)]="Phone"></div>
-        <div>
-          <select [(ngModel)]="PositionId">
+        <div class="col-md-6 text-right"><b>Birthday: </b></div><div class="col-md-6 text-left"><dp-date-picker [ngModelOptions]="{standalone: true}" [(ngModel)]="Birthday"></dp-date-picker></div>
+        <div class="col-md-6 text-right"><b>Address: </b></div><div class="col-md-6 text-left"><input type="text" formControlName="Address"></div>
+        <div class="col-md-6 text-right"><b>Skype: </b></div><div class="col-md-6 text-left"><input type="text" formControlName="Skype"></div>
+        <div class="col-md-6 text-right"><b>Phone: </b></div><div class="col-md-6 text-left"><input type="text" formControlName="Phone"></div>
+        <div class="col-md-6 text-right"><b>Position: </b></div>
+        <div class="col-md-6 text-left">
+          <select formControlName="PositionId">
             <option *ngFor="let key of ObjectKeys(staticData.projectPosition)" [ngValue]="key">{{ staticData.projectPosition[key] }}</option>
           </select>
         </div>
-        <div><input type="password" [(ngModel)]="Password"></div>
-      </div>
+        <div class="col-md-6 text-right"><b>Password: </b></div>
+        <div class="col-md-6 text-left"><input type="password" formControlName="Password"></div>
     </div>
     <div class="text-center">
-      <button type="button" class="btn btn-primary" (click)="submitUser()">Submit</button>
+      <button [disabled]="!registrationForm.valid" type="button" class="btn btn-primary" (click)="submitUser()">Submit</button>
     </div>
   </div>
 </div>
