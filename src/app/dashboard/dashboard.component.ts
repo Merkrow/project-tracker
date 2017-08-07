@@ -31,4 +31,60 @@ export class DashboardComponent implements OnInit {
     })
   }
 
+  transferDataSuccess1(event: any) {
+    this.taskService.updateTask(Object.assign(event.dragData, { StatusId: 1 }))
+    .subscribe(data => {
+      this.tasks = this.tasks.map(item => {
+        if (item.Id === data.Id) {
+          return data;
+        }
+        return item;
+      })
+    })
+  }
+  transferDataSuccess2(event: any) {
+    this.taskService.updateTask(Object.assign(event.dragData, { StatusId: 2 }))
+    .subscribe(data => {
+      this.tasks = this.tasks.map(item => {
+        if (item.Id === data.Id) {
+          return data;
+        }
+        return item;
+      })
+    })
+  }
+  transferDataSuccess3(event: any) {
+    this.taskService.updateTask(Object.assign(event.dragData, { StatusId: 3 }))
+    .subscribe(data => {
+      this.tasks = this.tasks.map(item => {
+        if (item.Id === data.Id) {
+          return data;
+        }
+        return item;
+      })
+    })
+  }
+  transferDataSuccess4(event: any) {
+    this.taskService.updateTask(Object.assign(event.dragData, { StatusId: 4 }))
+    .subscribe(data => {
+      this.tasks = this.tasks.map(item => {
+        if (item.Id === data.Id) {
+          return data;
+        }
+        return item;
+      })
+    })
+  }
+  transferDataSuccess5(event: any) {
+    this.taskService.updateTask(Object.assign(event.dragData, { StatusId: 5 }))
+    .subscribe(data => {
+      this.tasks = this.tasks.map(item => {
+        if (item.Id === data.Id) {
+          return data;
+        }
+        return item;
+      })
+    })
+  }
+
 }

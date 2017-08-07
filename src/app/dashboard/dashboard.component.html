@@ -1,23 +1,52 @@
-<div dnd-draggable class="row">
-
-  <div dnd-droppable class="col-md-offset-1 col-md-2">
-    <h2 dnd-draggable [dragEnabled]="true">DRAG ME</h2>
+<div class="row">
+  <div dnd-droppable class="col-md-offset-1 col-md-2 ticket-container" (onDropSuccess)="transferDataSuccess1($event)">
+    <div *ngFor="let task of tasks">
+      <div class="ticket" *ngIf="task.StatusId === 1" dnd-draggable [dragEnabled]="true" [dragData]="task">
+        <div>{{ task.Name }}</div>
+        <div>{{ task.Description }}</div>
+        <div>{{ task.ResponsibleId }}</div>
+      </div>
+    </div>
   </div>
 
-  <div dnd-draggable class="col-md-2" [dropZones]="['zone1']">
-    <h2>zone1</h2>
+  <div dnd-droppable class="col-md-2 ticket-container" (onDropSuccess)="transferDataSuccess2($event)">
+    <div *ngFor="let task of tasks">
+      <div class="ticket" *ngIf="task.StatusId === 2" dnd-draggable [dragEnabled]="true" [dragData]="task">
+        <div>{{ task.Name }}</div>
+        <div>{{ task.Description }}</div>
+        <div>{{ task.ResponsibleId }}</div>
+      </div>
+    </div>
   </div>
 
-  <div class="col-md-2" dnd-draggable [dropZones]="['zone2']">
-    <h2>zone 2</h2>
+  <div dnd-droppable class="col-md-2 ticket-container" (onDropSuccess)="transferDataSuccess3($event)">
+    <div *ngFor="let task of tasks">
+      <div class="ticket" *ngIf="task.StatusId === 3" dnd-draggable [dragEnabled]="true" [dragData]="task">
+        <div>{{ task.Name }}</div>
+        <div>{{ task.Description }}</div>
+        <div>{{ task.ResponsibleId }}</div>
+      </div>
+    </div>
   </div>
 
-  <div class="col-md-2" dnd-draggable [dropZones]="['zone3']">
-    <h2>zone 3</h2>
+  <div dnd-droppable class="col-md-2 ticket-container" (onDropSuccess)="transferDataSuccess4($event)">
+    <div *ngFor="let task of tasks">
+      <div class="ticket" *ngIf="task.StatusId === 4" dnd-draggable [dragEnabled]="true" [dragData]="task">
+        <div>{{ task.Name }}</div>
+        <div>{{ task.Description }}</div>
+        <div>{{ task.ResponsibleId }}</div>
+      </div>
+    </div>
   </div>
 
-  <div class="col-md-2" dnd-draggable [dropZones]="['zone4']">
-    <h2>zone4</h2>
+  <div dnd-droppable class="col-md-2 ticket-container" (onDropSuccess)="transferDataSuccess5($event)">
+    <div *ngFor="let task of tasks">
+      <div class="ticket" *ngIf="task.StatusId === 5" dnd-draggable [dragEnabled]="true" [dragData]="task">
+        <div>{{ task.Name }}</div>
+        <div>{{ task.Description }}</div>
+        <div>{{ task.ResponsibleId }}</div>
+      </div>
+    </div>
   </div>
 
 </div>

@@ -1,0 +1,10 @@
+.ticket {
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+.ticket-container {
+  height: 500px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
