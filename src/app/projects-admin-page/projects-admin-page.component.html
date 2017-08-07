@@ -17,16 +17,16 @@
           <span class="col-md-1">{{ project.CustomerName }}</span>
           <span class="col-md-3">{{ moment(project.StartDate).format('DD-MM-YYYY') }}</span>
           <p class="col-md-5">{{ project.Description }}</p>
-          <span class="col-md-1"><button type="button" (click)="setEdit(project.Id)">Edit</button></span>
-          <span class="col-md-1"><button type="button" (click)="deleteProject(project.Id)">X</button></span>
+          <span class="col-md-1"><button type="button" class="btn btn-primary" (click)="setEdit(project.Id)">Edit</button></span>
+          <span class="col-md-1"><button type="button" class="btn btn-danger" (click)="deleteProject(project.Id)">X</button></span>
         </div>
         <div *ngIf="editingId === project.Id">
-          <span class="col-md-1"><input type="text" [(ngModel)]="edit.Name"></span>
-          <span class="col-md-1"><input type="text" [(ngModel)]="edit.CustomerName"></span>
+          <span class="col-md-1"><input type="text" class="form-control" [(ngModel)]="edit.Name"></span>
+          <span class="col-md-1"><input type="text" class="form-control" [(ngModel)]="edit.CustomerName"></span>
           <span class="col-md-3"><dp-date-picker [(ngModel)]="edit.StartDate"></dp-date-picker></span>
-          <span class="col-md-5"><input type="text" [(ngModel)]="edit.Description"></span>
-          <span class="col-md-1"><button type="button" (click)="submitChanges()">Submit</button></span>
-          <span class="col-md-1"><button type="button" (click)="closeEdit()">Cancel</button></span>
+          <span class="col-md-5"><input type="text" class="form-control" [(ngModel)]="edit.Description"></span>
+          <span class="col-md-1"><button type="button" class="btn btn-success" (click)="submitChanges()">Submit</button></span>
+          <span class="col-md-1"><button type="button" class="btn btn-warning" (click)="closeEdit()">Cancel</button></span>
         </div>
       </div>
     </div>

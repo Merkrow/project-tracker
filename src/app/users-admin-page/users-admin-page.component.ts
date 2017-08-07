@@ -56,7 +56,6 @@ export class UsersAdminPageComponent implements OnInit {
 
   submitChanges() {
     const User = this.allUsers.filter(user => user.Id === this.editingId)[0];
-    this.closeEdit();
     this.userService.updateUser(Object.assign(User, this.edit, { FullName: `${this.edit.First} ${this.edit.Last}` }))
     .subscribe(data => {
       this.allUsers = this.allUsers.map(user => {
@@ -66,6 +65,7 @@ export class UsersAdminPageComponent implements OnInit {
         return user;
       })
       this.users = this.allUsers;
+      this.closeEdit();
     })
   }
 

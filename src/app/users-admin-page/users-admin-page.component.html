@@ -20,17 +20,17 @@
         <span class="col-md-4">{{ user.Email}}</span>
         <span class="col-md-2">{{ user.Skype }}</span>
         <span class="col-md-2">{{ user.Phone }}</span>
-        <div class="col-md-1"><button type="button" (click)="openEdit(user.Id)">Edit</button></div>
-        <div class="col-md-1"><button type="button" (click)="deleteUser(user.Id)">X</button></div>
+        <div class="col-md-1"><button type="button" class="btn btn-primary" (click)="openEdit(user.Id)">Edit</button></div>
+        <div class="col-md-1"><button type="button" class="btn btn-danger" (click)="deleteUser(user.Id)">X</button></div>
       </div>
       <div *ngIf="user.Id === editingId">
-        <div class="col-md-1"><input type="text" [(ngModel)]="edit.First" placeholder="first name" /></div>
-        <div class="col-md-1"><input type="text" [(ngModel)]="edit.Last" placeholder="last name" /></div>
-        <div class="col-md-4"><input type="text" [(ngModel)]="edit.Email" placeholder="email" /></div>
-        <div class="col-md-2"><input type="text" [(ngModel)]="edit.Skype" placeholder="skype" /></div>
-        <div class="col-md-2"><input type="text" [(ngModel)]="edit.Phone" placeholder="phone" /></div>
-        <div class="col-md-1"><button type="button" (click)="submitChanges()">Submit</button></div>
-        <div class="col-md-1"><button type="button" (click)="closeEdit()">Cancel</button></div>
+        <div class="col-md-1"><input class="form-control" type="text" [(ngModel)]="edit.First" placeholder="first name" /></div>
+        <div class="col-md-1"><input class="form-control" type="text" [(ngModel)]="edit.Last" placeholder="last name" /></div>
+        <div class="col-md-4"><input class="form-control" type="text" [(ngModel)]="edit.Email" placeholder="email" /></div>
+        <div class="col-md-2"><input class="form-control" type="text" [(ngModel)]="edit.Skype" placeholder="skype" /></div>
+        <div class="col-md-2"><input class="form-control" type="text" [(ngModel)]="edit.Phone" placeholder="phone" /></div>
+        <div class="col-md-1"><button type="button" class="btn btn-success" (click)="submitChanges()">Submit</button></div>
+        <div class="col-md-1"><button type="button" class="btn btn-warning" (click)="closeEdit()">Cancel</button></div>
       </div>
     </div>
   </div>

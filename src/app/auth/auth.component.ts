@@ -31,10 +31,6 @@ export class AuthComponent {
     this.route.url.subscribe(data => {
       this.authType = data[data.length - 1].path;
       this.title = (this.authType === 'login') ? 'Sign in' : 'Sign up';
-      if (this.authType === 'register') {
-        this.authForm.addControl('First', new FormControl());
-        this.authForm.addControl('Last', new FormControl());
-      }
     });
   }
 

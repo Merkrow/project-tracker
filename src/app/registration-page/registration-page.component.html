@@ -1,9 +1,9 @@
 <div class="row">
   <div class="col-md-offset-2 col-md-8">
     <div class="row" [formGroup]="registrationForm">
-        <div class="col-md-6 text-right"><b>Name: </b></div><div class="col-md-6 text-left"><input type="text" formControlName="First"></div>
-        <div class="col-md-6 text-right"><b>Last Name: </b></div><div class="col-md-6 text-left"><input type="text" formControlName="Last"></div>
-        <div class="col-md-6 text-right"><b>Email: </b></div><div class="col-md-6 text-left"><input type="text" formControlName="Email"></div>
+        <div class="col-md-6 text-right"><b>Name: </b></div><div class="col-md-6 text-left"><input class="form-control" type="text" formControlName="First"></div>
+        <div class="col-md-6 text-right"><b>Last Name: </b></div><div class="col-md-6 text-left"><input class="form-control" type="text" formControlName="Last"></div>
+        <div class="col-md-6 text-right"><b>Email: </b></div><div class="col-md-6 text-left"><input class="form-control" type="text" formControlName="Email"></div>
         <div class="col-md-6 text-right"><b>Location: </b></div>
         <div class="col-md-6 text-left">
           <select formControlName="LocationId">
@@ -11,9 +11,9 @@
           </select>
         </div>
         <div class="col-md-6 text-right"><b>Birthday: </b></div><div class="col-md-6 text-left"><dp-date-picker [ngModelOptions]="{standalone: true}" [(ngModel)]="Birthday"></dp-date-picker></div>
-        <div class="col-md-6 text-right"><b>Address: </b></div><div class="col-md-6 text-left"><input type="text" formControlName="Address"></div>
-        <div class="col-md-6 text-right"><b>Skype: </b></div><div class="col-md-6 text-left"><input type="text" formControlName="Skype"></div>
-        <div class="col-md-6 text-right"><b>Phone: </b></div><div class="col-md-6 text-left"><input type="text" formControlName="Phone"></div>
+        <div class="col-md-6 text-right"><b>Address: </b></div><div class="col-md-6 text-left"><input class="form-control" type="text" formControlName="Address"></div>
+        <div class="col-md-6 text-right"><b>Skype: </b></div><div class="col-md-6 text-left"><input class="form-control" type="text" formControlName="Skype"></div>
+        <div class="col-md-6 text-right"><b>Phone: </b></div><div class="col-md-6 text-left"><input class="form-control" type="text" formControlName="Phone"></div>
         <div class="col-md-6 text-right"><b>Position: </b></div>
         <div class="col-md-6 text-left">
           <select formControlName="PositionId">
@@ -21,7 +21,7 @@
           </select>
         </div>
         <div class="col-md-6 text-right"><b>Password: </b></div>
-        <div class="col-md-6 text-left"><input type="password" formControlName="Password"></div>
+        <div class="col-md-6 text-left"><input class="form-control" type="password" formControlName="Password"></div>
     </div>
     <div class="text-center">
       <button [disabled]="!registrationForm.valid" type="button" class="btn btn-primary" (click)="submitUser()">Submit</button>

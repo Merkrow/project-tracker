@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import * as moment from 'moment';
 
 import { ProjectsService, Project } from '../shared';
 
@@ -11,12 +12,16 @@ import { ProjectsService, Project } from '../shared';
 export class ProjectPageComponent implements OnInit {
   projectId: number;
   project: Project;
+  isSubmitting: boolean = false;
+  moment = moment;
+
   constructor(
     private route: ActivatedRoute,
     private projectsService: ProjectsService,
   ) { }
 
   ngOnInit() {
+    this.isSubmitting = true;
     this.route.url.subscribe(
       (url) => {
         this.projectId = Number(url[url.length - 1]);
@@ -26,6 +31,7 @@ export class ProjectPageComponent implements OnInit {
       this.projectsService.getProject(this.projectId)
       .subscribe(data => {
         this.project = data;
+        this.isSubmitting = false;
       });
     }
   }

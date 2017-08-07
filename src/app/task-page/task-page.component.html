@@ -28,10 +28,10 @@
         <div><b>Project: </b><a [routerLink]="['/projects', project.Id]">{{ project.Name }}</a></div>
         <div><b>Status: </b><task-picker-component [pickType]="'status'" [initialTask]="task.StatusId" [chooseTaskId]="chooseTaskId.bind(this)"></task-picker-component></div>
         <div><b>Type: </b><task-picker-component [pickType]="'type'" [initialTask]="task.TypeId" [chooseTaskId]="chooseTaskId.bind(this)"></task-picker-component></div>
-        <div><b>Estimate: </b><input type="text" (ngModelChange)="onChange()" [(ngModel)]="edit.Estimate"/></div>
+        <div><b>Estimate: </b><input class="form-control" type="text" (ngModelChange)="onChange()" [(ngModel)]="edit.Estimate"/></div>
         <div><b>Start Date: </b><dp-date-picker (ngModelChange)="onChange()" [(ngModel)]="edit.StartDate"></dp-date-picker></div>
         <div><b>End Date: </b><dp-date-picker (ngModelChange)="onChange()" [(ngModel)]="edit.EndDate"></dp-date-picker></div>
-        <div><b>Description: </b><input type="text" (ngModelChange)="onChange()" [(ngModel)]="edit.Description"/></div>
+        <div><b>Description: </b><input class="form-control" type="text" (ngModelChange)="onChange()" [(ngModel)]="edit.Description"/></div>
         <button type="button" class="btn btn-success" *ngIf="editing" (click)="submitEdit()" name="button">Submit Edit</button>
       </div>
 

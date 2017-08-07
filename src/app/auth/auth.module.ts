@@ -10,10 +10,6 @@ const authRouting: ModuleWithProviders = RouterModule.forChild([
   {
     path: 'login',
     component: AuthComponent,
-  },
-  {
-    path: 'register',
-    component: AuthComponent,
   }
 ]);
 
