@@ -13,28 +13,23 @@ export class TaskService {
   ) {}
 
   getTaskByProjectId(id): Observable<Task[]> {
-    return this.apiService.get(`/api/projects/${id}/tickets`)
-    .map(data => data);
+    return this.apiService.get(`/api/projects/${id}/tickets`);
   }
 
   getTasksByUserId(userId): Observable<Task[]> {
-    return this.apiService.get(`/api/tasks/search?taskSearch.responsibleId=${userId}`)
-    .map(data => data);
+    return this.apiService.get(`/api/tasks/search?taskSearch.responsibleId=${userId}`);
   }
 
   getTaskById(id): Observable<Task> {
-    return this.apiService.get(`/api/tasks/${id}`)
-    .map(data => data);
+    return this.apiService.get(`/api/tasks/${id}`);
   }
 
   updateTask(params): Observable<Task> {
-    return this.apiService.put(`/api/tasks`, params)
-    .map(data => data);
+    return this.apiService.put(`/api/tasks`, params);
   }
 
   deleteTask(Id): Observable<any> {
-    return this.apiService.delete(`/api/tasks/${Id}`)
-    .map(data => data);
+    return this.apiService.delete(`/api/tasks/${Id}`);
   }
 
 }

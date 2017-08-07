@@ -49,8 +49,7 @@ export class UserService {
   }
 
   getUserById(Id): Observable<User> {
-    return this.apiService.get(`/api/employees/${Id}`)
-    .map(data => data);
+    return this.apiService.get(`/api/employees/${Id}`);
   }
 
   purgeAuth() {
@@ -63,7 +62,6 @@ export class UserService {
 
   getUsers(): Observable<User[]> {
     return this.apiService.get(`/api/employees`)
-    .map(data => data);
   }
 
   attemptAuth(type, credentials): Observable<User> {
@@ -79,8 +77,7 @@ export class UserService {
   }
 
   deleteUser(id): Observable<any> {
-    return this.apiService.delete(`/api/employees/${id}`)
-    .map(data => data);
+    return this.apiService.delete(`/api/employees/${id}`);
   }
 
   getCurrentUser(): User {
@@ -88,15 +85,13 @@ export class UserService {
   }
 
   updateUser(user: User) {
-    return this.apiService.put(`/api/employees`, user)
-    .map(data => data);
+    return this.apiService.put(`/api/employees`, user);
   }
 
   // Update the user on the server (email, pass, etc)
 
   postUser(user): Observable<any> {
-    return this.apiService.post(`/api/employees`, user)
-    .map(data => data);
+    return this.apiService.post(`/api/employees`, user);
   }
 
 }

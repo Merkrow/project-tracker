@@ -13,18 +13,15 @@ export class TimesheetService {
   ) {}
 
   getTimesheet(id): Observable<Timesheet[]> {
-    return this.apiService.get(`/api/timesheets/search?query.taskId=${id}`)
-    .map(data => data);
+    return this.apiService.get(`/api/timesheets/search?query.taskId=${id}`);
   }
 
   logTimesheet(params): Observable<Timesheet> {
-    return this.apiService.post(`/api/timesheets`, params)
-    .map(data => data);
+    return this.apiService.post(`/api/timesheets`, params);
   }
 
   updateTimesheet(params): Observable<Timesheet> {
-    return this.apiService.put(`/api/timesheets`, params)
-    .map(data => data);
+    return this.apiService.put(`/api/timesheets`, params);
   }
 
 }

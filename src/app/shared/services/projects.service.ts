@@ -13,38 +13,31 @@ export class ProjectsService {
   ) {}
 
   get(): Observable<Project[]> {
-    return this.apiService.get(`/api/projects`)
-    .map(data => data);
+    return this.apiService.get(`/api/projects`);
   }
 
   getProjectsByUserId(id): Observable<Project[]> {
-    return this.apiService.get(`/api/employees/${id}/projects`)
-    .map(data => data);
+    return this.apiService.get(`/api/employees/${id}/projects`);
   }
 
   getProject(id): Observable<Project> {
-    return this.apiService.get(`/api/projects/${id}`)
-    .map(data => data);
+    return this.apiService.get(`/api/projects/${id}`);
   }
 
   getTickets(id): Observable<Project[]> {
-    return this.apiService.get(`/api/projects/${id}/tickets`)
-    .map(data => data);
+    return this.apiService.get(`/api/projects/${id}/tickets`);
   }
 
   updateProject(params): Observable<Project> {
-    return this.apiService.put(`/api/projects`, params)
-    .map(data => data);
+    return this.apiService.put(`/api/projects`, params);
   }
 
   deleteProject(id): Observable<any> {
-    return this.apiService.delete(`/api/projects/${id}`)
-    .map(data => data);
+    return this.apiService.delete(`/api/projects/${id}`);
   }
 
   postProject(project): Observable<any> {
-    return this.apiService.post(`/api/projects`, project)
-    .map(data => data);
+    return this.apiService.post(`/api/projects`, project);
   }
 
 }

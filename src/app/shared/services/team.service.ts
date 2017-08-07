@@ -13,18 +13,15 @@ export class TeamService {
   ) {}
 
   getTeam(projectId): Observable<User[]> {
-    return this.apiService.get(`/api/team/${projectId}`)
-    .map(data => data);
+    return this.apiService.get(`/api/team/${projectId}`);
   }
 
   removeMember({ projectId, employeeId }): Observable<any> {
-    return this.apiService.delete(`/api/team?model.projectId=${projectId}&model.employeeId=${employeeId}`)
-    .map(data => data);
+    return this.apiService.delete(`/api/team?model.projectId=${projectId}&model.employeeId=${employeeId}`);
   }
 
   addMember({ projectId, employeeId }): Observable<any> {
-    return this.apiService.post(`/api/team`, { ProjectId: projectId, EmployeeId: employeeId })
-    .map(data => data);
+    return this.apiService.post(`/api/team`, { ProjectId: projectId, EmployeeId: employeeId });
   }
 
 }

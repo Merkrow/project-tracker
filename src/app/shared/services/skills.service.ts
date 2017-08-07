@@ -13,13 +13,11 @@ export class SkillsService {
   ) {}
 
   getUserSkills(id): Observable<Skill[]> {
-    return this.apiService.get(`/api/skills/${id}`)
-    .map(data => data);
+    return this.apiService.get(`/api/skills/${id}`);
   }
 
   updateUserSkills(params): Observable<Skill> {
-    return this.apiService.put(`/api/skills`, params)
-    .map(data => data);
+    return this.apiService.put(`/api/skills`, params);
   }
 
 }
