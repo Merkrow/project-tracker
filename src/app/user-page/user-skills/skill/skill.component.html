@@ -2,10 +2,10 @@
 <span *ngIf="addingSkill" class="col-md-4">
   <task-picker-component [arr]="staticData.skillName" [initial]="skillNameId" [chooseId]="updateSkillNameId.bind(this)"></task-picker-component>
 </span>
-<span class="col-md-4" *ngIf="!edit">{{ staticData.Level[skillLevelId - 1] }}</span>
+<span class="col-md-4" *ngIf="!edit">{{ staticData.Level[skillLevelId - 1 ] }}</span>
 <span *ngIf="edit" class="col-md-4">
   <task-picker-component [arr]="staticData.Level" [initial]="skillLevelId" [chooseId]="updateLevel.bind(this)"></task-picker-component>
 </span>
 <span class="col-md-4"><button *ngIf="!edit" class="btn btn-primary" (click)="toggleEdit()">Edit</button></span>
 <button class="col-md-2" *ngIf="edit" class="btn btn-success" (click)="submitChanges()">Submit Changes</button>
-<button class="col-md-2" *ngIf="edit" class="btn btn-danger" (click)="deleteSkill()">X</button>
+<button class="col-md-2" *ngIf="edit && !addingSkill" class="btn btn-danger" (click)="deleteSkill()">X</button>

@@ -6,6 +6,7 @@
     <div><b>End Date: </b>{{ moment(project.EndDate ).format('DD-MM-YYYY') }}</div>
     <div><b>Description:</b></div>
     <p>{{ project.Description }}</p>
+    <button class="btn btn-primary" [routerLink]="['/dashboard', project.Id]">Dashboard</button>
   </div>
 
   <div class="col-md-offset-2 col-md-8">

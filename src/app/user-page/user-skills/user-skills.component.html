@@ -16,5 +16,5 @@
         [toggleAddingSkill]="toggleAddingSkill.bind(this)"
         [addSkill]="addSkill.bind(this)"></skill-component>
   </div>
-  <div class="text-center"><button class="btn btn-primary" type="button" (click)="toggleAddingSkill()">Add Skill</button></div>
+  <div class="text-center"><button class="btn btn-primary" type="button" (click)="toggleAddingSkill()">{{ addingSkill ? 'Cancel' : 'Add Skill'}}</button></div>
 </div>
