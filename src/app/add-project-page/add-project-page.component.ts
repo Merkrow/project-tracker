@@ -34,7 +34,7 @@ export class AddProjectPageComponent implements OnInit {
   submitProject() {
     const project = this.projectForm.value;
     const { StartDate, EndDate } = this;
-    this.projectsService.postProject(Object.assign(project, { StartDate, EndDate }))
+    this.projectsService.postProject(Object.assign(project, { StartDate: moment(StartDate).format("YYYY-MM-DDTHH:mm:ss"), EndDate: moment(EndDate).format("YYYY-MM-DDTHH:mm:ss") }))
     .subscribe(data => {
       if (data) {
         this.router.navigateByUrl('/admin/projects');

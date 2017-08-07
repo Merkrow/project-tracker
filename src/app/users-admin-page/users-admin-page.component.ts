@@ -17,7 +17,7 @@ export class UsersAdminPageComponent implements OnInit {
     Last: string,
     Email: string,
     Skype: string,
-    Phone: number,
+    Phone: string,
   }
   constructor(
     private userService: UserService,
@@ -41,6 +41,7 @@ export class UsersAdminPageComponent implements OnInit {
 
   closeEdit() {
     this.editingId = null;
+    this.edit = { First: '', Last: '', Email: '', Skype: '', Phone: '' };
   }
 
   deleteUser(Id) {

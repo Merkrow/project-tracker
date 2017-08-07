@@ -2,29 +2,44 @@
   <div class="col-md-offset-3 col-md-6">
 
     <h2 class="text-center">Task {{ task.Name }}</h2>
-    <div class="task-info row">
+    <div *ngIf="!editing" class="task-info row">
 
       <div class="task-info-left col-md-6">
         <div><b>Project: </b><a [routerLink]="['/projects', project.Id]">{{ project.Name }}</a></div>
-        <div *ngIf="!editing"><b>Status: </b>{{ staticData.ticketStatus[task.StatusId] }}</div>
-        <task-picker-component *ngIf="editing" [pickType]="'status'" [initialTask]="task.StatusId" [chooseTaskId]="chooseTaskId.bind(this)"></task-picker-component>
-        <div *ngIf="!editing"><b>Type: </b>{{ staticData.ticketType[task.TypeId] }}</div>
-        <task-picker-component *ngIf="editing" [pickType]="'type'" [initialTask]="task.TypeId" [chooseTaskId]="chooseTaskId.bind(this)"></task-picker-component>
+        <div><b>Status: </b>{{ staticData.ticketStatus[task.StatusId] }}</div>
+        <div><b>Type: </b>{{ staticData.ticketType[task.TypeId] }}</div>
         <div><b>Estimate: </b>{{ task.Estimate }}</div>
-        <div><b>Start Date: </b>{{ task.StartDate }}</div>
-        <div><b>End Date: </b>ASAP</div>
+        <div><b>Start Date: </b>{{ moment(task.StartDate).format("DD-MM-YYYY") }}</div>
+        <div><b>End Date: </b>{{ moment(task.EndDate).format("DD-MM-YYYY") }}</div>
         <div><b>Description: </b>{{ task.Description }}</div>
         <button type="button" class="btn btn-primary" name="button">New</button>
-        <button type="button" class="btn btn-success" *ngIf="!editing" (click)="toggleEdit()" name="button">Edit</button>
-        <button type="button" class="btn btn-success" *ngIf="editing" (click)="submitEdit()" name="button">Submit Edit</button>
+        <button type="button" class="btn btn-success" (click)="toggleEdit()" name="button">Edit</button>
         <button type="button" class="btn btn-danger" name="button" (click)="deleteTask()">Delete</button>
       </div>
 
       <div class="task-info-right col-md-6">
         <div><b>Reporter: </b>{{ task.Reporter.FullName }}</div>
-        <user-picker-component *ngIf="editing"[employeeId]="task.Responsible.Id" [chooseUser]="chooseUser.bind(this)"></user-picker-component>
-        <div *ngIf="!editing"><b>Responsible: </b>{{ task.Responsible.FullName }}</div>
+        <div><b>Responsible: </b>{{ task.Responsible.FullName }}</div>
       </div>
+    </div>
+
+    <div *ngIf="editing" class="task-info row">
+      <div class="task-editing-left col-md-6">
+        <div><b>Project: </b><a [routerLink]="['/projects', project.Id]">{{ project.Name }}</a></div>
+        <div><b>Status: </b><task-picker-component [pickType]="'status'" [initialTask]="task.StatusId" [chooseTaskId]="chooseTaskId.bind(this)"></task-picker-component></div>
+        <div><b>Type: </b><task-picker-component [pickType]="'type'" [initialTask]="task.TypeId" [chooseTaskId]="chooseTaskId.bind(this)"></task-picker-component></div>
+        <div><b>Estimate: </b><input type="text" (ngModelChange)="onChange()" [(ngModel)]="edit.Estimate"/></div>
+        <div><b>Start Date: </b><dp-date-picker (ngModelChange)="onChange()" [(ngModel)]="edit.StartDate"></dp-date-picker></div>
+        <div><b>End Date: </b><dp-date-picker (ngModelChange)="onChange()" [(ngModel)]="edit.EndDate"></dp-date-picker></div>
+        <div><b>Description: </b><input type="text" (ngModelChange)="onChange()" [(ngModel)]="edit.Description"/></div>
+        <button type="button" class="btn btn-success" *ngIf="editing" (click)="submitEdit()" name="button">Submit Edit</button>
+      </div>
+
+      <div class="col-md-6">
+        <div><b>Reporter: </b>{{ task.Reporter.FullName }}</div>
+        <div><b>Responsible: </b><user-picker-component [employeeId]="task.Responsible.Id" [chooseUser]="chooseUser.bind(this)"></user-picker-component></div>
+      </div>
+
     </div>
   </div>
 </div>

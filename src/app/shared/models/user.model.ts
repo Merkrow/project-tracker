@@ -8,7 +8,7 @@ export class User {
   Id: number;
   ImageUrl: string;
   LocationId: number;
-  Phone: number;
+  Phone: string;
   PositionId: number;
   Projects: {}[];
   Roles: {}[];

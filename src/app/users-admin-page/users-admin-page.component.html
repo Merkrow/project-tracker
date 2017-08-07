@@ -24,12 +24,13 @@
         <div class="col-md-1"><button type="button" (click)="deleteUser(user.Id)">X</button></div>
       </div>
       <div *ngIf="user.Id === editingId">
-        <input type="text" [(ngModel)]="edit.First" />
-        <input type="text" [(ngModel)]="edit.Last" />
-        <input type="text" [(ngModel)]="edit.Email" />
-        <input type="text" [(ngModel)]="edit.Skype" />
-        <input type="text" [(ngModel)]="edit.Phone" />
-        <button type="button" (click)="submitChanges()">Submit</button>
+        <div class="col-md-1"><input type="text" [(ngModel)]="edit.First" placeholder="first name" /></div>
+        <div class="col-md-1"><input type="text" [(ngModel)]="edit.Last" placeholder="last name" /></div>
+        <div class="col-md-4"><input type="text" [(ngModel)]="edit.Email" placeholder="email" /></div>
+        <div class="col-md-2"><input type="text" [(ngModel)]="edit.Skype" placeholder="skype" /></div>
+        <div class="col-md-2"><input type="text" [(ngModel)]="edit.Phone" placeholder="phone" /></div>
+        <div class="col-md-1"><button type="button" (click)="submitChanges()">Submit</button></div>
+        <div class="col-md-1"><button type="button" (click)="closeEdit()">Cancel</button></div>
       </div>
     </div>
   </div>
