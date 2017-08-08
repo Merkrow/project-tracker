@@ -7,6 +7,7 @@ import util from '../../util';
 @Component({
   selector: 'task-row-component',
   templateUrl: './task-row.component.html',
+  styleUrls: ['./task-row.component.css']
 })
 export class TaskRowComponent {
   timesheets: Timesheet[];

@@ -5,6 +5,7 @@ import { SkillsService, Skill } from '../../shared';
 @Component({
   selector: 'user-skills-component',
   templateUrl: './user-skills.component.html',
+  styleUrls: ['./user-skills.component.css']
 })
 export class UserSkillsComponent implements OnInit {
   skills: Skill[];

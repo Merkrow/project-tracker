@@ -6,6 +6,7 @@ import staticData from '../../../shared/staticData';
 @Component({
   selector: 'skill-component',
   templateUrl: './skill.component.html',
+  styleUrls: ['./skill.component.css']
 })
 export class SkillComponent implements OnInit {
   edit: boolean = false;

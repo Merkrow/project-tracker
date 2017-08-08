@@ -6,6 +6,7 @@ import staticData from '../../shared/staticData';
 @Component({
   selector: 'user-info-component',
   templateUrl: './user-info.component.html',
+  styleUrls: ['./user-info.component.css'],
 })
 export class UserInfoComponent implements OnInit {
   employee: User;

@@ -6,6 +6,7 @@ import { TeamService, User } from '../../shared';
 @Component({
   selector: 'team-component',
   templateUrl: './team.component.html',
+  styleUrls: ['./team.component.css']
 })
 export class TeamComponent implements OnInit {
   members: User[];

@@ -5,6 +5,7 @@ import { TaskService, TimesheetService, Project, Task } from '../../shared';
 @Component({
   selector: 'project-component',
   templateUrl: './project.component.html',
+  styleUrls: ['./project.component.css']
 })
 export class ProjectComponent {
   tasks: Task[];

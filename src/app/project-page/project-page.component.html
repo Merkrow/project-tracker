@@ -1,6 +1,6 @@
 <div *ngIf="!isSubmitting" class="row">
   <h1 class="text-center">{{ project.Name }}</h1>
-  <div class="col-md-offset-4 col-md-3">
+  <div class="col-md-offset-4 col-md-3 info">
     <div><b>Customer: </b>{{ project.CustomerName }}</div>
     <div><b>Start Date: </b>{{ moment(project.StartDate).format('DD-MM-YYYY') }}</div>
     <div><b>End Date: </b>{{ moment(project.EndDate ).format('DD-MM-YYYY') }}</div>

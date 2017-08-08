@@ -1,0 +1,20 @@
+.head {
+  background-color: #eee;
+  height: 55px;
+  line-height: 55px;
+  border-radius: 5px 5px 0 0;
+}
+
+h2 {
+  margin: 10px 0 0 10px;
+}
+
+.member-head {
+  height: 40px;
+  line-height: 40px;
+  border-bottom: 2px solid #ccc;
+}
+
+.team-container {
+  margin-top: 20px;
+}

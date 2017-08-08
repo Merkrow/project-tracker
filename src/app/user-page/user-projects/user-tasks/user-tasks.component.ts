@@ -5,6 +5,7 @@ import { TaskService, Task } from '../../../shared';
 @Component({
   selector: 'user-tasks-component',
   templateUrl: './user-tasks.component.html',
+  styleUrls: ['./user-tasks.component.css'],
 })
 export class UserTasksComponent implements OnInit {
   tasks: Task[];

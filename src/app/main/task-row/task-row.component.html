@@ -1,6 +1,6 @@
-<div class="row">
+<div class="row task-row">
 
-  <div class="col-md-3"><a class="link" [routerLink]="['/tasks', task.Id]" routerLinkActive="active">{{ task.Name }}</a></div>
+  <div class="col-md-3 task-name"><a class="link" [routerLink]="['/tasks', task.Id]" routerLinkActive="active">{{ task.Name }}</a></div>
 
   <div class="col-md-9">
     <div class="row" *ngIf="renderChild">

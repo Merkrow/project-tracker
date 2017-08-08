@@ -1,4 +1,24 @@
 .main-container {
   width: 90%;
   margin: 0 auto;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.timesheet-head {
+  background-color: #ddd;
+  height: 55px;
+  line-height: 55px;
+}
+
+h2 {
+  margin: 10px 0 0 20px;
+}
+
+.timesheet-head button {
+  line-height: 20px;
+}
+
+.container {
+  padding: 0;
 }

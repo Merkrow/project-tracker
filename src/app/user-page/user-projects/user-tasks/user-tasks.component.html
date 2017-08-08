@@ -1,4 +1,4 @@
 <div *ngFor="let task of tasks" class="row">
-  <a class="col-md-3" [routerLink]="['/tasks', task.Id]">{{ task.Name }}</a>
+  <div class="col-md-3 task"><a [routerLink]="['/tasks', task.Id]">{{ task.Name }}</a></div>
   <span class="col-md-9">{{ task.Description }}</span>
 </div>
