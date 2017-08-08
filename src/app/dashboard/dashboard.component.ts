@@ -39,10 +39,6 @@ export class DashboardComponent implements OnInit {
     })
   }
 
-  onClick() {
-
-  }
-
   updateData(data, StatusId) {
     this.taskService.updateTask(Object.assign(data, { StatusId }))
     .subscribe(data => {
