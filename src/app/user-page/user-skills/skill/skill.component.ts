@@ -21,24 +21,20 @@ export class SkillComponent implements OnInit {
   ngOnInit() {
     if (!this.addingSkill) {
       this.skillLevelId = this.skill.LevelId;
-      this.skillNameId = staticData.skillName.findIndex(skill => skill === this.skill.Name) + 1;
+      this.skillNameId = Number(Object.keys(staticData.skillName).filter(index => staticData.skillName[index] === this.skill.Name ? index : 1));
     } else {
       this.toggleEdit();
     }
   }
 
   updateLevel(skillLevelId) {
-    this.skillLevelId = skillLevelId.Id + 1;
+    this.skillLevelId = skillLevelId.Id;
     this.save = false;
   }
 
   updateSkillNameId(skillNameId) {
     this.save = false;
-    if (skillNameId.Id > 4) {
-      this.skillNameId = skillNameId.Id + 2;
-      return;
-    }
-    this.skillNameId = skillNameId.Id + 1;
+    this.skillNameId = skillNameId.Id;
   }
 
   submitChanges() {

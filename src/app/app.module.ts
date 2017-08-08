@@ -14,6 +14,7 @@ import { AdminPageModule } from './admin-page/admin.module';
 import { RegistrationModule } from './registration-page/registration.module';
 import { AddProjectModule } from './add-project-page/add-project.module';
 import { DashboardModule } from './dashboard/dashboard.module';
+import { AddTicketModule } from './add-ticket/add-ticket.module';
 import {
   ApiService,
   SharedModule,
@@ -48,6 +49,7 @@ const rootRouting: ModuleWithProviders = RouterModule.forRoot([], { useHash: tru
     UsersAdminPageModule,
     RegistrationModule,
     AddProjectModule,
+    AddTicketModule,
     rootRouting,
   ],
   providers: [

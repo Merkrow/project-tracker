@@ -6,7 +6,8 @@ import staticData from '../../staticData';
   templateUrl: './task-picker.component.html'
 })
 export class TaskPickerComponent implements OnInit {
-  chosenId: number;
+  chosenId: string;
+  ObjectKeys = Object.keys;
 
   constructor(
   ) {}
@@ -21,9 +22,9 @@ export class TaskPickerComponent implements OnInit {
 
   ngOnInit() {
     if (this.initial) {
-      this.chosenId = (this.initial - 1);
+      this.chosenId = this.initial.toString();
     } else {
-      this.chosenId = 0;
+      this.chosenId = "1";
     }
   }
 

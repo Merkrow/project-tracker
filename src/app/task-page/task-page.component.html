@@ -12,7 +12,7 @@
         <div><b>Start Date: </b>{{ moment(task.StartDate).format("DD-MM-YYYY") }}</div>
         <div><b>End Date: </b>{{ moment(task.EndDate).format("DD-MM-YYYY") }}</div>
         <div><b>Description: </b>{{ task.Description }}</div>
-        <button type="button" class="btn btn-primary" name="button">New</button>
+        <button type="button" class="btn btn-primary" [routerLink]="['/ticket', project.Id]" name="button">New</button>
         <button type="button" class="btn btn-success" (click)="toggleEdit()" name="button">Edit</button>
         <button type="button" class="btn btn-danger" name="button" (click)="deleteTask()">Delete</button>
       </div>

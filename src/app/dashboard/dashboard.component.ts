@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
-import { TaskService, Task } from '../shared';
+import { TaskService, Task, ProjectsService, Project } from '../shared';
 
 @Component({
   selector: 'app-dashboard',
@@ -12,9 +12,11 @@ export class DashboardComponent implements OnInit {
   tasks: Task[];
   projectId: number;
   isSubmitting: boolean = false;
+  project: Project;
   constructor(
     private taskService: TaskService,
     private route: ActivatedRoute,
+    private projectService: ProjectsService,
   ) { }
 
   ngOnInit() {
@@ -29,62 +31,40 @@ export class DashboardComponent implements OnInit {
       this.tasks = data;
       this.isSubmitting = false;
     })
+
+    this.projectService.getProject(this.projectId)
+    .subscribe(data => {
+      this.project = data;
+    })
+  }
+
+  updateData(data, StatusId) {
+    this.taskService.updateTask(Object.assign(data, { StatusId }))
+    .subscribe(data => {
+      this.tasks = this.tasks.map(item => {
+        if (item.Id === data.Id) {
+          return data;
+        }
+        return item;
+      })
+    })
   }
 
   transferDataSuccess1(event: any) {
-    this.taskService.updateTask(Object.assign(event.dragData, { StatusId: 1 }))
-    .subscribe(data => {
-      this.tasks = this.tasks.map(item => {
-        if (item.Id === data.Id) {
-          return data;
-        }
-        return item;
-      })
-    })
+    this.updateData(event.dragData, 1);
   }
+
   transferDataSuccess2(event: any) {
-    this.taskService.updateTask(Object.assign(event.dragData, { StatusId: 2 }))
-    .subscribe(data => {
-      this.tasks = this.tasks.map(item => {
-        if (item.Id === data.Id) {
-          return data;
-        }
-        return item;
-      })
-    })
+    this.updateData(event.dragData, 2);
   }
   transferDataSuccess3(event: any) {
-    this.taskService.updateTask(Object.assign(event.dragData, { StatusId: 3 }))
-    .subscribe(data => {
-      this.tasks = this.tasks.map(item => {
-        if (item.Id === data.Id) {
-          return data;
-        }
-        return item;
-      })
-    })
+    this.updateData(event.dragData, 3);
   }
   transferDataSuccess4(event: any) {
-    this.taskService.updateTask(Object.assign(event.dragData, { StatusId: 4 }))
-    .subscribe(data => {
-      this.tasks = this.tasks.map(item => {
-        if (item.Id === data.Id) {
-          return data;
-        }
-        return item;
-      })
-    })
+    this.updateData(event.dragData, 4);
   }
   transferDataSuccess5(event: any) {
-    this.taskService.updateTask(Object.assign(event.dragData, { StatusId: 5 }))
-    .subscribe(data => {
-      this.tasks = this.tasks.map(item => {
-        if (item.Id === data.Id) {
-          return data;
-        }
-        return item;
-      })
-    })
+    this.updateData(event.dragData, 5);
   }
 
 }

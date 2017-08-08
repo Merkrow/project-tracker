@@ -2,7 +2,7 @@
 <span *ngIf="addingSkill" class="col-md-4">
   <task-picker-component [arr]="staticData.skillName" [initial]="skillNameId" [chooseId]="updateSkillNameId.bind(this)"></task-picker-component>
 </span>
-<span class="col-md-4" *ngIf="!edit">{{ staticData.Level[skillLevelId - 1 ] }}</span>
+<span class="col-md-4" *ngIf="!edit">{{ staticData.Level[skillLevelId] }}</span>
 <span *ngIf="edit" class="col-md-4">
   <task-picker-component [arr]="staticData.Level" [initial]="skillLevelId" [chooseId]="updateLevel.bind(this)"></task-picker-component>
 </span>

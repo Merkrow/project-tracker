@@ -32,4 +32,8 @@ export class TaskService {
     return this.apiService.delete(`/api/tasks/${Id}`);
   }
 
+  postTask(params): Observable<Task> {
+    return this.apiService.post(`/api/tasks`, params);
+  }
+
 }
