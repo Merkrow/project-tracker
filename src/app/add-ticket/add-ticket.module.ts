@@ -7,7 +7,7 @@ import { DpDatePickerModule } from 'ng2-date-picker';
 import { SharedModule } from '../shared';
 import { AddTicketComponent } from './add-ticket.component';
 
-const authRouting: ModuleWithProviders = RouterModule.forChild([
+const ticketRouting: ModuleWithProviders = RouterModule.forChild([
   {
     path: 'ticket/:id',
     component: AddTicketComponent,
@@ -20,7 +20,7 @@ const authRouting: ModuleWithProviders = RouterModule.forChild([
     ReactiveFormsModule,
     SharedModule,
     DpDatePickerModule,
-    authRouting,
+    ticketRouting,
   ],
   declarations: [
     AddTicketComponent,

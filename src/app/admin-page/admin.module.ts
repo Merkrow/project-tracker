@@ -5,7 +5,7 @@ import { RouterModule } from '@angular/router';
 import { SharedModule } from '../shared';
 import { AdminPageComponent } from './admin-page.component';
 
-const authRouting: ModuleWithProviders = RouterModule.forChild([
+const adminRouting: ModuleWithProviders = RouterModule.forChild([
   {
     path: 'admin',
     component: AdminPageComponent,
@@ -16,7 +16,7 @@ const authRouting: ModuleWithProviders = RouterModule.forChild([
   imports: [
     CommonModule,
     SharedModule,
-    authRouting,
+    adminRouting,
   ],
   declarations: [
     AdminPageComponent,

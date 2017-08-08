@@ -6,7 +6,7 @@ import { DpDatePickerModule } from 'ng2-date-picker';
 import { SharedModule } from '../shared';
 import { AddProjectPageComponent } from './add-project-page.component';
 
-const authRouting: ModuleWithProviders = RouterModule.forChild([
+const projectRouting: ModuleWithProviders = RouterModule.forChild([
   {
     path: 'newproject',
     component: AddProjectPageComponent,
@@ -18,7 +18,7 @@ const authRouting: ModuleWithProviders = RouterModule.forChild([
     CommonModule,
     SharedModule,
     DpDatePickerModule,
-    authRouting,
+    projectRouting,
   ],
   declarations: [
     AddProjectPageComponent,

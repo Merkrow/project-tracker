@@ -36,7 +36,7 @@ export default {
     "4": "Senior",
   },
   ticketType: {
-    "1": "Technical Tasl",
+    "1": "Technical Task",
     "2": "Bug",
     "3": "Improvement",
     "4": "New feature",

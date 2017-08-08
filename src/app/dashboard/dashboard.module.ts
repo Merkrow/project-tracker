@@ -7,7 +7,7 @@ import { DndModule } from 'ng2-dnd';
 import { DashboardComponent } from './dashboard.component';
 import { SharedModule } from '../shared';
 
-const authRouting: ModuleWithProviders = RouterModule.forChild([
+const dashboardRouting: ModuleWithProviders = RouterModule.forChild([
   {
     path: 'dashboard/:id',
     component: DashboardComponent,
@@ -20,7 +20,7 @@ const authRouting: ModuleWithProviders = RouterModule.forChild([
     SharedModule,
     BrowserModule,
     DndModule.forRoot(),
-    authRouting,
+    dashboardRouting,
   ],
   declarations: [
     DashboardComponent,
