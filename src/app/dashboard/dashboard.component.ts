@@ -26,6 +26,7 @@ export class DashboardComponent implements OnInit {
         this.projectId = Number(url[url.length - 1]);
       }
     )
+
     this.taskService.getTaskByProjectId(this.projectId)
     .subscribe(data => {
       this.tasks = data;
@@ -36,6 +37,10 @@ export class DashboardComponent implements OnInit {
     .subscribe(data => {
       this.project = data;
     })
+  }
+
+  onClick() {
+
   }
 
   updateData(data, StatusId) {
