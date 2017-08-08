@@ -1,17 +1,17 @@
 <div class="row">
   <div class="col-md-offset-2 col-md-8">
     <div class="row">
-      <div class="col-md-5"><input type="text" [(ngModel)]="filterName" (ngModelChange)="filterNameChange($event)"></div>
-      <div class="col-md-offset-6 col-md-1"><button type="button" class="btn btn-primary" routerLink='/newproject/'>Add project</button></div>
+      <div class="col-md-4"><input class="form-control" type="text" [(ngModel)]="filterName" (ngModelChange)="filterNameChange($event)"></div>
+      <div class="col-md-offset-7 col-md-1"><button type="button" class="btn btn-primary" routerLink='/newproject/'>Add project</button></div>
     </div>
     <div class="col-md-12">
-      <div class="row">
+      <div class="row project-head text-info">
         <span class="col-md-1">Name</span>
         <span class="col-md-1">Customer</span>
         <span class="col-md-3">StartDate</span>
         <span class="col-md-5">Description</span>
       </div>
-      <div class="row" *ngFor="let project of projects">
+      <div class="row project-row" *ngFor="let project of projects">
         <div *ngIf="editingId !== project.Id">
           <span class="col-md-1"><a [routerLink]="['/projects', project.Id]">{{ project.Name }}</a></span>
           <span class="col-md-1">{{ project.CustomerName }}</span>
