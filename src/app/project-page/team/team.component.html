@@ -1,8 +1,8 @@
 <div *ngIf="!isSubmitting" class="team-container row">
   <div class="head">
     <div class="col-md-2"><h2>Team</h2></div>
-    <div class="col-md-offset-9">
-      <user-picker-component *ngIf="addUser" [filters]="members" [chooseUser]="chooseUser.bind(this)"></user-picker-component>
+    <div class="col-md-offset-7 col-md-3">
+      <div class="picker"><user-picker-component *ngIf="addUser" [filters]="members" [chooseUser]="chooseUser.bind(this)"></user-picker-component></div>
       <button *ngIf="addUser" type="button" (click)="cancelAddUser()" class="btn btn-danger">X</button>
       <button (click)="toggleAddUser()" type="button" class="btn btn-primary">Add to team</button>
     </div>

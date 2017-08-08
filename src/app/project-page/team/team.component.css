@@ -18,3 +18,8 @@ h2 {
 .team-container {
   margin-top: 20px;
 }
+
+.picker {
+  width: 50%;
+  display: inline-block;
+}
