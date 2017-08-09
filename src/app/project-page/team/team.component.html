@@ -1,10 +1,10 @@
 <div *ngIf="!isSubmitting" class="team-container row">
-  <div class="head">
-    <div class="col-md-2"><h2>Team</h2></div>
-    <div class="col-md-offset-7 col-md-3" *ngIf="isAdmin || isPm">
-      <div class="picker"><user-picker-component *ngIf="addUser" [filters]="members" [chooseUser]="chooseUser.bind(this)"></user-picker-component></div>
-      <button *ngIf="addUser" type="button" (click)="cancelAddUser()" class="btn btn-danger">X</button>
-      <button (click)="toggleAddUser()" type="button" class="btn btn-primary">Add to team</button>
+  <div class="head col-md-12">
+    <div class="pull-left"><h2>Team</h2></div>
+    <div class="pull-right row add-user" *ngIf="isAdmin || isPm">
+      <div class="picker col-md-6"><user-picker-component *ngIf="addUser" [isEmpty]="isEmpty.bind(this)" [filters]="members" [chooseUser]="chooseUser.bind(this)"></user-picker-component></div>
+      <div class="col-md-2"><button *ngIf="addUser" type="button" (click)="cancelAddUser()" class="btn btn-danger">Close</button></div>
+      <div class="col-md-3"><button (click)="toggleAddUser()" [disabled]="disableButton" type="button" class="btn btn-primary">Add to team</button></div>
     </div>
   </div>
   <div class="member-head col-md-12 text-primary">

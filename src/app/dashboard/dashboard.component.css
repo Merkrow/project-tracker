@@ -5,5 +5,10 @@
 }
 
 .ticket-container {
-  height: 500px;
+  min-height: 500px;
+}
+
+.dnd-drag-over {
+  border: 1px solid red;
+  border-radius: 5px;
 }

@@ -1,7 +1,6 @@
 .head {
   background-color: #eee;
   height: 55px;
-  line-height: 55px;
   border-radius: 5px 5px 0 0;
 }
 
@@ -20,6 +19,14 @@ h2 {
 }
 
 .picker {
-  width: 50%;
-  display: inline-block;
+  line-height: 30px;
+  margin-top: 10px;
+}
+
+.pull-right {
+  line-height: 55px;
+}
+
+.add-user {
+  width: 500px;
 }

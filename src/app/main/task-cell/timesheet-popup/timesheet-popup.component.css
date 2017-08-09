@@ -12,7 +12,11 @@
 }
 
 div {
-  margin-top: 20px;
+  margin-top: 10px;
+}
+
+div span {
+  line-height: 30px;
 }
 
 button {

@@ -25,6 +25,9 @@ export class UserPickerComponent implements OnInit {
       if (this.filters) {
         this.users = this.filterUsers(data);
       }
+      if (this.isEmpty) {
+        this.isEmpty(this.users.length);
+      }
       if (this.employeeId) {
         this.chosenUser = this.allUsers.filter((user) => user.Id === this.employeeId)[0];
       } else if(this.users.length) {
@@ -48,10 +51,14 @@ export class UserPickerComponent implements OnInit {
   @Input() employeeId: number;
   @Input() chooseUser: any;
   @Input() filters: User[];
+  @Input() isEmpty: any;
 
   ngOnChanges(changes: any) {
     if (changes.filters && this.allUsers && this.allUsers.length) {
       this.users = this.filterUsers(this.allUsers);
+      if (this.isEmpty) {
+        this.isEmpty(this.users.length);
+      }
       if (this.users.length) {
         this.chosenUser = this.users[0];
         this.chooseUser(this.chosenUser.Id);

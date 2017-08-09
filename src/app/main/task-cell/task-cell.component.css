@@ -1,16 +1,15 @@
-.time-input {
-  width: 18%;
-}
-
 .submit-button {
-
+  display: inline-block;
+  background-color: transparent;
+  border: none;
 }
 
 
 .time-input {
-  width: 18%;
   margin: 0 5px 0 0;
   padding: 2px 0 2px 5px;
   border-radius: 4px;
   border: 1px solid #ccc;
+  display: inline-block;
+  max-width: 40%;
 }

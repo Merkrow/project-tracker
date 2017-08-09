@@ -6,7 +6,7 @@
 }
 
 .timesheet-head {
-  background-color: #ddd;
+  background-color: #eeeeee;
   height: 55px;
   line-height: 55px;
 }
@@ -21,4 +21,9 @@ h2 {
 
 .container {
   padding: 0;
+}
+
+.navigation {
+  background-color: transparent;
+  border: none;
 }

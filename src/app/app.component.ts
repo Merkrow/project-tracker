@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { UserService } from './shared';
 
@@ -9,10 +10,18 @@ import { UserService } from './shared';
 })
 export class AppComponent {
   constructor (
-    private userService: UserService
+    private userService: UserService,
+    private router: Router,
   ) {}
 
   ngOnInit() {
     this.userService.populate();
+    this.userService.isAuthenticated.subscribe(
+      (isAuthenticated) => {
+        if (!isAuthenticated) {
+          this.router.navigateByUrl(`/login`);
+        }
+      }
+    )
   }
 }

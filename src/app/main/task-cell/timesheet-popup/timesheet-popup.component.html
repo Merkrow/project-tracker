@@ -1,5 +1,5 @@
 <div class="timesheet-popup text-center row">
-  <div><span class="col-md-4">Hours</span><span class="col-md-8"><input class="form-control" type="text" [(ngModel)]="time" ></span><div>
-  <div><span class="col-md-4">Description</span><span class="col-md-8"><input class="form-control" type="text" [(ngModel)]="comment" ></span></div>
+  <div class="col-md-6"><span>Hours</span></div><div class="col-md-6"><input class="form-control" type="text" [(ngModel)]="time" ></div>
+  <div class="col-md-6"><span>Description</span></div><div class="col-md-6"><input class="form-control" type="text" [(ngModel)]="comment" ></div>
   <button class="btn btn-primary" (click)="log()">Log Time</button>
 </div>

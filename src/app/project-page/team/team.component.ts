@@ -15,6 +15,7 @@ export class TeamComponent implements OnInit {
   chosenUserId: number;
   isPm: boolean = false;
   isAdmin: boolean = false;
+  disableButton: boolean = false;
   constructor(
     private teamService: TeamService,
     private userService: UserService,
@@ -32,6 +33,10 @@ export class TeamComponent implements OnInit {
     this.chosenUserId = Number(Id);
   }
 
+  isEmpty(length) {
+    this.disableButton = !length;
+  }
+
   toggleAddUser() {
     if (!this.addUser) {
       this.addUser = true;
@@ -45,6 +50,7 @@ export class TeamComponent implements OnInit {
 
   cancelAddUser() {
     this.addUser = false;
+    this.disableButton = false;
   }
 
   ngOnInit() {

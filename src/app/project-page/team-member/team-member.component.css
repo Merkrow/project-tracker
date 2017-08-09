@@ -1,5 +1,11 @@
 .member-row {
   height: 40px;
-  line-height: 40px;
+  line-height: 35px;
   border-bottom: 1px solid #ccc;
+}
+
+.remove-button {
+  background-color: transparent;
+  border: none;
+  height: 100%;
 }
