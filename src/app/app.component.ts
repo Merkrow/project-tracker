@@ -20,6 +20,8 @@ export class AppComponent {
       (isAuthenticated) => {
         if (!isAuthenticated) {
           this.router.navigateByUrl(`/login`);
+        } else {
+          this.router.navigateByUrl(`/main`);
         }
       }
     )

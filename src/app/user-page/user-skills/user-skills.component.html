@@ -14,6 +14,7 @@
         [removeSkill]="deleteSkill.bind(this)"
         [updateSkill]="updateSkill.bind(this)"
         [addingSkill]="true"
+        [isLegal]="isCurrent || isAdmin || isPm"
         [toggleAddingSkill]="toggleAddingSkill.bind(this)"
         [addSkill]="addSkill.bind(this)"></skill-component>
         <div class="col-md-offset-4 col-md-2 skill-button">
