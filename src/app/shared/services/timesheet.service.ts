@@ -16,6 +16,10 @@ export class TimesheetService {
     return this.apiService.get(`/api/timesheets/search?query.taskId=${id}`);
   }
 
+  getUserTimesheet(taskId, emplId): Observable<Timesheet[]> {
+    return this.apiService.get(`/api/timesheets/search?query.taskId=${taskId}&query.empId=${emplId}`);
+  }
+
   logTimesheet(params): Observable<Timesheet> {
     return this.apiService.post(`/api/timesheets`, params);
   }

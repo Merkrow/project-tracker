@@ -21,11 +21,8 @@ export class ProjectComponent {
     })
   }
 
-  ngAfterViewChecked() {
-    console.log();
-  }
-
   @Input() project: Project;
   @Input() interval: any[];
+  @Input() emplId: number;
 
 }

@@ -54,16 +54,26 @@ export class TaskRowComponent {
   }
 
   ngOnInit() {
-    this.timesheetService.getTimesheet(this.task.Id)
-    .subscribe(data => {
-      this.timesheets = data;
-      this.makeInterval();
-      this.renderChild = true;
-    });
+    if (!this.emplId) {
+      this.timesheetService.getTimesheet(this.task.Id)
+      .subscribe(data => {
+        this.timesheets = data;
+        this.makeInterval();
+        this.renderChild = true;
+      });
+    } else {
+      this.timesheetService.getUserTimesheet(this.task.Id, this.emplId)
+      .subscribe(data => {
+        this.timesheets = data;
+        this.makeInterval();
+        this.renderChild = true;
+      })
+    }
   }
 
   @Input() task: Task;
   @Input() interval: any[];
+  @Input() emplId: number;
   ngOnChanges(changes: any) {
     if(changes.interval) {
       this.makeInterval();

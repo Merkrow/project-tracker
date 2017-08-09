@@ -22,6 +22,8 @@ export class MainComponent implements OnInit {
   isAuthenticated: boolean;
   firstDay: any;
   interval: any[] = [];
+  isAdmin: boolean = false;
+  emplId: number;
 
   setInterval() {
     this.interval = new Array(6);
@@ -60,6 +62,7 @@ export class MainComponent implements OnInit {
           this.userService.isAdmin.subscribe(
             (isAdmin) => {
               if (isAdmin) {
+                this.isAdmin = isAdmin;
                 this.projectsService.get()
                 .subscribe(data => {
                   this.loading = false;
@@ -69,6 +72,7 @@ export class MainComponent implements OnInit {
                 this.userService.currentUser.subscribe(
                   (user) => {
                     if (user.Id) {
+                      this.emplId = user.Id;
                       this.projectsService.getProjectsByUserId(user.Id)
                       .subscribe(data => {
                         this.projects = data.map(this.prepareProject);

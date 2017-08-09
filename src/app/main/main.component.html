@@ -16,6 +16,6 @@
     </div>
   </div>
   <div class="col-md-12 container" *ngIf="projects && projects.length">
-    <project-component *ngFor="let project of projects" [interval]="interval" [project]="project"></project-component>
+    <project-component *ngFor="let project of projects" [emplId]="emplId" [interval]="interval" [project]="project"></project-component>
   </div>
 </div>

@@ -1,12 +1,14 @@
 
-      <span *ngIf="!addingSkill" class="col-md-4 skill-name"><b>{{ skill.Name }}</b></span>
-      <span *ngIf="addingSkill" class="col-md-4 skill-name">
-        <task-picker-component [arr]="staticData.skillName" [initial]="skillNameId" [chooseId]="updateSkillNameId.bind(this)"></task-picker-component>
-      </span>
-      <span class="col-md-4 skill-level" *ngIf="!edit">{{ staticData.Level[skillLevelId] }}</span>
-      <span *ngIf="edit" class="col-md-4 skill-level">
-        <task-picker-component [arr]="staticData.Level" [initial]="skillLevelId" [chooseId]="updateLevel.bind(this)"></task-picker-component>
-      </span>
-  <div class="col-md-4" *ngIf="!edit"><button class="btn btn-default" *ngIf="isLegal" (click)="toggleEdit()">Edit</button></div>
-  <div class="col-md-2" *ngIf="edit"><button class="btn btn-success" (click)="submitChanges()">Submit</button></div>
-  <div class="col-md-2" *ngIf="edit && !addingSkill"><button class="col-md-2" class="btn btn-danger" (click)="deleteSkill()">X</button></div>
+<span *ngIf="!addingSkill && isLegal" class="col-md-4 skill-name"><b>{{ skill.Name }}</b></span>
+<span *ngIf="!isLegal" class="col-md-6 skill-name">{{ skill.Name }}</span>
+<span *ngIf="addingSkill" class="col-md-4 skill-name">
+  <task-picker-component [arr]="staticData.skillName" [initial]="skillNameId" [chooseId]="updateSkillNameId.bind(this)"></task-picker-component>
+</span>
+<span class="col-md-4 skill-level" *ngIf="!edit && isLegal">{{ staticData.Level[skillLevelId] }}</span>
+<span *ngIf="!isLegal" class="col-md-6 skill-level">{{ staticData.Level[skillLevelId] }}</span>
+<span *ngIf="edit" class="col-md-4 skill-level">
+  <task-picker-component [arr]="staticData.Level" [initial]="skillLevelId" [chooseId]="updateLevel.bind(this)"></task-picker-component>
+</span>
+<div class="col-md-4" *ngIf="!edit && isLegal"><button class="btn btn-default" *ngIf="isLegal" (click)="toggleEdit()">Edit</button></div>
+<div class="col-md-2" *ngIf="edit"><button class="btn btn-success" (click)="submitChanges()">Submit</button></div>
+<div class="col-md-2" *ngIf="edit && !addingSkill"><button class="col-md-2" class="btn btn-danger" (click)="deleteSkill()">X</button></div>
