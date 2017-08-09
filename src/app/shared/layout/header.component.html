@@ -49,7 +49,10 @@
           <i class="ion-gear-a"></i>&nbsp;Admin
         </a>
       </li>
+    </ul>
 
+    <ul *ngIf="isAuthenticated"
+      class="nav navbar-nav pull-right">
       <li class="nav-item nav-link name">
         <a class="nav-link"
         [routerLink]="['/users', currentUser.Id]">
