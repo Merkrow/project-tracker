@@ -1,5 +1,6 @@
 <h1 class="text-center" *ngIf="employee">{{ employee.FullName }}</h1>
-<div class="user-info-container col-md-offset-2 col-md-2" *ngIf="employee">
+<div class="col-md-2"><img src="assets/images/user.png" alt=""></div>
+<div class="user-info-container col-md-2" *ngIf="employee">
   <div><b>Birthday: </b>{{ employee.Birthday }}</div>
   <div><b>Email: </b>{{ employee.Email }}</div>
   <div><b>Location: </b>{{ staticData.Loc[employee.LocationId] }}</div>

@@ -40,6 +40,15 @@ export class MainComponent implements OnInit {
     this.setInterval();
   }
 
+  prepareProject(project) {
+    const startDate = moment(util.getDate(project.StartDate));
+    const endDate = moment(util.getDate(project.EndDate));
+    if (moment().isBetween(startDate, endDate)) {
+      return Object.assign(project, { active: true });
+    }
+    return Object.assign(project, { active: false });
+  }
+
   ngOnInit() {
     this.loading = true;
     this.firstDay = moment().subtract(5, 'day');
@@ -48,27 +57,35 @@ export class MainComponent implements OnInit {
       (authenticated) => {
         this.isAuthenticated = authenticated;
         if (authenticated) {
+          this.userService.isAdmin.subscribe(
+            (isAdmin) => {
+              if (isAdmin) {
+                this.projectsService.get()
+                .subscribe(data => {
+                  this.loading = false;
+                  this.projects = data.map(this.prepareProject);
+                });
+              } else {
+                this.userService.currentUser.subscribe(
+                  (user) => {
+                    if (user.Id) {
+                      this.projectsService.getProjectsByUserId(user.Id)
+                      .subscribe(data => {
+                        this.projects = data.map(this.prepareProject);
+                      })
+                    }
+                  }
+                )
+              }
+            }
+          )
           return;
         } else {
           this.router.navigateByUrl('/login');
         }
       }
     );
-
     this.setInterval();
-
-    this.projectsService.get()
-    .subscribe(data => {
-      this.loading = false;
-      this.projects = data.map(project => {
-        const startDate = moment(util.getDate(project.StartDate));
-        const endDate = moment(util.getDate(project.EndDate));
-        if (moment().isBetween(startDate, endDate)) {
-          return Object.assign(project, { active: true });
-        }
-        return Object.assign(project, { active: false });
-      });
-    });
   }
 
 }
