@@ -5,7 +5,8 @@
       [skill]="skill"
       [EmployeeId]="employeeId"
       [removeSkill]="deleteSkill.bind(this)"
-      [updateSkill]="updateSkill.bind(this)"></skill-component>
+      [updateSkill]="updateSkill.bind(this)"
+      [isLegal]="isCurrent || isAdmin || isPm"></skill-component>
       <skill-component
         *ngIf="addingSkill"
         [skill]="skill"
@@ -15,6 +16,8 @@
         [addingSkill]="true"
         [toggleAddingSkill]="toggleAddingSkill.bind(this)"
         [addSkill]="addSkill.bind(this)"></skill-component>
-        <div class="col-md-offset-4 col-md-2 skill-button"><button class="btn btn-primary" type="button" (click)="toggleAddingSkill()">{{ addingSkill ? 'Cancel' : 'Add Skill'}}</button></div>
+        <div class="col-md-offset-4 col-md-2 skill-button">
+          <button *ngIf="isCurrent || isAdmin || isPm" class="btn btn-primary" type="button" (click)="toggleAddingSkill()">{{ addingSkill ? 'Cancel' : 'Add Skill'}}</button>
+        </div>
   </div>
 </div>

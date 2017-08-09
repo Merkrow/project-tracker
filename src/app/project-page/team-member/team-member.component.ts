@@ -17,4 +17,5 @@ export class TeamMemberComponent implements OnInit {
 
   @Input() member: User;
   @Input() removeMember: any;
+  @Input() isAdminOrPm: boolean;
 }

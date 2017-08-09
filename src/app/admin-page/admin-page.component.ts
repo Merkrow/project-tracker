@@ -6,10 +6,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./admin-page.component.css']
 })
 export class AdminPageComponent implements OnInit {
-
-  constructor() { }
+  constructor(
+  ) { }
 
   ngOnInit() {
+
   }
 
 }

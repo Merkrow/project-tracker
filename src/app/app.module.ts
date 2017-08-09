@@ -26,6 +26,9 @@ import {
   TimesheetService,
   SkillsService,
   TeamService,
+  AdminGuard,
+  AuthGuard,
+  PmGuard,
 } from './shared';
 
 const rootRouting: ModuleWithProviders = RouterModule.forRoot([], { useHash: true });
@@ -61,6 +64,9 @@ const rootRouting: ModuleWithProviders = RouterModule.forRoot([], { useHash: tru
     TimesheetService,
     SkillsService,
     TeamService,
+    AdminGuard,
+    AuthGuard,
+    PmGuard,
   ],
   bootstrap: [AppComponent]
 })

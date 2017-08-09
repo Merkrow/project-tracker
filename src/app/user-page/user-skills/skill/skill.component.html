@@ -7,6 +7,6 @@
       <span *ngIf="edit" class="col-md-4 skill-level">
         <task-picker-component [arr]="staticData.Level" [initial]="skillLevelId" [chooseId]="updateLevel.bind(this)"></task-picker-component>
       </span>
-  <div class="col-md-4" *ngIf="!edit"><button class="btn btn-default" (click)="toggleEdit()">Edit</button></div>
+  <div class="col-md-4" *ngIf="!edit"><button class="btn btn-default" *ngIf="isLegal" (click)="toggleEdit()">Edit</button></div>
   <div class="col-md-2" *ngIf="edit"><button class="btn btn-success" (click)="submitChanges()">Submit</button></div>
   <div class="col-md-2" *ngIf="edit && !addingSkill"><button class="col-md-2" class="btn btn-danger" (click)="deleteSkill()">X</button></div>

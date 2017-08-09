@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
-import { TeamService, User } from '../../shared';
+import { TeamService, User, UserService, } from '../../shared';
 
 @Component({
   selector: 'team-component',
@@ -13,8 +13,11 @@ export class TeamComponent implements OnInit {
   isSubmitting: boolean = false;
   addUser: boolean = false;
   chosenUserId: number;
+  isPm: boolean = false;
+  isAdmin: boolean = false;
   constructor(
     private teamService: TeamService,
+    private userService: UserService,
   ) { }
 
   removeMember(employeeId) {
@@ -53,6 +56,16 @@ export class TeamComponent implements OnInit {
         this.isSubmitting = false;
       })
     }
+    this.userService.isAdmin.subscribe(
+      (isAdmin) => {
+        this.isAdmin = isAdmin;
+      }
+    )
+    this.userService.isPm.subscribe(
+      (isPm) => {
+        this.isPm = isPm;
+      }
+    )
   }
   @Input() projectId: number;
 }

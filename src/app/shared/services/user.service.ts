@@ -17,6 +17,10 @@ export class UserService {
   public currentUser = this.currentUserSubject.asObservable().distinctUntilChanged();
 
   private isAuthenticatedSubject = new ReplaySubject<boolean>(1);
+  private isAdminSubject = new ReplaySubject<boolean>(1);
+  private isPmSubject = new ReplaySubject<boolean>(1);
+  public isPm = this.isPmSubject.asObservable();
+  public isAdmin = this.isAdminSubject.asObservable();
   public isAuthenticated = this.isAuthenticatedSubject.asObservable();
 
   constructor (
@@ -45,6 +49,14 @@ export class UserService {
   setAuth(user: User, Password: string) {
     this.storage.saveCredentials({ Login: user.Email, Password });
     this.currentUserSubject.next(user);
+    this.isAdminSubject.next(false);
+    this.isPmSubject.next(false);
+    if (user.PositionId === 1) {
+      this.isPmSubject.next(true);
+    }
+    if (user.Email === "roger.federer@dataart.com") {
+      this.isAdminSubject.next(true);
+    }
     this.isAuthenticatedSubject.next(true);
   }
 
@@ -56,6 +68,8 @@ export class UserService {
     this.storage.removeCredentials();
     this.currentUserSubject.next(new User());
     this.isAuthenticatedSubject.next(false);
+    this.isPmSubject.next(false);
+    this.isAdminSubject.next(false);
   }
 
   getUsers(): Observable<User[]> {

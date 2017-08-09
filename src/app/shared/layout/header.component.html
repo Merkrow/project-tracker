@@ -42,7 +42,7 @@
         </a>
       </li>
 
-      <li class="nav-item">
+      <li class="nav-item" *ngIf="isAdmin || isPm">
         <a class="nav-link"
           routerLink="/admin/"
           routerLinkActive="active">
@@ -51,7 +51,8 @@
       </li>
 
       <li class="nav-item nav-link name">
-        <a class="nav-link">
+        <a class="nav-link"
+        [routerLink]="['/users', currentUser.Id]">
           Hello, {{ currentUser.FullName }}
         </a>
       </li>

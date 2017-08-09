@@ -1,7 +1,7 @@
 <div *ngIf="!isSubmitting" class="team-container row">
   <div class="head">
     <div class="col-md-2"><h2>Team</h2></div>
-    <div class="col-md-offset-7 col-md-3">
+    <div class="col-md-offset-7 col-md-3" *ngIf="isAdmin || isPm">
       <div class="picker"><user-picker-component *ngIf="addUser" [filters]="members" [chooseUser]="chooseUser.bind(this)"></user-picker-component></div>
       <button *ngIf="addUser" type="button" (click)="cancelAddUser()" class="btn btn-danger">X</button>
       <button (click)="toggleAddUser()" type="button" class="btn btn-primary">Add to team</button>
@@ -16,6 +16,6 @@
     </div>
   </div>
   <div class="member col-md-12">
-    <team-member-component *ngFor="let member of members" [removeMember]="removeMember.bind(this)" [member]="member"></team-member-component>
+    <team-member-component *ngFor="let member of members" [isAdminOrPm]="isPm || isAdmin" [removeMember]="removeMember.bind(this)" [member]="member"></team-member-component>
   </div>
 </div>

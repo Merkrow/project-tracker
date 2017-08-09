@@ -3,5 +3,5 @@
   <span class="member-position col-md-2">{{ member.Position.Name }}</span>
   <span class="member-email col-md-3">{{ member.Email }}</span>
   <span class="member-skype col-md-3">{{ member.Skype }}</span>
-  <div class="col-md-1"><button class="btn btn-danger" (click)="removeMember(member.Id)">X</button></div>
+  <div class="col-md-1"><button *ngIf="isAdminOrPm" class="btn btn-danger" (click)="removeMember(member.Id)">X</button></div>
 </div>

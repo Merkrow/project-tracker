@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 
-import { SkillsService, Skill } from '../../shared';
+import { SkillsService, Skill, UserService } from '../../shared';
 
 @Component({
   selector: 'user-skills-component',
@@ -10,8 +10,12 @@ import { SkillsService, Skill } from '../../shared';
 export class UserSkillsComponent implements OnInit {
   skills: Skill[];
   addingSkill: boolean = false;
+  isCurrent: boolean = false;
+  isAdmin: boolean = false;
+  isPm: boolean = false;
   constructor(
     private skillsService: SkillsService,
+    private userService: UserService,
   ) { }
 
   ngOnInit() {
@@ -19,6 +23,24 @@ export class UserSkillsComponent implements OnInit {
     .subscribe(data => {
       this.skills = data;
     })
+
+    this.userService.isAdmin.subscribe(
+      (isAdmin) => {
+        this.isAdmin = isAdmin;
+      }
+    )
+
+    this.userService.isPm.subscribe(
+      (isPm) => {
+        this.isPm = isPm;
+      }
+    )
+
+    this.userService.currentUser.subscribe(
+      (user) => {
+        this.isCurrent = user.Id === this.employeeId;
+      }
+    )
   }
 
   deleteSkill(Id) {
