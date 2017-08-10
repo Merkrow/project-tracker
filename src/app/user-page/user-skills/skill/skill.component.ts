@@ -80,4 +80,5 @@ export class SkillComponent implements OnInit {
   @Input() toggleAddingSkill: any;
   @Input() addSkill: any;
   @Input() isLegal: boolean;
+  @Input() skills: Skill[];
 }

@@ -6,7 +6,7 @@ import staticData from '../../staticData';
   templateUrl: './task-picker.component.html'
 })
 export class TaskPickerComponent implements OnInit {
-  chosenId: string;
+  chosenId: string = "1";
   ObjectKeys = Object.keys;
 
   constructor(
@@ -21,15 +21,32 @@ export class TaskPickerComponent implements OnInit {
   }
 
   ngOnInit() {
-    if (this.initial) {
+    if (this.initial && !this.filter) {
       this.chosenId = this.initial.toString();
-    } else {
-      this.chosenId = "1";
     }
+    if (this.filter) {
+      this.arr = this.filterArr(this.arr);
+    }
+  }
+
+  filterArr(arr) {
+    if (this.filter) {
+      const filter = this.filter.map(item => item.Name);
+      const res = Object.keys(arr).reduce((acc, key) => {
+        if (filter.indexOf(arr[key]) !== -1) {
+          return acc;
+        }
+        return Object.assign(acc, { [key]: arr[key] });
+      }, {});
+      this.chosenId = Object.keys(res)[0];
+      return res;
+    }
+    return arr;
   }
 
   @Input() initial: number;
   @Input() chooseId: any;
   @Input() arr: string[];
   @Input() type: string;
+  @Input() filter: any[];
 }
