@@ -20,6 +20,10 @@ export class ProjectsService {
     return this.apiService.get(`/api/employees/${id}/projects`);
   }
 
+  searchProjects(params): Observable<Project[]> {
+    return this.apiService.get(`/api/projects/search`, params);
+  }
+
   getProject(id): Observable<Project> {
     return this.apiService.get(`/api/projects/${id}`);
   }

@@ -20,6 +20,10 @@ export class TaskService {
     return this.apiService.get(`/api/tasks/search?taskSearch.responsibleId=${userId}`);
   }
 
+  searchTask(params): Observable<Task[]> {
+    return this.apiService.get(`/api/tasks/search`, params);
+  }
+
   getTaskById(id): Observable<Task> {
     return this.apiService.get(`/api/tasks/${id}`);
   }

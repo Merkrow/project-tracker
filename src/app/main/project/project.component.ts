@@ -15,10 +15,17 @@ export class ProjectComponent {
   ) {}
 
   ngOnInit() {
-    this.taskService.getTaskByProjectId(this.project.Id)
-    .subscribe(data => {
-      this.tasks = data;
-    })
+    if (!this.emplId) {
+      this.taskService.getTaskByProjectId(this.project.Id)
+      .subscribe(data => {
+        this.tasks = data;
+      })
+    } else {
+      this.taskService.searchTask({ ['taskSearch.responsibleId']: this.emplId, ['taskSearch.projectId']: this.project.Id })
+      .subscribe(data => {
+        this.tasks = data;
+      })
+    }
   }
 
   @Input() project: Project;

@@ -62,7 +62,7 @@ export class TaskRowComponent {
         this.renderChild = true;
       });
     } else {
-      this.timesheetService.getUserTimesheet(this.task.Id, this.emplId)
+      this.timesheetService.getUserTimesheet({ taskId: this.task.Id, empId: this.emplId })
       .subscribe(data => {
         this.timesheets = data;
         this.makeInterval();
