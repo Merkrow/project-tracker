@@ -37,9 +37,9 @@ export class TaskPageComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.route.url.subscribe(
-      (url) => {
-        this.taskId = Number(url[url.length - 1]);
+    this.route.params.subscribe(
+      (params) => {
+        this.taskId = params.id;
       }
     )
     if (this.taskId) {

@@ -22,9 +22,9 @@ export class ProjectPageComponent implements OnInit {
 
   ngOnInit() {
     this.isSubmitting = true;
-    this.route.url.subscribe(
-      (url) => {
-        this.projectId = Number(url[url.length - 1]);
+    this.route.params.subscribe(
+      (params) => {
+        this.projectId = params.id;
       }
     )
     if (this.projectId) {

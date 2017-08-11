@@ -14,9 +14,9 @@ export class UserPageComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.route.url.subscribe(
-      (url) => {
-        this.employeeId = Number(url[url.length - 1]);
+    this.route.params.subscribe(
+      (params) => {
+        this.employeeId = params.id;
       }
     )
   }
