@@ -10,6 +10,8 @@ import { ApiService } from './api.service';
 import { LocalStorageService } from './localstorage.service';
 import { User } from '../models';
 
+const userUrl = '/api/employees';
+
 
 @Injectable()
 export class UserService {
@@ -32,7 +34,7 @@ export class UserService {
   populate() {
     const credentials = this.storage.getCredentials();
     if (credentials) {
-      this.apiService.post('/api/employees/login', credentials)
+      this.apiService.post(`${userUrl}/login`, credentials)
       .subscribe(
        data => {
          const { Password } = data;
@@ -61,7 +63,7 @@ export class UserService {
   }
 
   getUserById(Id): Observable<User> {
-    return this.apiService.get(`/api/employees/${Id}`);
+    return this.apiService.get(`${userUrl}/${Id}`);
   }
 
   purgeAuth() {
@@ -73,12 +75,12 @@ export class UserService {
   }
 
   getUsers(): Observable<User[]> {
-    return this.apiService.get(`/api/employees`)
+    return this.apiService.get(userUrl)
   }
 
   attemptAuth(type, credentials): Observable<User> {
     const endPoint = type === 'login' ? '/login' : '';
-    return this.apiService.post(`/api/employees${endPoint}`, credentials)
+    return this.apiService.post(`${userUrl}${endPoint}`, credentials)
     .map(
       data => {
         const { Password } = data;
@@ -89,7 +91,7 @@ export class UserService {
   }
 
   deleteUser(id): Observable<any> {
-    return this.apiService.delete(`/api/employees/${id}`);
+    return this.apiService.delete(`${userUrl}/${id}`);
   }
 
   getCurrentUser(): User {
@@ -97,11 +99,11 @@ export class UserService {
   }
 
   updateUser(user: User) {
-    return this.apiService.put(`/api/employees`, user);
+    return this.apiService.put(userUrl, user);
   }
 
   postUser(user): Observable<any> {
-    return this.apiService.post(`/api/employees`, user);
+    return this.apiService.post(userUrl, user);
   }
 
 }

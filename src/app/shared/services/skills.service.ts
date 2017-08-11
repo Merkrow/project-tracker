@@ -6,6 +6,8 @@ import 'rxjs/add/operator/catch';
 import { ApiService } from './api.service';
 import { Skill } from '../models';
 
+const skillUrl = '/api/skills';
+
 @Injectable()
 export class SkillsService {
   constructor (
@@ -13,19 +15,19 @@ export class SkillsService {
   ) {}
 
   getUserSkills(id): Observable<Skill[]> {
-    return this.apiService.get(`/api/skills/${id}`);
+    return this.apiService.get(`${skillUrl}/${id}`);
   }
 
   updateUserSkills(params): Observable<Skill> {
-    return this.apiService.put(`/api/skills`, params);
+    return this.apiService.put(skillUrl, params);
   }
 
   deleteSkill(id, empId): Observable<any> {
-    return this.apiService.delete(`/api/skills?id=${id}&empId=${empId}`);
+    return this.apiService.delete(`${skillUrl}?id=${id}&empId=${empId}`);
   }
 
   postSkill(params): Observable<Skill> {
-    return this.apiService.post(`/api/skills`, params);
+    return this.apiService.post(skillUrl, params);
   }
 
 }

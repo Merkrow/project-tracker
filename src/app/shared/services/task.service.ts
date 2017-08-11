@@ -6,6 +6,8 @@ import 'rxjs/add/operator/catch';
 import { ApiService } from './api.service';
 import { Task, Timesheet } from '../models';
 
+const taskUrl = '/api/tasks';
+
 @Injectable()
 export class TaskService {
   constructor (
@@ -17,27 +19,27 @@ export class TaskService {
   }
 
   getTasksByUserId(userId): Observable<Task[]> {
-    return this.apiService.get(`/api/tasks/search?taskSearch.responsibleId=${userId}`);
+    return this.apiService.get(`${taskUrl}/search?taskSearch.responsibleId=${userId}`);
   }
 
   searchTask(params): Observable<Task[]> {
-    return this.apiService.get(`/api/tasks/search`, params);
+    return this.apiService.get(`${taskUrl}/search`, params);
   }
 
   getTaskById(id): Observable<Task> {
-    return this.apiService.get(`/api/tasks/${id}`);
+    return this.apiService.get(`${taskUrl}/${id}`);
   }
 
   updateTask(params): Observable<Task> {
-    return this.apiService.put(`/api/tasks`, params);
+    return this.apiService.put(taskUrl, params);
   }
 
   deleteTask(Id): Observable<any> {
-    return this.apiService.delete(`/api/tasks/${Id}`);
+    return this.apiService.delete(`${taskUrl}/${Id}`);
   }
 
   postTask(params): Observable<Task> {
-    return this.apiService.post(`/api/tasks`, params);
+    return this.apiService.post(taskUrl, params);
   }
 
 }

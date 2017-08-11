@@ -6,6 +6,8 @@ import 'rxjs/add/operator/catch';
 import { ApiService } from './api.service';
 import { User } from '../models';
 
+const teamUrl = '/api/team';
+
 @Injectable()
 export class TeamService {
   constructor (
@@ -13,15 +15,15 @@ export class TeamService {
   ) {}
 
   getTeam(projectId): Observable<User[]> {
-    return this.apiService.get(`/api/team/${projectId}`);
+    return this.apiService.get(`${teamUrl}/${projectId}`);
   }
 
   removeMember({ projectId, employeeId }): Observable<any> {
-    return this.apiService.delete(`/api/team?model.projectId=${projectId}&model.employeeId=${employeeId}`);
+    return this.apiService.delete(`${teamUrl}?model.projectId=${projectId}&model.employeeId=${employeeId}`);
   }
 
   addMember({ projectId, employeeId }): Observable<any> {
-    return this.apiService.post(`/api/team`, { ProjectId: projectId, EmployeeId: employeeId });
+    return this.apiService.post(teamUrl, { ProjectId: projectId, EmployeeId: employeeId });
   }
 
 }

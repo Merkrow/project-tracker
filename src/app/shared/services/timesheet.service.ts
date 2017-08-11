@@ -6,6 +6,8 @@ import 'rxjs/add/operator/catch';
 import { ApiService } from './api.service';
 import { Timesheet } from '../models';
 
+const timesheetUrl = '/api/timesheets';
+
 @Injectable()
 export class TimesheetService {
   constructor (
@@ -13,19 +15,19 @@ export class TimesheetService {
   ) {}
 
   getTimesheet(id): Observable<Timesheet[]> {
-    return this.apiService.get(`/api/timesheets/search?query.taskId=${id}`);
+    return this.apiService.get(`${timesheetUrl}/search?query.taskId=${id}`);
   }
 
   getUserTimesheet(params): Observable<Timesheet[]> {
-    return this.apiService.get(`/api/timesheets/search`, params);
+    return this.apiService.get(`${timesheetUrl}/search`, params);
   }
 
   logTimesheet(params): Observable<Timesheet> {
-    return this.apiService.post(`/api/timesheets`, params);
+    return this.apiService.post(timesheetUrl, params);
   }
 
   updateTimesheet(params): Observable<Timesheet> {
-    return this.apiService.put(`/api/timesheets`, params);
+    return this.apiService.put(timesheetUrl, params);
   }
 
 }

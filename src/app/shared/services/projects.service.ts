@@ -6,6 +6,8 @@ import 'rxjs/add/operator/catch';
 import { ApiService } from './api.service';
 import { Project } from '../models';
 
+const projectUrl = '/api/projects';
+
 @Injectable()
 export class ProjectsService {
   constructor (
@@ -13,7 +15,7 @@ export class ProjectsService {
   ) {}
 
   get(): Observable<Project[]> {
-    return this.apiService.get(`/api/projects`);
+    return this.apiService.get(projectUrl);
   }
 
   getProjectsByUserId(id): Observable<Project[]> {
@@ -21,27 +23,27 @@ export class ProjectsService {
   }
 
   searchProjects(params): Observable<Project[]> {
-    return this.apiService.get(`/api/projects/search`, params);
+    return this.apiService.get(`${projectUrl}/search`, params);
   }
 
   getProject(id): Observable<Project> {
-    return this.apiService.get(`/api/projects/${id}`);
+    return this.apiService.get(`${projectUrl}/${id}`);
   }
 
   getTickets(id): Observable<Project[]> {
-    return this.apiService.get(`/api/projects/${id}/tickets`);
+    return this.apiService.get(`${projectUrl}/${id}/tickets`);
   }
 
   updateProject(params): Observable<Project> {
-    return this.apiService.put(`/api/projects`, params);
+    return this.apiService.put(projectUrl, params);
   }
 
   deleteProject(id): Observable<any> {
-    return this.apiService.delete(`/api/projects/${id}`);
+    return this.apiService.delete(`${projectUrl}/${id}`);
   }
 
   postProject(project): Observable<any> {
-    return this.apiService.post(`/api/projects`, project);
+    return this.apiService.post(projectUrl, project);
   }
 
 }
