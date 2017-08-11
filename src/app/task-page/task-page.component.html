@@ -5,13 +5,35 @@
     <div *ngIf="!editing" class="task-info row">
 
       <div class="task-info-left col-md-6">
-        <div><strong>Project: </strong><a [routerLink]="['/projects', project.Id]">{{ project.Name }}</a></div>
-        <div><strong>Status: </strong>{{ staticData.ticketStatus[task.StatusId] }}</div>
-        <div><strong>Type: </strong>{{ staticData.ticketType[task.TypeId] }}</div>
-        <div><strong>Estimate: </strong>{{ task.Estimate }}</div>
-        <div><strong>Start Date: </strong>{{ moment(task.StartDate).format("DD-MM-YYYY") }}</div>
-        <div><strong>End Date: </strong>{{ moment(task.EndDate).format("DD-MM-YYYY") }}</div>
-        <div><strong>Description: </strong>{{ task.Description }}</div>
+        <div>
+          <strong>Project: </strong>
+          <a [routerLink]="['/projects', project.Id]">{{ project.Name }}</a>
+        </div>
+
+        <div>
+          <strong>Status: </strong>{{ staticData.ticketStatus[task.StatusId] }}
+        </div>
+
+        <div>
+          <strong>Type: </strong>{{ staticData.ticketType[task.TypeId] }}
+        </div>
+
+        <div>
+          <strong>Estimate: </strong>{{ task.Estimate }}
+        </div>
+
+        <div>
+          <strong>Start Date: </strong>{{ moment(task.StartDate).format("DD-MM-YYYY") }}
+        </div>
+
+        <div>
+          <strong>End Date: </strong>{{ moment(task.EndDate).format("DD-MM-YYYY") }}
+        </div>
+
+        <div>
+          <strong>Description: </strong>{{ task.Description }}
+        </div>
+
         <button type="button" class="btn btn-primary" [routerLink]="['/ticket', project.Id]" name="button">New</button>
         <button type="button" class="btn btn-success" (click)="toggleEdit()" name="button">Edit</button>
         <button type="button" class="btn btn-danger" name="button" (click)="deleteTask()">Delete</button>
@@ -25,13 +47,35 @@
 
     <div *ngIf="editing" class="task-info row">
       <div class="task-editing-left col-md-6">
-        <div><strong>Project: </strong><a [routerLink]="['/projects', project.Id]">{{ project.Name }}</a></div>
-        <div><strong>Status: </strong><task-picker-component [type]="'status'" [arr]="staticData.ticketStatus" [initial]="task.StatusId" [chooseId]="chooseTaskId.bind(this)"></task-picker-component></div>
-        <div><strong>Type: </strong><task-picker-component [type]="'type'" [arr]='staticData.ticketType' [initial]="task.TypeId" [chooseId]="chooseTaskId.bind(this)"></task-picker-component></div>
-        <div><strong>Estimate: </strong><input class="form-control" type="text" (ngModelChange)="onChange()" [(ngModel)]="edit.Estimate"/></div>
-        <div><strong>Start Date: </strong><dp-date-picker (ngModelChange)="onChange()" [(ngModel)]="edit.StartDate"></dp-date-picker></div>
-        <div><strong>End Date: </strong><dp-date-picker (ngModelChange)="onChange()" [(ngModel)]="edit.EndDate"></dp-date-picker></div>
-        <div><strong>Description: </strong><input class="form-control" type="text" (ngModelChange)="onChange()" [(ngModel)]="edit.Description"/></div>
+        <div>
+          <strong>Project: </strong>
+          <a [routerLink]="['/projects', project.Id]">{{ project.Name }}</a>
+        </div>
+
+        <div>
+          <strong>Status: </strong><task-picker-component [type]="'status'" [arr]="staticData.ticketStatus" [initial]="task.StatusId" [chooseId]="chooseTaskId.bind(this)"></task-picker-component>
+        </div>
+
+        <div>
+          <strong>Type: </strong><task-picker-component [type]="'type'" [arr]='staticData.ticketType' [initial]="task.TypeId" [chooseId]="chooseTaskId.bind(this)"></task-picker-component>
+        </div>
+
+        <div>
+          <strong>Estimate: </strong><input class="form-control" type="text" (ngModelChange)="onChange()" [(ngModel)]="edit.Estimate"/>
+        </div>
+
+        <div>
+          <strong>Start Date: </strong><dp-date-picker (ngModelChange)="onChange()" [(ngModel)]="edit.StartDate"></dp-date-picker>
+        </div>
+
+        <div>
+          <strong>End Date: </strong><dp-date-picker (ngModelChange)="onChange()" [(ngModel)]="edit.EndDate"></dp-date-picker>
+        </div>
+
+        <div>
+          <strong>Description: </strong><input class="form-control" type="text" (ngModelChange)="onChange()" [(ngModel)]="edit.Description"/>
+        </div>
+        
         <button type="button" class="btn btn-success" *ngIf="editing" (click)="submitEdit()" name="button">Submit Edit</button>
       </div>
 

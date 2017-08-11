@@ -1,8 +1,10 @@
 <div class="col-md-12" *ngFor="let project of projects">
   <div class="row">
     <div class="project-name"><a [routerLink]="['/projects', project.Id]" class="text-info">{{ project.Name }}</a></div>
+
     <div className="tasks-container">
       <user-tasks-component [projectId]="project.Id" [employeeId]="employeeId"></user-tasks-component>
     </div>
+    
   </div>
 </div>

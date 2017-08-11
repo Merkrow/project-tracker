@@ -1,42 +1,75 @@
 <div class="row">
   <div class="col-md-offset-2 col-md-6 form" [formGroup]="ticketForm">
+
     <div class="row">
       <div class="col-md-6 text-right">Ticket name</div>
-      <div class="col-md-3"><input class="form-control" type="text" formControlName="Name"></div>
+      <div class="col-md-3">
+        <input class="form-control" type="text" formControlName="Name">
+      </div>
     </div>
+
     <div class="row">
       <div class="col-md-6 text-right">Ticket description</div>
-      <div class="col-md-3"><input class="form-control" type="text" formControlName="Description"></div>
+      <div class="col-md-3">
+        <input class="form-control" type="text" formControlName="Description">
+      </div>
     </div>
+
     <div class="row">
       <div class="col-md-6 text-right">Estimate</div>
-      <div class="col-md-3"><input class="form-control" type="text" formControlName="Estimate"></div>
+      <div class="col-md-3">
+        <input class="form-control" type="text" formControlName="Estimate">
+      </div>
     </div>
+
     <div class="row">
       <div class="col-md-6 text-right">Start Date</div>
-      <div class="col-md-3"><dp-date-picker [ngModelOptions]="{standalone: true}" [(ngModel)]="StartDate"></dp-date-picker></div>
+      <div class="col-md-3">
+        <dp-date-picker [ngModelOptions]="{standalone: true}" [(ngModel)]="StartDate"></dp-date-picker>
+      </div>
     </div>
+
     <div class="row">
       <div class="col-md-6 text-right">End Date</div>
-      <div class="col-md-3"><dp-date-picker [ngModelOptions]="{standalone: true}" [(ngModel)]="EndDate"></dp-date-picker></div>
+      <div class="col-md-3">
+        <dp-date-picker [ngModelOptions]="{standalone: true}" [(ngModel)]="EndDate"></dp-date-picker>
+      </div>
     </div>
+
     <div class="row">
       <div class="col-md-6 text-right">Status</div>
-      <div class="col-md-3"><task-picker-component [arr]="staticData.ticketStatus" [chooseId]="chooseStatusId.bind(this)"></task-picker-component></div>
+      <div class="col-md-3">
+        <task-picker-component [arr]="staticData.ticketStatus" [chooseId]="chooseStatusId.bind(this)"></task-picker-component>
+      </div>
     </div>
+
     <div class="row">
       <div class="col-md-6 text-right">Type</div>
-      <div class="col-md-3"><task-picker-component [arr]="staticData.ticketType" [chooseId]="chooseTypeId.bind(this)"></task-picker-component></div>
+      <div class="col-md-3">
+        <task-picker-component [arr]="staticData.ticketType" [chooseId]="chooseTypeId.bind(this)"></task-picker-component>
+      </div>
     </div>
+
     <div class="row">
       <div class="col-md-6 text-right">Responsible</div>
-      <div class="col-md-3"><user-picker-component [chooseUser]="chooseResponsible.bind(this)"></user-picker-component></div>
+      <div class="col-md-3">
+        <user-picker-component [chooseUser]="chooseResponsible.bind(this)"></user-picker-component>
+      </div>
     </div>
+
     <div class="row">
       <div class="col-md-6 text-right">Reporter</div>
-      <div class="col-md-3"><user-picker-component [chooseUser]="chooseReporter.bind(this)"></user-picker-component></div>
+      <div class="col-md-3">
+        <user-picker-component [chooseUser]="chooseReporter.bind(this)"></user-picker-component>
+      </div>
     </div>
-    <div class="text-center"><button class="btn btn-primary" type="button" [disabled]="!ticketForm.valid" (click)="submitTicket()">Submit Ticket</button></div>
-    <div class="text-right"><span>*All fields are required</span></div>
+
+    <div class="text-center">
+      <button class="btn btn-primary" type="button" [disabled]="!ticketForm.valid" (click)="submitTicket()">Submit Ticket</button>
+    </div>
+    <div class="text-right">
+      <span>*All fields are required</span>
+    </div>
+    
   </div>
 </div>

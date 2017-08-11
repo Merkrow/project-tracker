@@ -1,10 +1,29 @@
 <h1 class="text-center" *ngIf="employee">{{ employee.FullName }}</h1>
 <div class="col-md-2"><img src="assets/images/user.png" alt=""></div>
 <div class="user-info-container col-md-2" *ngIf="employee">
-  <div><strong>Birthday: </strong>{{ employee.Birthday }}</div>
-  <div><strong>Email: </strong>{{ employee.Email }}</div>
-  <div><strong>Location: </strong>{{ staticData.Loc[employee.LocationId] }}</div>
-  <div><strong>Address: </strong>{{ employee.Address }}</div>
-  <div><strong>Skype: </strong>{{ employee.Skype }}</div>
-  <div><strong>Phone: </strong>{{ employee.Phone }}</div>
+
+  <div>
+    <strong>Birthday: </strong>{{ employee.Birthday }}
+  </div>
+
+  <div>
+    <strong>Email: </strong>{{ employee.Email }}
+  </div>
+
+  <div>
+    <strong>Location: </strong>{{ staticData.Loc[employee.LocationId] }}
+  </div>
+
+  <div>
+    <strong>Address: </strong>{{ employee.Address }}
+  </div>
+
+  <div>
+    <strong>Skype: </strong>{{ employee.Skype }}
+  </div>
+
+  <div>
+    <strong>Phone: </strong>{{ employee.Phone }}
+  </div>
+
 </div>

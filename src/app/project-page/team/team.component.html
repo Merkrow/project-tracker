@@ -1,11 +1,19 @@
 <div *ngIf="!isSubmitting" class="team-container row">
   <div class="head col-md-12">
     <div class="pull-left"><h2>Team</h2></div>
+
     <div class="pull-right row add-user" *ngIf="isAdmin || isPm">
-      <div class="picker col-md-6"><user-picker-component *ngIf="addUser" [isEmpty]="isEmpty.bind(this)" [filters]="members" [chooseUser]="chooseUser.bind(this)"></user-picker-component></div>
-      <div class="col-md-2"><button *ngIf="addUser" type="button" (click)="cancelAddUser()" class="btn btn-danger">Close</button></div>
-      <div class="col-md-3"><button (click)="toggleAddUser()" [disabled]="disableButton" type="button" class="btn btn-primary">Add to team</button></div>
+      <div class="picker col-md-6">
+        <user-picker-component *ngIf="addUser" [isEmpty]="isEmpty.bind(this)" [filters]="members" [chooseUser]="chooseUser.bind(this)"></user-picker-component>
+      </div>
+      <div class="col-md-2">
+        <button *ngIf="addUser" type="button" (click)="cancelAddUser()" class="btn btn-danger">Close</button>
+      </div>
+      <div class="col-md-3">
+        <button (click)="toggleAddUser()" [disabled]="disableButton" type="button" class="btn btn-primary">Add to team</button>
+      </div>
     </div>
+
   </div>
   <table class="member-head table table-striped">
     <tr class="text-primary">
@@ -15,7 +23,8 @@
       <th class="thead4">Skype</th>
       <th class="thead5"></th>
     </tr>
-    <tr team-member-component *ngFor="let member of members" [isAdminOrPm]="isPm || isAdmin" [removeMember]="removeMember.bind(this)" [member]="member">
-    </tr>
+
+    <tr team-member-component *ngFor="let member of members" [isAdminOrPm]="isPm || isAdmin" [removeMember]="removeMember.bind(this)" [member]="member"></tr>
+    
   </table>
 </div>

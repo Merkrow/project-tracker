@@ -1,4 +1,6 @@
-<td><a [routerLink]="['/users', member.Id]" routerLinkActive="active">{{ member.FullName }}</a></td>
+<td>
+  <a [routerLink]="['/users', member.Id]" routerLinkActive="active">{{ member.FullName }}</a>
+</td>
 <td>{{ member.Position.Name }}</td>
 <td>{{ member.Email }}</td>
 <td>{{ member.Skype }}</td>

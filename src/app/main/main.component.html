@@ -1,20 +1,36 @@
 <div class="main-container row">
   <div class="interval col-md-12">
     <div class="row timesheet-head">
-      <span class="col-md-3"><h2>Timesheets</h2></span>
+
+      <span class="col-md-3">
+        <h2>Timesheets</h2>
+      </span>
+
       <div class="col-md-9">
         <div class="row">
-          <div class="col-md-1"><button (click)="prevDay()" class="navigation"><span class="glyphicon glyphicon-arrow-left"></span></button></div>
+          <div class="col-md-1">
+            <button (click)="prevDay()" class="navigation">
+              <span class="glyphicon glyphicon-arrow-left"></span>
+            </button>
+          </div>
+
           <div class="col-md-10">
             <div class="row">
               <span class="col-md-2 text-center" *ngFor="let time of interval">{{ time.format('MM/DD') }}</span>
             </div>
           </div>
-          <div class="col-md-1"><button (click)="nextDay()" class="navigation"><span class="glyphicon glyphicon-arrow-right"></span></button></div>
+
+          <div class="col-md-1">
+            <button (click)="nextDay()" class="navigation">
+              <span class="glyphicon glyphicon-arrow-right"></span>
+            </button>
+          </div>
+
         </div>
       </div>
     </div>
   </div>
+  
   <div class="col-md-12 container" *ngIf="projects && projects.length">
     <project-component *ngFor="let project of projects" [emplId]="emplId" [interval]="interval" [project]="project"></project-component>
   </div>

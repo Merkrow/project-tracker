@@ -8,6 +8,7 @@
         <button type="button" class="btn btn-primary pull-right" routerLink="/registration" name="button">Add employee</button>
       </div>
     </div>
+
     <table class="employees-container table table-striped">
       <tr>
         <th class="thead1"><span class="text-primary">Name</span></th>
@@ -17,6 +18,7 @@
         <th class="thead5"></th>
         <th></th>
       </tr>
+
       <tr class="employee-row" *ngFor="let user of users">
           <td *ngIf="user.Id !== editingId"><a [routerLink]="['/users', user.Id]" routerLinkActive="active">{{ user.FullName }}</a></td>
           <td *ngIf="user.Id !== editingId">{{ user.Email}}</td>
@@ -26,6 +28,8 @@
             <button type="button" class="btn btn-default button" (click)="openEdit(user.Id)"><span class="glyphicon glyphicon-pencil"></span></button>
             <button type="button" class="btn btn-default button" (click)="deleteUser(user.Id)"><span class="glyphicon glyphicon-remove"></span></button>
           </td>
+
+
 
           <td *ngIf="user.Id === editingId">
             <input class="form-control" type="text" [(ngModel)]="edit.First" placeholder="first name" />
@@ -39,6 +43,8 @@
             <button type="button" class="btn btn-warning" (click)="closeEdit()">Cancel</button>
           </td>
       </tr>
+
     </table>
+
   </div>
 </div>

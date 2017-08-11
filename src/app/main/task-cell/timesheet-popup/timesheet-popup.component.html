@@ -1,5 +1,17 @@
 <div class="timesheet-popup text-center row">
-  <div class="col-md-6"><span>Hours</span></div><div class="col-md-6"><input class="form-control" type="text" [(ngModel)]="time" ></div>
-  <div class="col-md-6"><span>Description</span></div><div class="col-md-6"><input class="form-control" type="text" [(ngModel)]="comment" ></div>
+  <div class="col-md-6">
+    <span>Hours</span>
+  </div>
+  <div class="col-md-6">
+    <input class="form-control" type="text" [(ngModel)]="time" >
+  </div>
+
+  <div class="col-md-6">
+    <span>Description</span>
+  </div>
+  <div class="col-md-6">
+    <input class="form-control" type="text" [(ngModel)]="comment" >
+  </div>
+  
   <button class="btn btn-primary" (click)="log()">Log Time</button>
 </div>
