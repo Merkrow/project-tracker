@@ -77,7 +77,14 @@ export class TaskPageComponent implements OnInit {
     const { UserId, StatusId, TypeId, Description, StartDate, Estimate, EndDate } = this.edit;
     if (!this.save) {
       this.taskService.updateTask(Object.assign(this.task,
-        { ResponsibleId: UserId, StatusId, TypeId, Description, EndDate: EndDate.format("YYYY-MM-DDTHH:mm:ss"), StartDate: StartDate.format("YYYY-MM-DDTHH:mm:ss"), Estimate: Number(Estimate)
+        {
+          ResponsibleId: UserId,
+          StatusId,
+          TypeId,
+          Description,
+          EndDate: EndDate.format("YYYY-MM-DDTHH:mm:ss"),
+          StartDate: StartDate.format("YYYY-MM-DDTHH:mm:ss"),
+          Estimate: Number(Estimate),
       }))
       .subscribe(data => {
         this.task = data;
