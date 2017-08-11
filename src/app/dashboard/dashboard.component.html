@@ -1,53 +1,14 @@
 <div class="row">
   <h1 *ngIf="project" class="text-center">{{ project.name }}</h1><button class="btn btn-primary" [routerLink]="['/ticket', projectId]">New ticket</button>
-  <div dnd-droppable class="col-md-offset-1 col-md-2 ticket-container text-center" (onDropSuccess)="transferDataSuccess1($event)">
-    <h3>Open</h3>
-    <div *ngFor="let task of tasks">
-      <div [routerLink]="['/tasks', task.id]" class="ticket" *ngIf="task.statusId === 1" dnd-draggable [dragEnabled]="true" [dragData]="task">
-        <div>{{ task.name }}</div>
-        <div>{{ task.description }}</div>
-        <div>{{ task.responsibleId }}</div>
-      </div>
-    </div>
+
+  <div class="col-md-1">
+
   </div>
 
-  <div dnd-droppable class="col-md-2 ticket-container text-center" (onDropSuccess)="transferDataSuccess2($event)">
-    <h3>Development</h3>
+  <div class="col-md-2 ticket-container text-center" *ngFor="let key of ObjectKeys(staticData.ticketStatus)" dnd-droppable (onDropSuccess)="transferDataSuccess($event, key)">
+    <h3>{{ staticData.ticketStatus[key] }}</h3>
     <div *ngFor="let task of tasks">
-      <div [routerLink]="['/tasks', task.id]" class="ticket" *ngIf="task.statusId === 2" dnd-draggable [dragEnabled]="true" [dragData]="task">
-        <div>{{ task.name }}</div>
-        <div>{{ task.description }}</div>
-        <div>{{ task.responsibleId }}</div>
-      </div>
-    </div>
-  </div>
-
-  <div dnd-droppable class="col-md-2 ticket-container text-center" (onDropSuccess)="transferDataSuccess3($event)">
-    <h3>Ready for QA</h3>
-    <div *ngFor="let task of tasks">
-      <div [routerLink]="['/tasks', task.id]" class="ticket" *ngIf="task.statusId === 3" dnd-draggable [dragEnabled]="true" [dragData]="task">
-        <div>{{ task.name }}</div>
-        <div>{{ task.description }}</div>
-        <div>{{ task.responsibleId }}</div>
-      </div>
-    </div>
-  </div>
-
-  <div dnd-droppable class="col-md-2 ticket-container text-center" (onDropSuccess)="transferDataSuccess4($event)">
-    <h3>Test</h3>
-    <div *ngFor="let task of tasks">
-      <div [routerLink]="['/tasks', task.id]" class="ticket" *ngIf="task.statusId === 4" dnd-draggable [dragEnabled]="true" [dragData]="task">
-        <div>{{ task.name }}</div>
-        <div>{{ task.description }}</div>
-        <div>{{ task.responsibleId }}</div>
-      </div>
-    </div>
-  </div>
-
-  <div dnd-droppable class="col-md-2 ticket-container text-center" (onDropSuccess)="transferDataSuccess5($event)">
-    <h3>Closed</h3>
-    <div *ngFor="let task of tasks">
-      <div [routerLink]="['/tasks', task.id]" class="ticket" *ngIf="task.statusId === 5" dnd-draggable [dragEnabled]="true" [dragData]="task">
+      <div [routerLink]="['/tasks', task.id]" class="ticket" *ngIf="task.statusId.toString() === key" dnd-draggable [dragEnabled]="true" [dragData]="task">
         <div>{{ task.name }}</div>
         <div>{{ task.description }}</div>
         <div>{{ task.responsibleId }}</div>

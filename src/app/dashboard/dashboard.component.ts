@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { TaskService, Task, ProjectsService, Project } from '../shared';
+import staticData from '../shared/staticData';
 
 @Component({
   selector: 'app-dashboard',
@@ -13,6 +14,9 @@ export class DashboardComponent implements OnInit {
   projectId: number;
   isSubmitting: boolean = false;
   project: Project;
+  staticData = staticData;
+  ObjectKeys = Object.keys;
+
   constructor(
     private taskService: TaskService,
     private route: ActivatedRoute,
@@ -39,8 +43,8 @@ export class DashboardComponent implements OnInit {
     })
   }
 
-  updateData(data, StatusId) {
-    this.taskService.updateTask(Object.assign(data, { StatusId }))
+  transferDataSuccess(data, key) {
+    this.taskService.updateTask(Object.assign(data.dragData, { StatusId: Number(key) }))
     .subscribe(data => {
       this.tasks = this.tasks.map(item => {
         if (item.id === data.id) {
@@ -49,23 +53,6 @@ export class DashboardComponent implements OnInit {
         return item;
       })
     })
-  }
-
-  transferDataSuccess1(event: any) {
-    this.updateData(event.dragData, 1);
-  }
-
-  transferDataSuccess2(event: any) {
-    this.updateData(event.dragData, 2);
-  }
-  transferDataSuccess3(event: any) {
-    this.updateData(event.dragData, 3);
-  }
-  transferDataSuccess4(event: any) {
-    this.updateData(event.dragData, 4);
-  }
-  transferDataSuccess5(event: any) {
-    this.updateData(event.dragData, 5);
   }
 
 }
