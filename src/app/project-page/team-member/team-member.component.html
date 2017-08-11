@@ -1,7 +1,7 @@
-<div class="member-row row">
-  <a class="member-name col-md-3" [routerLink]="['/users', member.Id]" routerLinkActive="active">{{ member.FullName }}</a>
-  <span class="member-position col-md-2">{{ member.Position.Name }}</span>
-  <span class="member-email col-md-3">{{ member.Email }}</span>
-  <span class="member-skype col-md-3">{{ member.Skype }}</span>
-  <div class="col-md-1"><button *ngIf="isAdminOrPm" class="remove-button" (click)="removeMember(member.Id)"><img src="assets/images/X.png" alt=""></button></div>
-</div>
+<td><a [routerLink]="['/users', member.Id]" routerLinkActive="active">{{ member.FullName }}</a></td>
+<td>{{ member.Position.Name }}</td>
+<td>{{ member.Email }}</td>
+<td>{{ member.Skype }}</td>
+<td class="text-right">
+  <button *ngIf="isAdminOrPm" class="remove-button" (click)="removeMember(member.Id)"><img src="assets/images/X.png" alt=""></button>
+</td>

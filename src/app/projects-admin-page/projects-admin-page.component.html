@@ -1,34 +1,40 @@
 <div class="row">
   <div class="col-md-offset-2 col-md-8">
     <div class="row">
-      <div class="col-md-4"><input class="form-control" type="text" [(ngModel)]="filterName" (ngModelChange)="filterNameChange($event)"></div>
+      <div class="col-md-4"><input class="form-control" placeholder="Search..." type="text" [(ngModel)]="filterName" (ngModelChange)="filterNameChange($event)"></div>
       <div class="col-md-offset-7 col-md-1"><button type="button" class="btn btn-primary" routerLink='/admin/newproject/'>Add project</button></div>
     </div>
-    <div class="col-md-12">
-      <div class="row project-head text-info">
-        <span class="col-md-1">Name</span>
-        <span class="col-md-1">Customer</span>
-        <span class="col-md-3">StartDate</span>
-        <span class="col-md-5">Description</span>
-      </div>
-      <div class="row project-row" *ngFor="let project of projects">
-        <div *ngIf="editingId !== project.Id">
-          <span class="col-md-1"><a [routerLink]="['/projects', project.Id]">{{ project.Name }}</a></span>
-          <span class="col-md-1">{{ project.CustomerName }}</span>
-          <span class="col-md-3">{{ moment(project.StartDate).format('DD-MM-YYYY') }}</span>
-          <p class="col-md-5">{{ project.Description }}</p>
-          <span class="col-md-1"><button type="button" class="btn btn-primary" (click)="setEdit(project.Id)">Edit</button></span>
-          <span class="col-md-1"><button type="button" class="btn btn-danger" (click)="deleteProject(project.Id)">X</button></span>
-        </div>
-        <div *ngIf="editingId === project.Id">
-          <span class="col-md-1"><input type="text" class="form-control" [(ngModel)]="edit.Name"></span>
-          <span class="col-md-1"><input type="text" class="form-control" [(ngModel)]="edit.CustomerName"></span>
-          <span class="col-md-3"><dp-date-picker [(ngModel)]="edit.StartDate"></dp-date-picker></span>
-          <span class="col-md-5"><input type="text" class="form-control" [(ngModel)]="edit.Description"></span>
-          <span class="col-md-1"><button type="button" class="btn btn-success" (click)="submitChanges()">Submit</button></span>
-          <span class="col-md-1"><button type="button" class="btn btn-warning" (click)="closeEdit()">Cancel</button></span>
-        </div>
-      </div>
-    </div>
+    <table class="table table-striped">
+      <tr class="project-head text-info">
+        <th class="thead1">Name</th>
+        <th class="thead2">Customer</th>
+        <th class="thead3">StartDate</th>
+        <th class="thead4">Description</th>
+        <th class="thead5"></th>
+      </tr>
+      <tr class="project-row" *ngFor="let project of projects">
+        <td *ngIf="editingId !== project.Id"><a [routerLink]="['/projects', project.Id]">{{ project.Name }}</a></td>
+        <td *ngIf="editingId !== project.Id">{{ project.CustomerName }}</td>
+        <td *ngIf="editingId !== project.Id">{{ moment(project.StartDate).format('DD-MM-YYYY') }}</td>
+        <td *ngIf="editingId !== project.Id"><p>{{ project.Description }}</p></td>
+        <td *ngIf="editingId !== project.Id">
+          <button type="button" class="btn btn-default button" (click)="setEdit(project.Id)"><span class="glyphicon glyphicon-pencil"></span></button>
+          <button type="button" class="btn btn-default button" (click)="deleteProject(project.Id)"><span class="glyphicon glyphicon-remove"></span></button>
+        </td>
+
+        <td *ngIf="editingId === project.Id">
+          <input type="text" class="form-control" [(ngModel)]="edit.Name">
+        </td>
+        <td *ngIf="editingId === project.Id">
+          <input type="text" class="form-control" [(ngModel)]="edit.CustomerName">
+        </td>
+        <td *ngIf="editingId === project.Id"><dp-date-picker [(ngModel)]="edit.StartDate"></dp-date-picker></td>
+        <td *ngIf="editingId === project.Id"><input type="text" class="form-control" [(ngModel)]="edit.Description"></td>
+        <td *ngIf="editingId === project.Id">
+          <button type="button" class="btn btn-success" (click)="submitChanges()">Submit</button>
+          <button type="button" class="btn btn-warning" (click)="closeEdit()">Cancel</button>
+        </td>
+      </tr>
+    </table>
   </div>
 </div>

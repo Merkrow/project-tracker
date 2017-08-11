@@ -9,3 +9,38 @@
   border-top: 1px solid #ccc;
   padding-top: 5px;
 }
+
+.button {
+  margin-bottom: 5px;
+  border: none;
+  background: transparent;
+}
+
+.button:hover {
+  background: transparent;
+}
+
+table {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.thead1 {
+  width: 15%;
+}
+
+.thead2 {
+  width: 15%;
+}
+
+.thead3 {
+  width: 20%;
+}
+
+.thead4 {
+  width: 40%;
+}
+
+.thead5 {
+  width: 10%;
+}

@@ -10,3 +10,41 @@
   line-height: 40px;
   border-top: 1px solid #ccc;
 }
+
+.button {
+  border: none;
+  margin-bottom: 4px;
+  background: transparent;
+}
+
+.button:hover {
+  background: transparent;
+}
+
+table {
+  width: 100%;
+}
+
+tr {
+  width: 100%;
+}
+
+.thead1 {
+  width: 20%;
+}
+
+.thead2 {
+  width: 25%;
+}
+
+.thead3 {
+  width: 20%;
+}
+
+.thead4 {
+  width: 20%;
+}
+
+.thead5 {
+  width: 15%;
+}
