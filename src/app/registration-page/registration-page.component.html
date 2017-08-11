@@ -1,26 +1,26 @@
 <div class="row">
   <div class="col-md-offset-2 col-md-8">
     <div class="row form" [formGroup]="registrationForm">
-        <div class="row"><div class="col-md-4 text-right"><b>Name: </b></div><div class="col-md-3 text-left"><input class="form-control" type="text" formControlName="First"></div></div>
-        <div class="row"><div class="col-md-4 text-right"><b>Last Name: </b></div><div class="col-md-3 text-left"><input class="form-control" type="text" formControlName="Last"></div></div>
-        <div class="row"><div class="col-md-4 text-right"><b>Email: </b></div><div class="col-md-3 text-left"><input class="form-control" type="text" formControlName="Email"></div></div>
-        <div class="row"><div class="col-md-4 text-right"><b>Location: </b></div>
+        <div class="row"><div class="col-md-4 text-right"><strong>Name: </strong></div><div class="col-md-3 text-left"><input class="form-control" type="text" formControlName="First"></div></div>
+        <div class="row"><div class="col-md-4 text-right"><strong>Last Name: </strong></div><div class="col-md-3 text-left"><input class="form-control" type="text" formControlName="Last"></div></div>
+        <div class="row"><div class="col-md-4 text-right"><strong>Email: </strong></div><div class="col-md-3 text-left"><input class="form-control" type="text" formControlName="Email"></div></div>
+        <div class="row"><div class="col-md-4 text-right"><strong>Location: </strong></div>
         <div class="col-md-3 text-left">
           <select class="form-control" formControlName="LocationId">
             <option *ngFor="let key of ObjectKeys(staticData.Loc)" [ngValue]="key">{{ staticData.Loc[key] }}</option>
           </select>
         </div></div>
-        <div class="row"><div class="col-md-4 text-right"><b>Birthday: </b></div><div class="col-md-3 text-left"><dp-date-picker [ngModelOptions]="{standalone: true}" [(ngModel)]="Birthday"></dp-date-picker></div></div>
-        <div class="row"><div class="col-md-4 text-right"><b>Address: </b></div><div class="col-md-3 text-left"><input class="form-control" type="text" formControlName="Address"></div></div>
-        <div class="row"><div class="col-md-4 text-right"><b>Skype: </b></div><div class="col-md-3 text-left"><input class="form-control" type="text" formControlName="Skype"></div></div>
-        <div class="row"><div class="col-md-4 text-right"><b>Phone: </b></div><div class="col-md-3 text-left"><input class="form-control" type="text" formControlName="Phone"></div></div>
-        <div class="row"><div class="col-md-4 text-right"><b>Position: </b></div>
+        <div class="row"><div class="col-md-4 text-right"><strong>Birthday: </strong></div><div class="col-md-3 text-left"><dp-date-picker [ngModelOptions]="{standalone: true}" [(ngModel)]="Birthday"></dp-date-picker></div></div>
+        <div class="row"><div class="col-md-4 text-right"><strong>Address: </strong></div><div class="col-md-3 text-left"><input class="form-control" type="text" formControlName="Address"></div></div>
+        <div class="row"><div class="col-md-4 text-right"><strong>Skype: </strong></div><div class="col-md-3 text-left"><input class="form-control" type="text" formControlName="Skype"></div></div>
+        <div class="row"><div class="col-md-4 text-right"><strong>Phone: </strong></div><div class="col-md-3 text-left"><input class="form-control" type="text" formControlName="Phone"></div></div>
+        <div class="row"><div class="col-md-4 text-right"><strong>Position: </strong></div>
         <div class="col-md-3 text-left">
           <select class="form-control" formControlName="PositionId">
             <option *ngFor="let key of ObjectKeys(staticData.projectPosition)" [ngValue]="key">{{ staticData.projectPosition[key] }}</option>
           </select>
         </div></div>
-        <div class="row"><div class="col-md-4 text-right"><b>Password: </b></div>
+        <div class="row"><div class="col-md-4 text-right"><strong>Password: </strong></div>
         <div class="col-md-3 text-left"><input class="form-control" type="password" formControlName="Password"></div></div>
     </div>
     <div class="col-md-offset-4 col-md-2">
