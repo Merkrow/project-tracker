@@ -14,24 +14,48 @@ export class TaskService {
     private apiService: ApiService,
   ) {}
 
+  makeKeys(task) {
+    const { Name, Description, Estimate, StartDate, EndDate, StatusId, ResponsibleId, TypeId, ProjectId, Reporter, Responsible, ReporterId, Id, } = task;
+    return {
+      name: Name,
+      description: Description,
+      estimate: Estimate,
+      startDate: StartDate,
+      endDate: EndDate,
+      statusId: StatusId,
+      responsibleId: ResponsibleId,
+      typeId: TypeId,
+      projectId: ProjectId,
+      reporter: Reporter,
+      responsible: Responsible,
+      reporterId: ReporterId,
+      id: Id,
+    };
+  }
+
   getTaskByProjectId(id): Observable<Task[]> {
-    return this.apiService.get(`/api/projects/${id}/tickets`);
+    return this.apiService.get(`/api/projects/${id}/tickets`)
+    .map(tasks => tasks.map(task => this.makeKeys(task)));
   }
 
   getTasksByUserId(userId): Observable<Task[]> {
-    return this.apiService.get(`${taskUrl}/search?taskSearch.responsibleId=${userId}`);
+    return this.apiService.get(`${taskUrl}/search?taskSearch.responsibleId=${userId}`)
+    .map(tasks => tasks.map(task => this.makeKeys(task)));
   }
 
   searchTask(params): Observable<Task[]> {
-    return this.apiService.get(`${taskUrl}/search`, params);
+    return this.apiService.get(`${taskUrl}/search`, params)
+    .map(tasks => tasks.map(task => this.makeKeys(task)));
   }
 
   getTaskById(id): Observable<Task> {
-    return this.apiService.get(`${taskUrl}/${id}`);
+    return this.apiService.get(`${taskUrl}/${id}`)
+    .map(task => this.makeKeys(task));
   }
 
   updateTask(params): Observable<Task> {
-    return this.apiService.put(taskUrl, params);
+    return this.apiService.put(taskUrl, params)
+    .map(task => this.makeKeys(task));
   }
 
   deleteTask(Id): Observable<any> {
@@ -39,7 +63,8 @@ export class TaskService {
   }
 
   postTask(params): Observable<Task> {
-    return this.apiService.post(taskUrl, params);
+    return this.apiService.post(taskUrl, params)
+    .map(task => this.makeKeys(task));
   }
 
 }

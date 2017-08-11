@@ -24,7 +24,7 @@ export class ProjectPageComponent implements OnInit {
     this.isSubmitting = true;
     this.route.params.subscribe(
       (params) => {
-        this.projectId = params.id;
+        this.projectId = Number(params.id);
       }
     )
     if (this.projectId) {

@@ -21,8 +21,8 @@ export class SkillComponent implements OnInit {
 
   ngOnInit() {
     if (!this.addingSkill) {
-      this.skillLevelId = this.skill.LevelId;
-      this.skillNameId = Number(Object.keys(staticData.skillName).filter(index => staticData.skillName[index] === this.skill.Name ? index : 1));
+      this.skillLevelId = this.skill.levelId;
+      this.skillNameId = Number(Object.keys(staticData.skillName).filter(index => staticData.skillName[index] === this.skill.name ? index : 1));
     } else {
       this.toggleEdit();
     }
@@ -50,7 +50,7 @@ export class SkillComponent implements OnInit {
       return;
     }
     if (!this.save) {
-      this.skillsService.updateUserSkills({ SkillId: this.skill.Id, LevelId: Number(this.skillLevelId), EmployeeId: this.EmployeeId })
+      this.skillsService.updateUserSkills({ SkillId: this.skill.id, LevelId: Number(this.skillLevelId), EmployeeId: this.EmployeeId })
       .subscribe(data => {
         this.save = true;
         this.updateSkill(data);
@@ -60,7 +60,7 @@ export class SkillComponent implements OnInit {
   }
 
   deleteSkill() {
-    this.skillsService.deleteSkill(this.skill.Id, this.EmployeeId)
+    this.skillsService.deleteSkill(this.skill.id, this.EmployeeId)
     .subscribe(data => {
       if (data) {
         this.removeSkill(data);

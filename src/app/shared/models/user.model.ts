@@ -1,16 +1,17 @@
 export class User {
-  Address: string;
-  Birthday: string;
-  Email: string;
-  FullName: string;
-  First: string;
-  Last: string;
-  Id: number;
-  ImageUrl: string;
-  LocationId: number;
-  Phone: string;
-  PositionId: number;
-  Projects: {}[];
-  Roles: {}[];
-  Skype: string;
+  address: string;
+  birthday: string;
+  email: string;
+  fullName: string;
+  first: string;
+  last: string;
+  id: number;
+  imageUrl: string;
+  locationId: number;
+  phone: string;
+  positionId: number;
+  position: {};
+  projects: {}[];
+  roles: {}[];
+  skype: string;
 }

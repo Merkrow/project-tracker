@@ -21,7 +21,7 @@ export class TaskRowComponent {
     const { timesheets } = this;
     if (timesheets && timesheets.length) {
       const check = this.timesheets.reduce((acc, timesheet, index) => {
-        return moment(moment(util.getDate(timesheet.Date)).format('YYYY-MM-DD')).isSame(date.format('YYYY-MM-DD')) ? index : acc;
+        return moment(moment(util.getDate(timesheet.date)).format('YYYY-MM-DD')).isSame(date.format('YYYY-MM-DD')) ? index : acc;
       }, null);
       return check !== null ? this.timesheets[check] : null;
     }
@@ -34,7 +34,7 @@ export class TaskRowComponent {
       if (newDate) {
         return newDate;
       }
-      return { Date: date };
+      return { date: date };
     })
   }
 
@@ -45,7 +45,7 @@ export class TaskRowComponent {
 
   updateTimesheet(timesheet) {
     this.timesheets = this.timesheets.map(prev => {
-      if (prev.Id === timesheet.Id) {
+      if (prev.id === timesheet.id) {
         return timesheet;
       }
       return prev;
@@ -55,14 +55,14 @@ export class TaskRowComponent {
 
   ngOnInit() {
     if (!this.emplId) {
-      this.timesheetService.getTimesheet(this.task.Id)
+      this.timesheetService.getTimesheet(this.task.id)
       .subscribe(data => {
         this.timesheets = data;
         this.makeInterval();
         this.renderChild = true;
       });
     } else {
-      this.timesheetService.getUserTimesheet({ taskId: this.task.Id, empId: this.emplId })
+      this.timesheetService.getUserTimesheet({ taskId: this.task.id, empId: this.emplId })
       .subscribe(data => {
         this.timesheets = data;
         this.makeInterval();

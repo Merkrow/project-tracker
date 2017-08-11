@@ -14,36 +14,57 @@ export class ProjectsService {
     private apiService: ApiService,
   ) {}
 
+  makeKeys(project) {
+    const { Name, Id, Description, CustomerName, StartDate, EndDate, Tickets, ImageUrl, } = project;
+    return {
+      name: Name,
+      id: Id,
+      description: Description,
+      customerName: CustomerName,
+      startDate: StartDate,
+      endDate: EndDate,
+      tickets: Tickets,
+      imageUrl: ImageUrl,
+    };
+  }
+
   get(): Observable<Project[]> {
-    return this.apiService.get(projectUrl);
+    return this.apiService.get(projectUrl)
+    .map(projects => projects.map(project => this.makeKeys(project)));
   }
 
   getProjectsByUserId(id): Observable<Project[]> {
-    return this.apiService.get(`/api/employees/${id}/projects`);
+    return this.apiService.get(`/api/employees/${id}/projects`)
+    .map(projects => projects.map(project => this.makeKeys(project)));
   }
 
   searchProjects(params): Observable<Project[]> {
-    return this.apiService.get(`${projectUrl}/search`, params);
+    return this.apiService.get(`${projectUrl}/search`, params)
+    .map(projects => projects.map(project => this.makeKeys(project)));
   }
 
   getProject(id): Observable<Project> {
-    return this.apiService.get(`${projectUrl}/${id}`);
+    return this.apiService.get(`${projectUrl}/${id}`)
+    .map(project => this.makeKeys(project));
   }
 
   getTickets(id): Observable<Project[]> {
-    return this.apiService.get(`${projectUrl}/${id}/tickets`);
+    return this.apiService.get(`${projectUrl}/${id}/tickets`)
+    .map(projects => projects.map(project => this.makeKeys(project)));
   }
 
   updateProject(params): Observable<Project> {
-    return this.apiService.put(projectUrl, params);
+    return this.apiService.put(projectUrl, params)
+    .map(project => this.makeKeys(project));
   }
 
   deleteProject(id): Observable<any> {
     return this.apiService.delete(`${projectUrl}/${id}`);
   }
 
-  postProject(project): Observable<any> {
-    return this.apiService.post(projectUrl, project);
+  postProject(project): Observable<Project> {
+    return this.apiService.post(projectUrl, project)
+    .map(project => this.makeKeys(project));
   }
 
 }

@@ -10,17 +10,14 @@
 </div>
 
 <div class="row">
-  <div class="col-md-12 text-center form">
+  <div class="col-md-offset-5 col-md-2 text-center form">
     <div>Start Date</div>
     <dp-date-picker [(ngModel)]="StartDate"></dp-date-picker>
     <div>End Date</div>
     <dp-date-picker [(ngModel)]="EndDate"></dp-date-picker>
-  </div>
-
-  <div class="col-md-12 text-center button">
     <button class="btn btn-primary button" [disabled]="!projectForm.valid" type="button" (click)="submitProject()">Add Project</button>
   </div>
-  
+
   <div class="text-right col-md-9">
     <span>*All fields are required</span>
   </div>

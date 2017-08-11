@@ -38,13 +38,13 @@ export class UserSkillsComponent implements OnInit {
 
     this.userService.currentUser.subscribe(
       (user) => {
-        this.isCurrent = user.Id === this.employeeId;
+        this.isCurrent = user.id === Number(this.employeeId);
       }
     )
   }
 
-  deleteSkill(Id) {
-    this.skills = this.skills.filter(skill => skill.Id !== Id);
+  deleteSkill(id) {
+    this.skills = this.skills.filter(skill => skill.id !== id);
   }
 
   toggleAddingSkill() {
@@ -52,7 +52,7 @@ export class UserSkillsComponent implements OnInit {
   }
 
   addSkill(skill) {
-    if (!this.skills.find(item => item.Id === skill.Id)) {
+    if (!this.skills.find(item => item.id === skill.id)) {
       this.skills = this.skills.concat(skill);
     } else {
       this.updateSkill(skill);
@@ -61,7 +61,7 @@ export class UserSkillsComponent implements OnInit {
 
   updateSkill(skill) {
     this.skills = this.skills.map(prev => {
-      if (prev.Id === skill.Id) {
+      if (prev.id === skill.id) {
         return skill;
       }
       return prev;

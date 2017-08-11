@@ -5,6 +5,11 @@
   border-bottom: 1px solid #ccc;
 }
 
+.projects-admin-page {
+  width: 90%;
+  margin: 0 auto;
+}
+
 .project-row {
   border-top: 1px solid #ccc;
   padding-top: 5px;

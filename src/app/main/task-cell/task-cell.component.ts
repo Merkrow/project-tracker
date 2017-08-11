@@ -9,22 +9,22 @@ import { Timesheet, TimesheetService } from '../../shared';
   styleUrls: ['./task-cell.component.css'],
 })
 export class TaskCellComponent {
-  LoggedTime: number;
+  loggedTime: number;
   Log: Timesheet;
   showPopup: boolean = false;
   constructor (
     private timesheetService: TimesheetService,
   ) {}
 
-  logTime({ LoggedTime, Comment }) {
-    if (!this.Log.Id) {
-      this.timesheetService.logTimesheet({ TicketId: this.taskId, LoggedTime: Number(LoggedTime), Date: this.cell.Date, Comment })
+  logTime({ loggedTime, comment }) {
+    if (!this.Log.id) {
+      this.timesheetService.logTimesheet({ TicketId: this.taskId, LoggedTime: Number(loggedTime), Date: moment(this.cell.date).format("YYYY-MM-DDTHH:mm:ss"), Comment: comment })
       .subscribe(data => this.addTimesheet(data));
       this.togglePopup();
       return ;
     }
-    this.timesheetService.updateTimesheet({ TicketId: this.taskId, LoggedTime: Number(LoggedTime), Date: this.cell.Date, Comment, Id: this.Log.Id })
-    .subscribe(data =>this.updateTimesheet(data));
+    this.timesheetService.updateTimesheet({ TicketId: this.taskId, LoggedTime: Number(loggedTime), Date: moment(this.cell.date).format("YYYY-MM-DDTHH:mm:ss"), Comment: comment, Id: this.Log.id })
+    .subscribe(data => this.updateTimesheet(data));
     this.togglePopup();
   }
 
@@ -34,8 +34,8 @@ export class TaskCellComponent {
 
   ngOnInit() {
     this.Log = this.cell;
-    if (this.Log.Id) {
-      this.LoggedTime = this.Log.LoggedTime;
+    if (this.Log.id) {
+      this.loggedTime = this.Log.loggedTime;
     }
   }
 

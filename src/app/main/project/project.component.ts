@@ -16,12 +16,12 @@ export class ProjectComponent {
 
   ngOnInit() {
     if (!this.emplId) {
-      this.taskService.getTaskByProjectId(this.project.Id)
+      this.taskService.getTaskByProjectId(this.project.id)
       .subscribe(data => {
         this.tasks = data;
       })
     } else {
-      this.taskService.searchTask({ ['taskSearch.responsibleId']: this.emplId, ['taskSearch.projectId']: this.project.Id })
+      this.taskService.searchTask({ ['taskSearch.responsibleId']: this.emplId, ['taskSearch.projectId']: this.project.id })
       .subscribe(data => {
         this.tasks = data;
       })

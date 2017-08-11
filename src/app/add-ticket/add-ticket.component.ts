@@ -72,7 +72,7 @@ export class AddTicketComponent implements OnInit {
   ngOnInit() {
     this.route.params.subscribe(
       (params) => {
-        this.projectId = params.id;
+        this.projectId = Number(params.id);
       }
     )
   }

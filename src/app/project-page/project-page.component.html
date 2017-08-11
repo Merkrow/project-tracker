@@ -1,24 +1,24 @@
-<div *ngIf="!isSubmitting" class="row">
-  <h1 class="text-center">{{ project.Name }}</h1>
-  
-  <div class="col-md-1 col-md-offset-3">
+<div *ngIf="!isSubmitting" class="row project-page">
+  <h1 class="text-center">{{ project.name }}</h1>
+
+  <div class="col-md-1 col-md-offset-2">
     <img src="assets/images/project.png" alt="">
-    <button class="btn btn-primary btn-dashboard" [routerLink]="['/dashboard', project.Id]">Dashboard</button>
+    <button class="btn btn-primary btn-dashboard" [routerLink]="['/dashboard', project.id]">Dashboard</button>
   </div>
-  <div class="col-md-3 info">
+  <div class="col-md-offset-1 col-md-3 info">
     <div>
-      <strong>Customer: </strong>{{ project.CustomerName }}
+      <strong>Customer: </strong>{{ project.customerName }}
     </div>
     <div>
-      <strong>Start Date: </strong>{{ moment(project.StartDate).format('DD-MM-YYYY') }}
+      <strong>Start Date: </strong>{{ moment(project.startDate).format('DD-MM-YYYY') }}
     </div>
     <div>
-      <strong>End Date: </strong>{{ moment(project.EndDate ).format('DD-MM-YYYY') }}
+      <strong>End Date: </strong>{{ moment(project.endDate ).format('DD-MM-YYYY') }}
     </div>
     <div>
       <strong>Description:</strong>
     </div>
-    <p>{{ project.Description }}</p>
+    <p>{{ project.description }}</p>
   </div>
 
   <div class="col-md-offset-2 col-md-8">

@@ -16,7 +16,7 @@ export class UserTasksComponent implements OnInit {
   ngOnInit() {
     this.taskService.getTaskByProjectId(this.projectId)
     .subscribe(data => {
-      this.tasks = data.filter(task => task.ResponsibleId === this.employeeId);
+      this.tasks = data.filter(task => task.responsibleId === Number(this.employeeId));
     })
   }
 

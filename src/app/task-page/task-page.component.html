@@ -7,41 +7,41 @@
       <div class="task-info-left col-md-6">
         <div>
           <strong>Project: </strong>
-          <a [routerLink]="['/projects', project.Id]">{{ project.Name }}</a>
+          <a [routerLink]="['/projects', project.id]">{{ project.name }}</a>
         </div>
 
         <div>
-          <strong>Status: </strong>{{ staticData.ticketStatus[task.StatusId] }}
+          <strong>Status: </strong>{{ staticData.ticketStatus[task.statusId] }}
         </div>
 
         <div>
-          <strong>Type: </strong>{{ staticData.ticketType[task.TypeId] }}
+          <strong>Type: </strong>{{ staticData.ticketType[task.typeId] }}
         </div>
 
         <div>
-          <strong>Estimate: </strong>{{ task.Estimate }}
+          <strong>Estimate: </strong>{{ task.estimate }}
         </div>
 
         <div>
-          <strong>Start Date: </strong>{{ moment(task.StartDate).format("DD-MM-YYYY") }}
+          <strong>Start Date: </strong>{{ moment(task.startDate).format("DD-MM-YYYY") }}
         </div>
 
         <div>
-          <strong>End Date: </strong>{{ moment(task.EndDate).format("DD-MM-YYYY") }}
+          <strong>End Date: </strong>{{ moment(task.endDate).format("DD-MM-YYYY") }}
         </div>
 
         <div>
-          <strong>Description: </strong>{{ task.Description }}
+          <strong>Description: </strong>{{ task.description }}
         </div>
 
-        <button type="button" class="btn btn-primary" [routerLink]="['/ticket', project.Id]" name="button">New</button>
+        <button type="button" class="btn btn-primary" [routerLink]="['/ticket', project.id]" name="button">New</button>
         <button type="button" class="btn btn-success" (click)="toggleEdit()" name="button">Edit</button>
         <button type="button" class="btn btn-danger" name="button" (click)="deleteTask()">Delete</button>
       </div>
 
       <div class="task-info-right col-md-6">
-        <div><strong>Reporter: </strong>{{ task.Reporter.FullName }}</div>
-        <div><strong>Responsible: </strong>{{ task.Responsible.FullName }}</div>
+        <div><strong>Reporter: </strong>{{ task.reporter.FullName }}</div>
+        <div><strong>Responsible: </strong>{{ task.responsible.FullName }}</div>
       </div>
     </div>
 
@@ -49,15 +49,17 @@
       <div class="task-editing-left col-md-6">
         <div>
           <strong>Project: </strong>
-          <a [routerLink]="['/projects', project.Id]">{{ project.Name }}</a>
+          <a [routerLink]="['/projects', project.id]">{{ project.name }}</a>
         </div>
 
         <div>
-          <strong>Status: </strong><task-picker-component [type]="'status'" [arr]="staticData.ticketStatus" [initial]="task.StatusId" [chooseId]="chooseTaskId.bind(this)"></task-picker-component>
+          <strong>Status: </strong>
+          <task-picker-component [type]="'status'" [arr]="staticData.ticketStatus" [initial]="task.statusId" [chooseId]="chooseTaskId.bind(this)"></task-picker-component>
         </div>
 
         <div>
-          <strong>Type: </strong><task-picker-component [type]="'type'" [arr]='staticData.ticketType' [initial]="task.TypeId" [chooseId]="chooseTaskId.bind(this)"></task-picker-component>
+          <strong>Type: </strong>
+          <task-picker-component [type]="'type'" [arr]='staticData.ticketType' [initial]="task.typeId" [chooseId]="chooseTaskId.bind(this)"></task-picker-component>
         </div>
 
         <div>
@@ -75,13 +77,13 @@
         <div>
           <strong>Description: </strong><input class="form-control" type="text" (ngModelChange)="onChange()" [(ngModel)]="edit.Description"/>
         </div>
-        
+
         <button type="button" class="btn btn-success" *ngIf="editing" (click)="submitEdit()" name="button">Submit Edit</button>
       </div>
 
       <div class="col-md-6">
-        <div><strong>Reporter: </strong>{{ task.Reporter.FullName }}</div>
-        <div><strong>Responsible: </strong><user-picker-component [employeeId]="task.Responsible.Id" [chooseUser]="chooseUser.bind(this)"></user-picker-component></div>
+        <div><strong>Reporter: </strong>{{ task.reporter.FullName }}</div>
+        <div><strong>Responsible: </strong><user-picker-component [employeeId]="task.responsibleId" [chooseUser]="chooseUser.bind(this)"></user-picker-component></div>
       </div>
 
     </div>

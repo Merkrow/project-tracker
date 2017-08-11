@@ -1,7 +1,7 @@
 export class Timesheet {
-  LoggedTime: number;
-  Date: string;
-  TicketId: number;
-  Comment: string;
-  Id: number;
+  loggedTime: number;
+  date: string;
+  ticketId: number;
+  comment: string;
+  id: number;
 }

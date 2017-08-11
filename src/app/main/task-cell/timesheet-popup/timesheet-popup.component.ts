@@ -20,9 +20,9 @@ export class TimesheetPopup {
 
   ngOnInit() {
     if (this.Log) {
-      this.comment = this.Log.Comment;
+      this.comment = this.Log.comment;
     }
-    this.time = this.LoggedTime;
+    this.time = this.loggedTime;
   }
 
   onClick(event) {
@@ -35,11 +35,11 @@ export class TimesheetPopup {
   }
 
   log() {
-    this.logTime({ LoggedTime: this.time, Comment: this.comment });
+    this.logTime({ loggedTime: this.time, comment: this.comment });
   }
 
   @Input() logTime: any;
   @Input() Log: Timesheet;
-  @Input() LoggedTime: number;
+  @Input() loggedTime: number;
   @Input() togglePopup: any;
 }

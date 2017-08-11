@@ -31,14 +31,34 @@ export class UserService {
     private storage: LocalStorageService
   ) {}
 
+  makeKeys(user) {
+    const { Password, Address, LocationId, Birthday, Email, FullName, First, Last, Id, ImageUrl, Phone, PositionId, Projects, Roles, Skype, Position } = user;
+    return {
+      address: Address,
+      locationId: LocationId,
+      email: Email,
+      birthday: Birthday,
+      fullName: FullName,
+      first: First,
+      last: Last,
+      id: Id,
+      imageUrl: ImageUrl,
+      phone: Phone,
+      positionId: PositionId,
+      projects: Projects,
+      roles: Roles,
+      skype: Skype,
+      position: Position,
+    };
+  }
+
   populate() {
     const credentials = this.storage.getCredentials();
     if (credentials) {
       this.apiService.post(`${userUrl}/login`, credentials)
       .subscribe(
        data => {
-         const { Password } = data;
-         this.setAuth(data, Password);
+         this.setAuth(this.makeKeys(data), data.Password);
          return data;
        },
        err => this.purgeAuth()
@@ -49,21 +69,24 @@ export class UserService {
   }
 
   setAuth(user: User, Password: string) {
-    this.storage.saveCredentials({ Login: user.Email, Password });
+    this.storage.saveCredentials({ Login: user.email, Password });
     this.currentUserSubject.next(user);
     this.isAdminSubject.next(false);
     this.isPmSubject.next(false);
-    if (user.PositionId === 1) {
+    if (user.positionId === 1) {
       this.isPmSubject.next(true);
     }
-    if (user.Email === "roger.federer@dataart.com") {
+    if (user.email === "roger.federer@dataart.com") {
       this.isAdminSubject.next(true);
     }
     this.isAuthenticatedSubject.next(true);
   }
 
   getUserById(Id): Observable<User> {
-    return this.apiService.get(`${userUrl}/${Id}`);
+    return this.apiService.get(`${userUrl}/${Id}`)
+    .map(user => {
+      return this.makeKeys(user);
+    })
   }
 
   purgeAuth() {
@@ -76,16 +99,16 @@ export class UserService {
 
   getUsers(): Observable<User[]> {
     return this.apiService.get(userUrl)
+    .map(users => users.map(user => this.makeKeys(user)));
   }
 
   attemptAuth(type, credentials): Observable<User> {
     const endPoint = type === 'login' ? '/login' : '';
     return this.apiService.post(`${userUrl}${endPoint}`, credentials)
     .map(
-      data => {
-        const { Password } = data;
-        this.setAuth(data, Password);
-        return data;
+      user => {
+        this.setAuth(this.makeKeys(user), user.Password);
+        return this.makeKeys(user);
       }
     );
   }
@@ -98,8 +121,9 @@ export class UserService {
     return this.currentUserSubject.value;
   }
 
-  updateUser(user: User) {
-    return this.apiService.put(userUrl, user);
+  updateUser(user: User): Observable<User> {
+    return this.apiService.put(userUrl, user)
+    .map(user => this.makeKeys(user));
   }
 
   postUser(user): Observable<any> {

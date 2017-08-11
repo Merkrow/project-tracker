@@ -1,5 +1,5 @@
 <div class="users-admin-page row">
-  <div class="col-md-offset-2 col-md-8">
+  <div class="col-md-offset-1 col-md-10">
     <div class="row">
       <div class="col-md-4">
         <input placeholder="Search..." type="text" class="form-control" [(ngModel)]="filterName" (ngModelChange)="filterNameChange($event)" />
@@ -20,25 +20,25 @@
       </tr>
 
       <tr class="employee-row" *ngFor="let user of users">
-          <td *ngIf="user.Id !== editingId"><a [routerLink]="['/users', user.Id]" routerLinkActive="active">{{ user.FullName }}</a></td>
-          <td *ngIf="user.Id !== editingId">{{ user.Email}}</td>
-          <td *ngIf="user.Id !== editingId">{{ user.Skype }}</td>
-          <td *ngIf="user.Id !== editingId">{{ user.Phone }}</td>
-          <td *ngIf="user.Id !== editingId">
-            <button type="button" class="btn btn-default button" (click)="openEdit(user.Id)"><span class="glyphicon glyphicon-pencil"></span></button>
-            <button type="button" class="btn btn-default button" (click)="deleteUser(user.Id)"><span class="glyphicon glyphicon-remove"></span></button>
+          <td *ngIf="user.id !== editingId"><a [routerLink]="['/users', user.id]" routerLinkActive="active">{{ user.fullName }}</a></td>
+          <td *ngIf="user.id !== editingId">{{ user.email}}</td>
+          <td *ngIf="user.id !== editingId">{{ user.skype }}</td>
+          <td *ngIf="user.id !== editingId">{{ user.phone }}</td>
+          <td *ngIf="user.id !== editingId">
+            <button type="button" class="btn btn-default button" (click)="openEdit(user.id)"><span class="glyphicon glyphicon-pencil"></span></button>
+            <button type="button" class="btn btn-default button" (click)="deleteUser(user.id)"><span class="glyphicon glyphicon-remove"></span></button>
           </td>
 
 
 
-          <td *ngIf="user.Id === editingId">
+          <td *ngIf="user.id === editingId">
             <input class="form-control" type="text" [(ngModel)]="edit.First" placeholder="first name" />
             <input class="form-control" type="text" [(ngModel)]="edit.Last" placeholder="last name" />
           </td>
-          <td *ngIf="user.Id === editingId"><input class="form-control" type="text" [(ngModel)]="edit.Email" placeholder="email" /></td>
-          <td *ngIf="user.Id === editingId"><input class="form-control" type="text" [(ngModel)]="edit.Skype" placeholder="skype" /></td>
-          <td *ngIf="user.Id === editingId"><input class="form-control" type="text" [(ngModel)]="edit.Phone" placeholder="phone" /></td>
-          <td *ngIf="user.Id === editingId">
+          <td *ngIf="user.id === editingId"><input class="form-control" type="text" [(ngModel)]="edit.Email" placeholder="email" /></td>
+          <td *ngIf="user.id === editingId"><input class="form-control" type="text" [(ngModel)]="edit.Skype" placeholder="skype" /></td>
+          <td *ngIf="user.id === editingId"><input class="form-control" type="text" [(ngModel)]="edit.Phone" placeholder="phone" /></td>
+          <td *ngIf="user.id === editingId">
             <button type="button" class="btn btn-success" (click)="submitChanges()">Submit</button>
             <button type="button" class="btn btn-warning" (click)="closeEdit()">Cancel</button>
           </td>

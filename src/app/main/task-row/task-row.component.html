@@ -1,6 +1,6 @@
 <div class="row task-row">
 
-  <div class="col-md-3 task-name"><a class="link" [routerLink]="['/tasks', task.Id]" routerLinkActive="active">{{ task.Name }}</a></div>
+  <div class="col-md-3 task-name"><a class="link" [routerLink]="['/tasks', task.id]" routerLinkActive="active">{{ task.name }}</a></div>
 
   <div class="col-md-9">
     <div class="row" *ngIf="renderChild">
@@ -8,7 +8,7 @@
         <div class="row">
           <task-cell-component *ngFor="let cell of cells"
             [cell]="cell"
-            [taskId]="task.Id"
+            [taskId]="task.id"
             [addTimesheet]="addTimesheet.bind(this)"
             [updateTimesheet]="updateTimesheet.bind(this)"></task-cell-component>
         </div>

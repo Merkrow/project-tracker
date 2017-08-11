@@ -39,7 +39,7 @@ export class TaskPageComponent implements OnInit {
   ngOnInit() {
     this.route.params.subscribe(
       (params) => {
-        this.taskId = params.id;
+        this.taskId = Number(params.id);
       }
     )
     if (this.taskId) {
@@ -48,15 +48,15 @@ export class TaskPageComponent implements OnInit {
       .subscribe(data => {
         this.task = data;
         this.edit = {
-          UserId: data.ResponsibleId,
-          StatusId: data.StatusId,
-          TypeId: data.TypeId,
-          Estimate: data.Estimate,
-          StartDate: moment(data.StartDate),
-          Description: data.Description,
-          EndDate: moment(data.EndDate),
+          UserId: data.responsibleId,
+          StatusId: data.statusId,
+          TypeId: data.typeId,
+          Estimate: data.estimate,
+          StartDate: moment(data.startDate),
+          Description: data.description,
+          EndDate: moment(data.endDate),
         };
-        this.projectsService.getProject(this.task.ProjectId)
+        this.projectsService.getProject(this.task.projectId)
         .subscribe(data => {
           this.project = data;
           this.isSubmitting = false;
@@ -94,9 +94,9 @@ export class TaskPageComponent implements OnInit {
   }
 
   deleteTask() {
-    this.taskService.deleteTask(this.task.Id)
+    this.taskService.deleteTask(this.task.id)
     .subscribe(data => {
-      if (data === this.taskId) {
+      if (data === this.task.id) {
         this.router.navigateByUrl('/main');
       }
     })
@@ -117,8 +117,8 @@ export class TaskPageComponent implements OnInit {
     }
   }
 
-  chooseUser(Id) {
-    this.edit.UserId = Number(Id);
+  chooseUser(id) {
+    this.edit.UserId = Number(id);
     this.save = false;
   }
 

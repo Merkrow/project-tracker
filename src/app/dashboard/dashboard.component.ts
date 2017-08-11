@@ -23,7 +23,7 @@ export class DashboardComponent implements OnInit {
     this.isSubmitting = true;
     this.route.params.subscribe(
       (params) => {
-        this.projectId = params.id;
+        this.projectId = Number(params.id);
       }
     )
 
@@ -43,7 +43,7 @@ export class DashboardComponent implements OnInit {
     this.taskService.updateTask(Object.assign(data, { StatusId }))
     .subscribe(data => {
       this.tasks = this.tasks.map(item => {
-        if (item.Id === data.Id) {
+        if (item.id === data.id) {
           return data;
         }
         return item;

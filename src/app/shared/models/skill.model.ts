@@ -1,6 +1,6 @@
 export class Skill {
-  LevelId: number;
-  LevelName: string;
-  Name: string;
-  Id: number;
+  levelId: number;
+  levelName: string;
+  name: string;
+  id: number;
 }

@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row projects-admin-page">
   <div class="col-md-offset-2 col-md-8">
 
     <div class="row">
@@ -20,24 +20,24 @@
         <th class="thead5"></th>
       </tr>
       <tr class="project-row" *ngFor="let project of projects">
-        <td *ngIf="editingId !== project.Id"><a [routerLink]="['/projects', project.Id]">{{ project.Name }}</a></td>
-        <td *ngIf="editingId !== project.Id">{{ project.CustomerName }}</td>
-        <td *ngIf="editingId !== project.Id">{{ moment(project.StartDate).format('DD-MM-YYYY') }}</td>
-        <td *ngIf="editingId !== project.Id"><p>{{ project.Description }}</p></td>
-        <td *ngIf="editingId !== project.Id">
-          <button type="button" class="btn btn-default button" (click)="setEdit(project.Id)"><span class="glyphicon glyphicon-pencil"></span></button>
-          <button type="button" class="btn btn-default button" (click)="deleteProject(project.Id)"><span class="glyphicon glyphicon-remove"></span></button>
+        <td *ngIf="editingId !== project.id"><a [routerLink]="['/projects', project.id]">{{ project.name }}</a></td>
+        <td *ngIf="editingId !== project.id">{{ project.customerName }}</td>
+        <td *ngIf="editingId !== project.id">{{ moment(project.startDate).format('DD-MM-YYYY') }}</td>
+        <td *ngIf="editingId !== project.id"><p>{{ project.description }}</p></td>
+        <td *ngIf="editingId !== project.id">
+          <button type="button" class="btn btn-default button" (click)="setEdit(project.id)"><span class="glyphicon glyphicon-pencil"></span></button>
+          <button type="button" class="btn btn-default button" (click)="deleteProject(project.id)"><span class="glyphicon glyphicon-remove"></span></button>
         </td>
 
-        <td *ngIf="editingId === project.Id">
+        <td *ngIf="editingId === project.id">
           <input type="text" class="form-control" [(ngModel)]="edit.Name">
         </td>
-        <td *ngIf="editingId === project.Id">
+        <td *ngIf="editingId === project.id">
           <input type="text" class="form-control" [(ngModel)]="edit.CustomerName">
         </td>
-        <td *ngIf="editingId === project.Id"><dp-date-picker [(ngModel)]="edit.StartDate"></dp-date-picker></td>
-        <td *ngIf="editingId === project.Id"><input type="text" class="form-control" [(ngModel)]="edit.Description"></td>
-        <td *ngIf="editingId === project.Id">
+        <td *ngIf="editingId === project.id"><dp-date-picker [(ngModel)]="edit.StartDate"></dp-date-picker></td>
+        <td *ngIf="editingId === project.id"><input type="text" class="form-control" [(ngModel)]="edit.Description"></td>
+        <td *ngIf="editingId === project.id">
           <button type="button" class="btn btn-success" (click)="submitChanges()">Submit</button>
           <button type="button" class="btn btn-warning" (click)="closeEdit()">Cancel</button>
         </td>

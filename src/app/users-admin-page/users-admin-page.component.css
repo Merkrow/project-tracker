@@ -5,6 +5,11 @@
   border-bottom: 1px solid #ccc;
 }
 
+.users-admin-page {
+  margin: 0 auto;
+  width: 90%;
+}
+
 .employee-row {
   height: 40px;
   line-height: 40px;

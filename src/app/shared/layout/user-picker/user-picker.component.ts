@@ -29,10 +29,10 @@ export class UserPickerComponent implements OnInit {
         this.isEmpty(this.users.length);
       }
       if (this.employeeId) {
-        this.chosenUser = this.allUsers.filter((user) => user.Id === this.employeeId)[0];
+        this.chosenUser = this.allUsers.filter((user) => user.id === this.employeeId)[0];
       } else if(this.users.length) {
         this.chosenUser = this.users[0];
-        this.chooseUser(this.chosenUser.Id);
+        this.chooseUser(this.chosenUser.id);
       }
       this.isSubmitting = false;
     })
@@ -40,12 +40,12 @@ export class UserPickerComponent implements OnInit {
 
   filterUsers(data) {
     return data.filter((user) => {
-      return this.filters.findIndex(filter => filter.Id === user.Id) === -1;
+      return this.filters.findIndex(filter => filter.id === user.id) === -1;
     })
   }
 
-  updateUser(Id) {
-    this.chooseUser(Id);
+  updateUser(id) {
+    this.chooseUser(id);
   }
 
   @Input() employeeId: number;
@@ -61,7 +61,7 @@ export class UserPickerComponent implements OnInit {
       }
       if (this.users.length) {
         this.chosenUser = this.users[0];
-        this.chooseUser(this.chosenUser.Id);
+        this.chooseUser(this.chosenUser.id);
       }
     }
   }

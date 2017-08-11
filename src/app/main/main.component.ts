@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import * as moment from 'moment';
 
-import util from '../util';
-import { UserService, ProjectsService } from '../shared';
+import { UserService, ProjectsService, Project } from '../shared';
 
 @Component({
   selector: 'app-main',
@@ -18,7 +17,7 @@ export class MainComponent implements OnInit {
     private userService: UserService,
   ) { }
   loading = false;
-  projects: {}[];
+  projects: Project[];
   isAuthenticated: boolean;
   firstDay: any;
   interval: any[] = [];
@@ -43,8 +42,8 @@ export class MainComponent implements OnInit {
   }
 
   prepareProject(project) {
-    const startDate = moment(util.getDate(project.StartDate));
-    const endDate = moment(util.getDate(project.EndDate));
+    const startDate = moment(project.startDate);
+    const endDate = moment(project.endDate);
     if (moment().isBetween(startDate, endDate)) {
       return Object.assign(project, { active: true });
     }
@@ -71,9 +70,9 @@ export class MainComponent implements OnInit {
               } else {
                 this.userService.currentUser.subscribe(
                   (user) => {
-                    if (user.Id) {
-                      this.emplId = user.Id;
-                      this.projectsService.getProjectsByUserId(user.Id)
+                    if (user.id) {
+                      this.emplId = user.id;
+                      this.projectsService.getProjectsByUserId(user.id)
                       .subscribe(data => {
                         this.projects = data.map(this.prepareProject);
                       })

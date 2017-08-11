@@ -1,9 +1,9 @@
 <td>
-  <a [routerLink]="['/users', member.Id]" routerLinkActive="active">{{ member.FullName }}</a>
+  <a [routerLink]="['/users', member.id]" routerLinkActive="active">{{ member.fullName }}</a>
 </td>
-<td>{{ member.Position.Name }}</td>
-<td>{{ member.Email }}</td>
-<td>{{ member.Skype }}</td>
+<td>{{ member.position.Name }}</td>
+<td>{{ member.email }}</td>
+<td>{{ member.skype }}</td>
 <td class="text-right">
-  <button *ngIf="isAdminOrPm" class="remove-button" (click)="removeMember(member.Id)"><img src="assets/images/X.png" alt=""></button>
+  <button *ngIf="isAdminOrPm" class="remove-button" (click)="removeMember(member.id)"><img src="assets/images/X.png" alt=""></button>
 </td>

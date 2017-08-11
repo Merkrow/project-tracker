@@ -31,7 +31,7 @@ export class TaskPickerComponent implements OnInit {
 
   filterArr(arr) {
     if (this.filter) {
-      const filter = this.filter.map(item => item.Name);
+      const filter = this.filter.map(item => item.name);
       const res = Object.keys(arr).reduce((acc, key) => {
         if (filter.indexOf(arr[key]) !== -1) {
           return acc;

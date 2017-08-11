@@ -1,21 +1,21 @@
 import { Project } from './index';
 
 export class Task {
-  Name: string;
-  Description: string;
-  Estimate: number;
-  StartDate: string;
-  EndDate: any;
-  StatusId: number;
-  ResponsibleId: number;
-  TypeId: number;
-  ProjectId: number;
-  Reporter: {
-    FullName: string;
+  name: string;
+  description: string;
+  estimate: number;
+  startDate: string;
+  endDate: any;
+  statusId: number;
+  responsibleId: number;
+  typeId: number;
+  projectId: number;
+  reporter: {
+    fullName: string;
   };
-  Responsible: {
-    FullName: string;
+  responsible: {
+    fullName: string;
   };
-  ReporterId: number;
-  Id: number;
+  reporterId: number;
+  id: number;
 }

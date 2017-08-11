@@ -25,12 +25,12 @@ export class TeamComponent implements OnInit {
     const { projectId } = this;
     this.teamService.removeMember({ projectId, employeeId })
     .subscribe(data => {
-      this.members = this.members.filter(member => member.Id !== data.EmployeeId);
+      this.members = this.members.filter(member => member.id !== data.EmployeeId);
     })
   }
 
-  chooseUser(Id) {
-    this.chosenUserId = Number(Id);
+  chooseUser(id) {
+    this.chosenUserId = Number(id);
   }
 
   isEmpty(length) {
@@ -44,7 +44,7 @@ export class TeamComponent implements OnInit {
     }
     this.teamService.addMember({ projectId: this.projectId, employeeId: this.chosenUserId })
     .subscribe(data => {
-      this.members = this.members.concat(data).sort((a, b) => a.PositionId - b.PositionId);
+      this.members = this.members.concat(data).sort((a, b) => a.positionId - b.positionId);
     })
   }
 
@@ -58,7 +58,7 @@ export class TeamComponent implements OnInit {
     if (this.projectId) {
       this.teamService.getTeam(this.projectId)
       .subscribe(data => {
-        this.members = data.sort((a, b) => a.PositionId - b.PositionId);
+        this.members = data.sort((a, b) => a.positionId - b.positionId);
         this.isSubmitting = false;
       })
     }

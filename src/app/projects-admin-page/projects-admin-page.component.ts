@@ -36,10 +36,10 @@ export class ProjectsAdminPageComponent implements OnInit {
     })
   }
 
-  setEdit(Id) {
-    this.editingId = Number(Id);
-    const { Name, CustomerName, Description, StartDate } = this.allProjects.find(project => project.Id === Id);
-    this.edit = { Name, CustomerName, Description, StartDate: moment(StartDate).format('DD-MM-YYYY') };
+  setEdit(id) {
+    this.editingId = Number(id);
+    const { name, customerName, description, startDate } = this.allProjects.find(project => project.id === id);
+    this.edit = { Name: name, CustomerName: customerName, Description: description, StartDate: moment(startDate).format('DD-MM-YYYY') };
   }
 
   closeEdit() {
@@ -48,11 +48,11 @@ export class ProjectsAdminPageComponent implements OnInit {
   }
 
   submitChanges() {
-    const project = this.allProjects.find(project => project.Id === this.editingId);
+    const project = this.allProjects.find(project => project.id === this.editingId);
     this.projectsService.updateProject(Object.assign(project, this.edit, { StartDate: moment(this.edit.StartDate, 'DD-MM-YYYY').format("YYYY-MM-DDTHH:mm:ss") }))
     .subscribe(data => {
       this.allProjects = this.allProjects.map(project => {
-        if (project.Id === data.Id) {
+        if (project.id === data.id) {
           return data;
         }
         return project;
@@ -63,14 +63,14 @@ export class ProjectsAdminPageComponent implements OnInit {
   }
 
   filterNameChange(val) {
-    this.projects = this.allProjects.filter(project => project.Name.toLowerCase().indexOf(val) !== -1);
+    this.projects = this.allProjects.filter(project => project.name.toLowerCase().indexOf(val) !== -1);
   }
 
   deleteProject(Id) {
     this.projectsService.deleteProject(Id)
     .subscribe(data => {
       if (data) {
-        this.allProjects = this.allProjects.filter(project => project.Id !== data);
+        this.allProjects = this.allProjects.filter(project => project.id !== data);
         this.projects = this.allProjects;
       }
     })

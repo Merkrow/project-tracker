@@ -14,12 +14,24 @@ export class SkillsService {
     private apiService: ApiService,
   ) {}
 
+  makeKeys(skill) {
+    const { LevelId, LevelName, Name, Id, } = skill;
+    return {
+      levelId: LevelId,
+      levelName: LevelName,
+      name: Name,
+      id: Id,
+    };
+  }
+
   getUserSkills(id): Observable<Skill[]> {
-    return this.apiService.get(`${skillUrl}/${id}`);
+    return this.apiService.get(`${skillUrl}/${id}`)
+    .map(skills => skills.map(skill => this.makeKeys(skill)));
   }
 
   updateUserSkills(params): Observable<Skill> {
-    return this.apiService.put(skillUrl, params);
+    return this.apiService.put(skillUrl, params)
+    .map(skill => this.makeKeys(skill));
   }
 
   deleteSkill(id, empId): Observable<any> {
@@ -27,7 +39,8 @@ export class SkillsService {
   }
 
   postSkill(params): Observable<Skill> {
-    return this.apiService.post(skillUrl, params);
+    return this.apiService.post(skillUrl, params)
+    .map(skill => this.makeKeys(skill));
   }
 
 }

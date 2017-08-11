@@ -1,9 +1,9 @@
 
 <div *ngIf="!addingSkill && isLegal" class="col-md-4 skill-name border">
-  <strong>{{ skill.Name }}</strong>
+  <strong>{{ skill.name }}</strong>
 </div>
 
-<div *ngIf="!isLegal && !addingSkill" class="col-md-6 skill-name border">{{ skill.Name }}</div>
+<div *ngIf="!isLegal && !addingSkill" class="col-md-6 skill-name border">{{ skill.name }}</div>
 <div *ngIf="addingSkill && isLegal" class="col-md-4 skill-name border">
   <task-picker-component [arr]="staticData.skillName" [filter]="skills" [initial]="skillNameId" [chooseId]="updateSkillNameId.bind(this)"></task-picker-component>
 </div>

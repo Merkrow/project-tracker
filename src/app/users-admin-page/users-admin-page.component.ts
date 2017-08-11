@@ -35,8 +35,8 @@ export class UsersAdminPageComponent implements OnInit {
 
   openEdit(id) {
     this.editingId = Number(id);
-    const { First, Last, Email, Skype, Phone } = this.allUsers.filter(user => user.Id === id)[0];
-    this.edit = { First, Last, Email, Skype, Phone };
+    const { first, last, email, skype, phone } = this.allUsers.filter(user => user.id === id)[0];
+    this.edit = { First: first, Last: last, Email: email, Skype: skype, Phone: phone };
   }
 
   closeEdit() {
@@ -48,18 +48,18 @@ export class UsersAdminPageComponent implements OnInit {
     this.userService.deleteUser(Id)
     .subscribe(data => {
       if (data) {
-        this.allUsers = this.allUsers.filter(user => user.Id !== data);
+        this.allUsers = this.allUsers.filter(user => user.id !== data);
         this.users = this.allUsers;
       }
     });
   }
 
   submitChanges() {
-    const User = this.allUsers.filter(user => user.Id === this.editingId)[0];
+    const User = this.allUsers.find(user => user.id === this.editingId);
     this.userService.updateUser(Object.assign(User, this.edit, { FullName: `${this.edit.First} ${this.edit.Last}` }))
     .subscribe(data => {
       this.allUsers = this.allUsers.map(user => {
-        if (user.Id === data.Id) {
+        if (user.id === data.id) {
           return data;
         }
         return user;
@@ -70,7 +70,7 @@ export class UsersAdminPageComponent implements OnInit {
   }
 
   filterNameChange(val) {
-    this.users = this.allUsers.filter(user => user.FullName.toLocaleLowerCase().indexOf(val) !== -1);
+    this.users = this.allUsers.filter(user => user.fullName.toLocaleLowerCase().indexOf(val) !== -1);
   }
 
 }

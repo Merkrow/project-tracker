@@ -1,9 +1,9 @@
 <div class="col-md-2 text-center">
-  
-  <input class="time-input" type="text" [(ngModel)]="LoggedTime" />
+
+  <input class="time-input" type="text" [(ngModel)]="loggedTime" />
   <button class="submit-button" (click)="togglePopup()">
     <span class="glyphicon glyphicon-plus"></span>
   </button>
 
-  <timesheet-popup *ngIf="showPopup" [togglePopup]="togglePopup.bind(this)" [logTime]="logTime.bind(this)" [Log]="Log" [LoggedTime] = "LoggedTime"></timesheet-popup>
+  <timesheet-popup *ngIf="showPopup" [togglePopup]="togglePopup.bind(this)" [logTime]="logTime.bind(this)" [Log]="Log" [loggedTime] = "loggedTime"></timesheet-popup>
 </div>
