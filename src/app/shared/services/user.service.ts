@@ -32,7 +32,24 @@ export class UserService {
   ) {}
 
   makeKeys(user) {
-    const { Password, Address, LocationId, Birthday, Email, FullName, First, Last, Id, ImageUrl, Phone, PositionId, Projects, Roles, Skype, Position } = user;
+    const {
+      Password,
+      Address,
+      LocationId,
+      Birthday,
+      Email,
+      FullName,
+      First,
+      Last,
+      Id,
+      ImageUrl,
+      Phone,
+      PositionId,
+      Projects,
+      Roles,
+      Skype,
+      Position
+    } = user;
     return {
       address: Address,
       locationId: LocationId,
@@ -76,7 +93,7 @@ export class UserService {
     if (user.positionId === 1) {
       this.isPmSubject.next(true);
     }
-    if (user.email === "roger.federer@dataart.com") {
+    if (user.email === 'roger.federer@dataart.com') {
       this.isAdminSubject.next(true);
     }
     this.isAuthenticatedSubject.next(true);
@@ -86,7 +103,7 @@ export class UserService {
     return this.apiService.get(`${userUrl}/${Id}`)
     .map(user => {
       return this.makeKeys(user);
-    })
+    });
   }
 
   purgeAuth() {
@@ -123,7 +140,7 @@ export class UserService {
 
   updateUser(user: User): Observable<User> {
     return this.apiService.put(userUrl, user)
-    .map(user => this.makeKeys(user));
+    .map(data => this.makeKeys(data));
   }
 
   postUser(user): Observable<any> {

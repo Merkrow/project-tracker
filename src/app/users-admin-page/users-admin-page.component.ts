@@ -9,7 +9,7 @@ import { UserService, User } from '../shared';
 export class UsersAdminPageComponent implements OnInit {
   allUsers: User[];
   users: User[];
-  isSubmitting: boolean = false;
+  isSubmitting = false;
   filterName: string;
   editingId: any = null;
   edit: {
@@ -18,7 +18,7 @@ export class UsersAdminPageComponent implements OnInit {
     Email: string,
     Skype: string,
     Phone: string,
-  }
+  };
   constructor(
     private userService: UserService,
   ) { }
@@ -30,7 +30,7 @@ export class UsersAdminPageComponent implements OnInit {
       this.allUsers = data;
       this.users = data;
       this.isSubmitting = false;
-    })
+    });
   }
 
   openEdit(id) {
@@ -63,10 +63,10 @@ export class UsersAdminPageComponent implements OnInit {
           return data;
         }
         return user;
-      })
+      });
       this.users = this.allUsers;
       this.closeEdit();
-    })
+    });
   }
 
   filterNameChange(val) {

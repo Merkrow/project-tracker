@@ -5,5 +5,10 @@
     <span class="glyphicon glyphicon-plus"></span>
   </button>
 
-  <timesheet-popup *ngIf="showPopup" [togglePopup]="togglePopup.bind(this)" [logTime]="logTime.bind(this)" [Log]="Log" [loggedTime] = "loggedTime"></timesheet-popup>
+  <app-timesheet-popup
+    *ngIf="showPopup"
+    [togglePopup]="togglePopup.bind(this)"
+    [logTime]="logTime.bind(this)"
+    [Log]="Log"
+    [loggedTime]="loggedTime"></app-timesheet-popup>
 </div>

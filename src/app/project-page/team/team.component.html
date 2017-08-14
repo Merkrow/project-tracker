@@ -4,7 +4,7 @@
 
     <div class="pull-right row add-user" *ngIf="isAdmin || isPm">
       <div class="picker col-md-6">
-        <user-picker-component *ngIf="addUser" [isEmpty]="isEmpty.bind(this)" [filters]="members" [chooseUser]="chooseUser.bind(this)"></user-picker-component>
+        <app-user-picker-component *ngIf="addUser" [isEmpty]="isEmpty.bind(this)" [filters]="members" [chooseUser]="chooseUser.bind(this)"></app-user-picker-component>
       </div>
       <div class="col-md-2">
         <button *ngIf="addUser" type="button" (click)="cancelAddUser()" class="btn btn-danger">Close</button>
@@ -25,6 +25,6 @@
     </tr>
 
     <tr team-member-component *ngFor="let member of members" [isAdminOrPm]="isPm || isAdmin" [removeMember]="removeMember.bind(this)" [member]="member"></tr>
-    
+
   </table>
 </div>

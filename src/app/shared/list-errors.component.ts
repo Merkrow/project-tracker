@@ -3,7 +3,7 @@ import { Component, Input } from '@angular/core';
 import { Errors } from './models';
 
 @Component({
-  selector: 'list-errors',
+  selector: 'app-list-errors',
   templateUrl: './list-errors.component.html'
 })
 export class ListErrorsComponent {
@@ -14,10 +14,12 @@ export class ListErrorsComponent {
     this.formattedErrors = [];
     if (errorList.errors) {
       for (const field in errorList.errors) {
-        field !== 'errors' ? this.formattedErrors.push(`${field} ${errorList.errors[field]}`) : '';
+        if (field !== 'errors') {
+          this.formattedErrors.push(`${field} ${errorList.errors[field]}`);
+        }
       }
     }
-  };
+  }
 
   get errorList() { return this.formattedErrors; }
 

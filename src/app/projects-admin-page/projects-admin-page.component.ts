@@ -11,7 +11,7 @@ import { ProjectsService, Project } from '../shared';
 export class ProjectsAdminPageComponent implements OnInit {
   projects: Project[];
   allProjects: Project[];
-  isSubmitting: boolean = false;
+  isSubmitting = false;
   filterName: string;
   editingId: any = null;
   edit: {
@@ -19,7 +19,7 @@ export class ProjectsAdminPageComponent implements OnInit {
     CustomerName: string,
     Description: string,
     StartDate: string,
-  }
+  };
   moment = moment;
 
   constructor(
@@ -33,7 +33,7 @@ export class ProjectsAdminPageComponent implements OnInit {
       this.allProjects = data;
       this.projects = data;
       this.isSubmitting = false;
-    })
+    });
   }
 
   setEdit(id) {
@@ -48,17 +48,20 @@ export class ProjectsAdminPageComponent implements OnInit {
   }
 
   submitChanges() {
-    const project = this.allProjects.find(project => project.id === this.editingId);
-    this.projectsService.updateProject(Object.assign(project, this.edit, { StartDate: moment(this.edit.StartDate, 'DD-MM-YYYY').format("YYYY-MM-DDTHH:mm:ss") }))
+    const project = this.allProjects.find(proj => proj.id === this.editingId);
+    this.projectsService.updateProject(
+      Object.assign(project, this.edit,
+        { StartDate: moment(this.edit.StartDate, 'DD-MM-YYYY').format('YYYY-MM-DDTHH:mm:ss')
+      }))
     .subscribe(data => {
-      this.allProjects = this.allProjects.map(project => {
-        if (project.id === data.id) {
+      this.allProjects = this.allProjects.map(proj => {
+        if (proj.id === data.id) {
           return data;
         }
-        return project;
+        return proj;
       });
       this.projects = this.allProjects;
-    })
+    });
     this.closeEdit();
   }
 
@@ -73,7 +76,7 @@ export class ProjectsAdminPageComponent implements OnInit {
         this.allProjects = this.allProjects.filter(project => project.id !== data);
         this.projects = this.allProjects;
       }
-    })
+    });
   }
 
 }

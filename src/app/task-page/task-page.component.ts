@@ -6,18 +6,18 @@ import { TaskService, Task, ProjectsService, Project } from '../shared';
 import staticData from '../shared/staticData';
 
 @Component({
-  selector: 'task-page-component',
+  selector: 'app-task-page-component',
   templateUrl: './task-page.component.html',
   styleUrls: ['./task-page.component.css']
 })
 export class TaskPageComponent implements OnInit {
   taskId: number;
   task: Task;
-  isSubmitting: boolean = false;
+  isSubmitting = false;
   project: Project;
   staticData = staticData;
-  save: boolean = true;
-  editing: boolean = false;
+  save = true;
+  editing = false;
   edit: {
     UserId: number;
     StatusId: number;
@@ -26,7 +26,7 @@ export class TaskPageComponent implements OnInit {
     StartDate: any;
     Description: string;
     EndDate: any;
-  }
+  };
   moment = moment;
 
   constructor(
@@ -41,7 +41,7 @@ export class TaskPageComponent implements OnInit {
       (params) => {
         this.taskId = Number(params.id);
       }
-    )
+    );
     if (this.taskId) {
       this.isSubmitting = true;
       this.taskService.getTaskById(this.taskId)
@@ -57,11 +57,11 @@ export class TaskPageComponent implements OnInit {
           EndDate: moment(data.endDate),
         };
         this.projectsService.getProject(this.task.projectId)
-        .subscribe(data => {
-          this.project = data;
+        .subscribe(project => {
+          this.project = project;
           this.isSubmitting = false;
-        })
-      })
+        });
+      });
     }
   }
 
@@ -82,13 +82,13 @@ export class TaskPageComponent implements OnInit {
           StatusId,
           TypeId,
           Description,
-          EndDate: EndDate.format("YYYY-MM-DDTHH:mm:ss"),
-          StartDate: StartDate.format("YYYY-MM-DDTHH:mm:ss"),
+          EndDate: EndDate.format('YYYY-MM-DDTHH:mm:ss'),
+          StartDate: StartDate.format('YYYY-MM-DDTHH:mm:ss'),
           Estimate: Number(Estimate),
       }))
       .subscribe(data => {
         this.task = data;
-      })
+      });
     }
     this.toggleEdit();
   }
@@ -99,7 +99,7 @@ export class TaskPageComponent implements OnInit {
       if (data === this.task.id) {
         this.router.navigateByUrl('/main');
       }
-    })
+    });
   }
 
   chooseTaskId({ Id, type }) {

@@ -6,11 +6,11 @@
     <div class="row" *ngIf="renderChild">
       <div class="col-md-offset-1 col-md-10">
         <div class="row">
-          <task-cell-component *ngFor="let cell of cells"
+          <app-task-cell-component *ngFor="let cell of cells"
             [cell]="cell"
             [taskId]="task.id"
             [addTimesheet]="addTimesheet.bind(this)"
-            [updateTimesheet]="updateTimesheet.bind(this)"></task-cell-component>
+            [updateTimesheet]="updateTimesheet.bind(this)"></app-task-cell-component>
         </div>
       </div>
     </div>

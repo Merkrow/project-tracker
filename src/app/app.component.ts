@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { UserService } from './shared';
@@ -8,7 +8,7 @@ import { UserService } from './shared';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   constructor (
     private userService: UserService,
     private router: Router,
@@ -24,6 +24,6 @@ export class AppComponent {
           this.router.navigateByUrl(`/main`);
         }
       }
-    )
+    );
   }
 }

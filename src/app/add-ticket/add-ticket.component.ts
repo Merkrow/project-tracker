@@ -15,9 +15,9 @@ export class AddTicketComponent implements OnInit {
   ticketForm: FormGroup;
   StartDate: string = moment().format('DD-MM-YYYY');
   EndDate: string = moment().format('DD-MM-YYYY');
-  StatusId: number = 1;
+  StatusId = 1;
   projectId: number;
-  TypeId: number = 1;
+  TypeId = 1;
   ResponsibleId: number;
   ReporterId: number;
   staticData = staticData;
@@ -32,7 +32,7 @@ export class AddTicketComponent implements OnInit {
       'Name': ['', Validators.required],
       'Description': ['', Validators.required],
       'Estimate': ['', Validators.required],
-    })
+    });
   }
 
   chooseStatusId(statusId) {
@@ -55,18 +55,18 @@ export class AddTicketComponent implements OnInit {
     const { StartDate, EndDate, StatusId, TypeId, ResponsibleId, ReporterId } = this;
     this.taskService.postTask(Object.assign(this.ticketForm.value,
       {
-        StartDate: moment(StartDate, 'DD-MM-YYYY').format("YYYY-MM-DDTHH:mm:ss"),
-        EndDate: moment(EndDate, 'DD-MM-YYYY').format("YYYY-MM-DDTHH:mm:ss"),
+        StartDate: moment(StartDate, 'DD-MM-YYYY').format('YYYY-MM-DDTHH:mm:ss'),
+        EndDate: moment(EndDate, 'DD-MM-YYYY').format('YYYY-MM-DDTHH:mm:ss'),
         StatusId,
         TypeId,
         ResponsibleId,
         ReporterId,
         ProjectId: this.projectId,
       })).subscribe(data => {
-        if(data) {
+        if (data) {
           this.router.navigateByUrl(`/projects/${this.projectId}`);
         }
-      })
+      });
   }
 
   ngOnInit() {
@@ -74,7 +74,7 @@ export class AddTicketComponent implements OnInit {
       (params) => {
         this.projectId = Number(params.id);
       }
-    )
+    );
   }
 
 }

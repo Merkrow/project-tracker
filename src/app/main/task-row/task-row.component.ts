@@ -1,18 +1,21 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit, OnChanges } from '@angular/core';
 import * as moment from 'moment';
 
 import { TimesheetService, Task, Timesheet } from '../../shared';
 import util from '../../util';
 
 @Component({
-  selector: 'task-row-component',
+  selector: 'app-task-row-component',
   templateUrl: './task-row.component.html',
   styleUrls: ['./task-row.component.css']
 })
-export class TaskRowComponent {
+export class TaskRowComponent implements OnInit, OnChanges {
   timesheets: Timesheet[];
   cells: any[];
-  renderChild: boolean = false;
+  renderChild = false;
+  @Input() task: Task;
+  @Input() interval: any[];
+  @Input() emplId: number;
   constructor (
     private timesheetService: TimesheetService,
   ) {}
@@ -35,7 +38,7 @@ export class TaskRowComponent {
         return newDate;
       }
       return { date: date };
-    })
+    });
   }
 
   addTimesheet(timesheet) {
@@ -67,15 +70,12 @@ export class TaskRowComponent {
         this.timesheets = data;
         this.makeInterval();
         this.renderChild = true;
-      })
+      });
     }
   }
 
-  @Input() task: Task;
-  @Input() interval: any[];
-  @Input() emplId: number;
   ngOnChanges(changes: any) {
-    if(changes.interval) {
+    if (changes.interval) {
       this.makeInterval();
     }
   }

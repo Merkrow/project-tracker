@@ -9,13 +9,13 @@ import { User } from '../../shared';
   styleUrls: ['./team-member.component.css']
 })
 export class TeamMemberComponent implements OnInit {
+  @Input() member: User;
+  @Input() removeMember: any;
+  @Input() isAdminOrPm: boolean;
   constructor(
   ) { }
 
   ngOnInit() {
   }
 
-  @Input() member: User;
-  @Input() removeMember: any;
-  @Input() isAdminOrPm: boolean;
 }

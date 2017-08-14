@@ -39,28 +39,28 @@
     <div class="row">
       <div class="col-md-6 text-right">Status</div>
       <div class="col-md-3">
-        <task-picker-component [arr]="staticData.ticketStatus" [chooseId]="chooseStatusId.bind(this)"></task-picker-component>
+        <app-task-picker-component [arr]="staticData.ticketStatus" [chooseId]="chooseStatusId.bind(this)"></app-task-picker-component>
       </div>
     </div>
 
     <div class="row">
       <div class="col-md-6 text-right">Type</div>
       <div class="col-md-3">
-        <task-picker-component [arr]="staticData.ticketType" [chooseId]="chooseTypeId.bind(this)"></task-picker-component>
+        <app-task-picker-component [arr]="staticData.ticketType" [chooseId]="chooseTypeId.bind(this)"></app-task-picker-component>
       </div>
     </div>
 
     <div class="row">
       <div class="col-md-6 text-right">Responsible</div>
       <div class="col-md-3">
-        <user-picker-component [chooseUser]="chooseResponsible.bind(this)"></user-picker-component>
+        <app-user-picker-component [chooseUser]="chooseResponsible.bind(this)"></app-user-picker-component>
       </div>
     </div>
 
     <div class="row">
       <div class="col-md-6 text-right">Reporter</div>
       <div class="col-md-3">
-        <user-picker-component [chooseUser]="chooseReporter.bind(this)"></user-picker-component>
+        <app-user-picker-component [chooseUser]="chooseReporter.bind(this)"></app-user-picker-component>
       </div>
     </div>
 
@@ -70,6 +70,6 @@
     <div class="text-right">
       <span>*All fields are required</span>
     </div>
-    
+
   </div>
 </div>

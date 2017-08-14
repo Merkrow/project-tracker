@@ -1,19 +1,23 @@
-import { Component, Input, ElementRef } from '@angular/core';
+import { Component, Input, ElementRef, OnInit } from '@angular/core';
 
 import { Timesheet } from '../../../shared';
 
 @Component({
-  selector: 'timesheet-popup',
+  selector: 'app-timesheet-popup',
   templateUrl: './timesheet-popup.component.html',
   styleUrls: ['./timesheet-popup.component.css'],
   host: {
    '(document:click)': 'onClick($event)',
   },
 })
-export class TimesheetPopup {
+export class TimesheetPopupComponent implements OnInit {
   comment: string;
   time: number;
-  open: boolean = true;
+  open = true;
+  @Input() logTime: any;
+  @Input() Log: Timesheet;
+  @Input() loggedTime: number;
+  @Input() togglePopup: any;
   constructor (
     private _el: ElementRef,
   ) {}
@@ -37,9 +41,4 @@ export class TimesheetPopup {
   log() {
     this.logTime({ loggedTime: this.time, comment: this.comment });
   }
-
-  @Input() logTime: any;
-  @Input() Log: Timesheet;
-  @Input() loggedTime: number;
-  @Input() togglePopup: any;
 }

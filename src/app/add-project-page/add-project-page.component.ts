@@ -24,7 +24,7 @@ export class AddProjectPageComponent implements OnInit {
       'Name': ['', Validators.required],
       'Description': [''],
       'CustomerName': ['', Validators.required],
-    })
+    });
 
   }
 
@@ -36,14 +36,14 @@ export class AddProjectPageComponent implements OnInit {
     const { StartDate, EndDate } = this;
     this.projectsService.postProject(Object.assign(project,
       {
-        StartDate: moment(StartDate).format("YYYY-MM-DDTHH:mm:ss"),
-        EndDate: moment(EndDate).format("YYYY-MM-DDTHH:mm:ss")
+        StartDate: moment(StartDate).format('YYYY-MM-DDTHH:mm:ss'),
+        EndDate: moment(EndDate).format('YYYY-MM-DDTHH:mm:ss'),
       }))
     .subscribe(data => {
       if (data) {
         this.router.navigateByUrl('/admin/projects');
       }
-    })
+    });
   }
 
 }

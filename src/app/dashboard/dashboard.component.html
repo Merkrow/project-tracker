@@ -5,7 +5,11 @@
 
   </div>
 
-  <div class="col-md-2 ticket-container text-center" *ngFor="let key of ObjectKeys(staticData.ticketStatus)" dnd-droppable (onDropSuccess)="transferDataSuccess($event, key)">
+  <div
+    class="col-md-2 ticket-container text-center"
+    *ngFor="let key of ObjectKeys(staticData.ticketStatus)"
+    dnd-droppable
+    (onDropSuccess)="transferDataSuccess($event, key)">
     <h3>{{ staticData.ticketStatus[key] }}</h3>
     <div *ngFor="let task of tasks">
       <div [routerLink]="['/tasks', task.id]" class="ticket" *ngIf="task.statusId.toString() === key" dnd-draggable [dragEnabled]="true" [dragData]="task">

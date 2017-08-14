@@ -12,7 +12,7 @@ import { ProjectsService, Project } from '../shared';
 export class ProjectPageComponent implements OnInit {
   projectId: number;
   project: Project;
-  isSubmitting: boolean = false;
+  isSubmitting = false;
   moment = moment;
 
   constructor(
@@ -26,7 +26,7 @@ export class ProjectPageComponent implements OnInit {
       (params) => {
         this.projectId = Number(params.id);
       }
-    )
+    );
     if (this.projectId) {
       this.projectsService.getProject(this.projectId)
       .subscribe(data => {

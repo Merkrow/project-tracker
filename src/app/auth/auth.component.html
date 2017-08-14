@@ -9,7 +9,7 @@
           <a [routerLink]="['/registration']" *ngIf="authType == 'login'">Need an account?</a>
         </p>
 
-        <list-errors [errors]="errors"></list-errors>
+        <app-list-errors [errors]="errors"></app-list-errors>
         <form [formGroup]="authForm" (ngSubmit)="submitForm()">
           <fieldset [disabled]="isSubmitting">
 
@@ -32,7 +32,7 @@
             <button class="btn btn-lg btn-primary pull-xs-right" [disabled]="!authForm.valid" type="submit">
               {{ title }}
             </button>
-            
+
           </fieldset>
         </form>
       </div>

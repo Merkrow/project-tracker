@@ -32,7 +32,7 @@ export class RegistrationPageComponent implements OnInit {
       'Phone': ['', Validators.required],
       'PositionId': ['1', Validators.required],
       'Password': ['', [Validators.required, Validators.minLength(6)]],
-    })
+    });
   }
 
   ngOnInit() {
@@ -41,12 +41,21 @@ export class RegistrationPageComponent implements OnInit {
   submitUser() {
     const user = this.registrationForm.value;
     const { Birthday } = this;
-    this.userService.postUser(Object.assign(user, { Birthday: moment(Birthday).format("YYYY-MM-DDTHH:mm:ss"), Projects: [], ImageUrl: '', Roles: [], LocationId: Number(user.LocationId), PositionId: Number(user.PositionId) }))
+    this.userService.postUser(
+      Object.assign(user,
+        {
+          Birthday: moment(Birthday).format('YYYY-MM-DDTHH:mm:ss'),
+          Projects: [],
+          ImageUrl: '',
+          Roles: [],
+          LocationId: Number(user.LocationId),
+          PositionId: Number(user.PositionId)
+        }))
     .subscribe(data => {
       if (data) {
         this.router.navigateByUrl('/admin/users');
       }
-    })
+    });
   }
 
 }

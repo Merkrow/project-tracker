@@ -12,7 +12,7 @@ import staticData from '../shared/staticData';
 export class DashboardComponent implements OnInit {
   tasks: Task[];
   projectId: number;
-  isSubmitting: boolean = false;
+  isSubmitting = false;
   project: Project;
   staticData = staticData;
   ObjectKeys = Object.keys;
@@ -29,30 +29,30 @@ export class DashboardComponent implements OnInit {
       (params) => {
         this.projectId = Number(params.id);
       }
-    )
+    );
 
     this.taskService.getTaskByProjectId(this.projectId)
     .subscribe(data => {
       this.tasks = data;
       this.isSubmitting = false;
-    })
+    });
 
     this.projectService.getProject(this.projectId)
     .subscribe(data => {
       this.project = data;
-    })
+    });
   }
 
   transferDataSuccess(data, key) {
     this.taskService.updateTask(Object.assign(data.dragData, { StatusId: Number(key) }))
-    .subscribe(data => {
+    .subscribe(task => {
       this.tasks = this.tasks.map(item => {
-        if (item.id === data.id) {
-          return data;
+        if (item.id === task.id) {
+          return task;
         }
         return item;
-      })
-    })
+      });
+    });
   }
 
 }

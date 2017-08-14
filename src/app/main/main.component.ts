@@ -21,7 +21,7 @@ export class MainComponent implements OnInit {
   isAuthenticated: boolean;
   firstDay: any;
   interval: any[] = [];
-  isAdmin: boolean = false;
+  isAdmin = false;
   emplId: number;
 
   setInterval() {
@@ -53,6 +53,7 @@ export class MainComponent implements OnInit {
   ngOnInit() {
     this.loading = true;
     this.firstDay = moment().subtract(5, 'day');
+
     this.userService.isAuthenticated
     .subscribe(
       (authenticated) => {
@@ -75,13 +76,13 @@ export class MainComponent implements OnInit {
                       this.projectsService.getProjectsByUserId(user.id)
                       .subscribe(data => {
                         this.projects = data.map(this.prepareProject);
-                      })
+                      });
                     }
                   }
-                )
+                );
               }
             }
-          )
+          );
           return;
         } else {
           this.router.navigateByUrl('/login');

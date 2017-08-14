@@ -2,12 +2,17 @@ import { Component, OnInit, Input } from '@angular/core';
 import staticData from '../../staticData';
 
 @Component({
-  selector: 'task-picker-component',
+  selector: 'app-task-picker-component',
   templateUrl: './task-picker.component.html'
 })
 export class TaskPickerComponent implements OnInit {
-  chosenId: string = "1";
+  chosenId = '1';
   ObjectKeys = Object.keys;
+  @Input() initial: number;
+  @Input() chooseId: any;
+  @Input() arr: string[];
+  @Input() type: string;
+  @Input() filter: any[];
 
   constructor(
   ) {}
@@ -44,9 +49,4 @@ export class TaskPickerComponent implements OnInit {
     return arr;
   }
 
-  @Input() initial: number;
-  @Input() chooseId: any;
-  @Input() arr: string[];
-  @Input() type: string;
-  @Input() filter: any[];
 }

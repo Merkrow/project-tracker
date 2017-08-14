@@ -3,7 +3,7 @@
     <div class="project-name"><a [routerLink]="['/projects', project.id]" class="text-info">{{ project.name }}</a></div>
 
     <div className="tasks-container">
-      <user-tasks-component [projectId]="project.id" [employeeId]="employeeId"></user-tasks-component>
+      <app-user-tasks-component [projectId]="project.id" [employeeId]="employeeId"></app-user-tasks-component>
     </div>
 
   </div>

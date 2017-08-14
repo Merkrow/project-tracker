@@ -15,7 +15,24 @@ export class TeamService {
   ) {}
 
   makeKeys(user) {
-    const { Password, Address, LocationId, Birthday, Email, FullName, First, Last, Id, ImageUrl, Phone, PositionId, Projects, Roles, Skype, Position } = user;
+    const {
+      Password,
+      Address,
+      LocationId,
+      Birthday,
+      Email,
+      FullName,
+      First,
+      Last,
+      Id,
+      ImageUrl,
+      Phone,
+      PositionId,
+      Projects,
+      Roles,
+      Skype,
+      Position
+    } = user;
     return {
       address: Address,
       locationId: LocationId,

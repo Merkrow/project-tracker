@@ -18,7 +18,7 @@ export class UserPageComponent implements OnInit {
       (params) => {
         this.employeeId = Number(params.id);
       }
-    )
+    );
   }
 
 }

@@ -1,14 +1,14 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { Errors, UserService } from '../shared';
 
 @Component({
-  selector: 'auth-page',
+  selector: 'app-auth-page',
   templateUrl: './auth.component.html',
 })
-export class AuthComponent {
+export class AuthComponent implements OnInit {
   authType: String = '';
   authForm: FormGroup;
   title: String = '';
@@ -23,7 +23,7 @@ export class AuthComponent {
   ) {
     this.authForm = this.fb.group({
       'Login': ['roger.federer@dataart.com', Validators.required],
-      'Password': ['111111', Validators.required]
+      'Password': ['111111', Validators.required],
     });
   }
 

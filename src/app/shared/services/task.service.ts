@@ -15,7 +15,20 @@ export class TaskService {
   ) {}
 
   makeKeys(task) {
-    const { Name, Description, Estimate, StartDate, EndDate, StatusId, ResponsibleId, TypeId, ProjectId, Reporter, Responsible, ReporterId, Id, } = task;
+    const {
+      Name,
+      Description,
+      Estimate,
+      StartDate,
+      EndDate,
+      StatusId,
+      ResponsibleId,
+      TypeId, ProjectId,
+      Reporter,
+      Responsible,
+      ReporterId,
+      Id,
+    } = task;
     return {
       name: Name,
       description: Description,

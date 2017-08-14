@@ -4,16 +4,25 @@ import { Skill, SkillsService } from '../../../shared';
 import staticData from '../../../shared/staticData';
 
 @Component({
-  selector: 'skill-component',
+  selector: 'app-skill-component',
   templateUrl: './skill.component.html',
   styleUrls: ['./skill.component.css']
 })
 export class SkillComponent implements OnInit {
-  edit: boolean = false;
-  skillLevelId: number = 1;
-  save: boolean = true;
+  edit = false;
+  skillLevelId = 1;
+  save = true;
   staticData = staticData;
-  skillNameId: number = 1;
+  skillNameId = 1;
+  @Input() skill: Skill;
+  @Input() EmployeeId: number;
+  @Input() updateSkill: any;
+  @Input() removeSkill: any;
+  @Input() addingSkill: boolean;
+  @Input() toggleAddingSkill: any;
+  @Input() addSkill: any;
+  @Input() isLegal: boolean;
+  @Input() skills: Skill[];
 
   constructor(
     private skillsService: SkillsService,
@@ -22,7 +31,9 @@ export class SkillComponent implements OnInit {
   ngOnInit() {
     if (!this.addingSkill) {
       this.skillLevelId = this.skill.levelId;
-      this.skillNameId = Number(Object.keys(staticData.skillName).filter(index => staticData.skillName[index] === this.skill.name ? index : 1));
+      this.skillNameId = Number(
+        Object.keys(staticData.skillName)
+        .filter(index => staticData.skillName[index] === this.skill.name ? index : 1));
     } else {
       this.toggleEdit();
     }
@@ -44,7 +55,7 @@ export class SkillComponent implements OnInit {
       .subscribe(data => {
         this.addSkill(data);
         this.save = true;
-      })
+      });
       this.toggleEdit();
       this.toggleAddingSkill();
       return;
@@ -54,7 +65,7 @@ export class SkillComponent implements OnInit {
       .subscribe(data => {
         this.save = true;
         this.updateSkill(data);
-      })
+      });
     }
     this.toggleEdit();
   }
@@ -65,20 +76,10 @@ export class SkillComponent implements OnInit {
       if (data) {
         this.removeSkill(data);
       }
-    })
+    });
   }
 
   toggleEdit() {
     this.edit = !this.edit;
   }
-
-  @Input() skill: Skill;
-  @Input() EmployeeId: number;
-  @Input() updateSkill: any;
-  @Input() removeSkill: any;
-  @Input() addingSkill: boolean;
-  @Input() toggleAddingSkill: any;
-  @Input() addSkill: any;
-  @Input() isLegal: boolean;
-  @Input() skills: Skill[];
 }

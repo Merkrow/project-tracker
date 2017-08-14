@@ -7,7 +7,7 @@ import { SharedModule } from '../shared';
 import { ProjectComponent } from './project/project.component';
 import { TaskRowComponent } from './task-row/task-row.component';
 import { TaskCellComponent } from './task-cell/task-cell.component';
-import { TimesheetPopup } from './task-cell/timesheet-popup/timesheet-popup.component';
+import { TimesheetPopupComponent } from './task-cell/timesheet-popup/timesheet-popup.component';
 
 const mainRouting: ModuleWithProviders = RouterModule.forChild([
   {
@@ -27,7 +27,7 @@ const mainRouting: ModuleWithProviders = RouterModule.forChild([
     ProjectComponent,
     TaskRowComponent,
     TaskCellComponent,
-    TimesheetPopup,
+    TimesheetPopupComponent,
   ],
   exports: [
   ]

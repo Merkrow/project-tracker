@@ -54,12 +54,12 @@
 
         <div>
           <strong>Status: </strong>
-          <task-picker-component [type]="'status'" [arr]="staticData.ticketStatus" [initial]="task.statusId" [chooseId]="chooseTaskId.bind(this)"></task-picker-component>
+          <app-task-picker-component [type]="'status'" [arr]="staticData.ticketStatus" [initial]="task.statusId" [chooseId]="chooseTaskId.bind(this)"></app-task-picker-component>
         </div>
 
         <div>
           <strong>Type: </strong>
-          <task-picker-component [type]="'type'" [arr]='staticData.ticketType' [initial]="task.typeId" [chooseId]="chooseTaskId.bind(this)"></task-picker-component>
+          <app-task-picker-component [type]="'type'" [arr]='staticData.ticketType' [initial]="task.typeId" [chooseId]="chooseTaskId.bind(this)"></app-task-picker-component>
         </div>
 
         <div>
@@ -83,7 +83,7 @@
 
       <div class="col-md-6">
         <div><strong>Reporter: </strong>{{ task.reporter.FullName }}</div>
-        <div><strong>Responsible: </strong><user-picker-component [employeeId]="task.responsibleId" [chooseUser]="chooseUser.bind(this)"></user-picker-component></div>
+        <div><strong>Responsible: </strong><app-user-picker-component [employeeId]="task.responsibleId" [chooseUser]="chooseUser.bind(this)"></app-user-picker-component></div>
       </div>
 
     </div>

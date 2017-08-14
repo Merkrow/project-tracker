@@ -4,18 +4,19 @@ import { ActivatedRoute } from '@angular/router';
 import { TeamService, User, UserService, } from '../../shared';
 
 @Component({
-  selector: 'team-component',
+  selector: 'app-team-component',
   templateUrl: './team.component.html',
   styleUrls: ['./team.component.css']
 })
 export class TeamComponent implements OnInit {
   members: User[];
-  isSubmitting: boolean = false;
-  addUser: boolean = false;
+  isSubmitting = false;
+  addUser = false;
   chosenUserId: number;
-  isPm: boolean = false;
-  isAdmin: boolean = false;
-  disableButton: boolean = false;
+  isPm = false;
+  isAdmin = false;
+  disableButton = false;
+  @Input() projectId: number;
   constructor(
     private teamService: TeamService,
     private userService: UserService,
@@ -26,7 +27,7 @@ export class TeamComponent implements OnInit {
     this.teamService.removeMember({ projectId, employeeId })
     .subscribe(data => {
       this.members = this.members.filter(member => member.id !== data.EmployeeId);
-    })
+    });
   }
 
   chooseUser(id) {
@@ -45,7 +46,7 @@ export class TeamComponent implements OnInit {
     this.teamService.addMember({ projectId: this.projectId, employeeId: this.chosenUserId })
     .subscribe(data => {
       this.members = this.members.concat(data).sort((a, b) => a.positionId - b.positionId);
-    })
+    });
   }
 
   cancelAddUser() {
@@ -60,18 +61,17 @@ export class TeamComponent implements OnInit {
       .subscribe(data => {
         this.members = data.sort((a, b) => a.positionId - b.positionId);
         this.isSubmitting = false;
-      })
+      });
     }
     this.userService.isAdmin.subscribe(
       (isAdmin) => {
         this.isAdmin = isAdmin;
       }
-    )
+    );
     this.userService.isPm.subscribe(
       (isPm) => {
         this.isPm = isPm;
       }
-    )
+    );
   }
-  @Input() projectId: number;
 }

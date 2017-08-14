@@ -4,12 +4,14 @@ import { UserService, User } from '../../shared';
 import staticData from '../../shared/staticData';
 
 @Component({
-  selector: 'user-info-component',
+  selector: 'app-user-info-component',
   templateUrl: './user-info.component.html',
   styleUrls: ['./user-info.component.css'],
 })
 export class UserInfoComponent implements OnInit {
   employee: User;
+  @Input() employeeId: number;
+
   staticData = staticData;
   constructor(
     private userService: UserService,
@@ -19,9 +21,7 @@ export class UserInfoComponent implements OnInit {
     this.userService.getUserById(this.employeeId)
     .subscribe(data => {
       this.employee = data;
-    })
+    });
   }
-
-  @Input() employeeId: number;
 
 }
