@@ -18,7 +18,7 @@
     [arr]="staticData.Level"
     [initial]="skillLevelId"
     [chooseId]="updateLevel.bind(this)"></app-task-picker-component>
-</td>
+  </td>
 <td class="cell-allow" *ngIf="!edit && isLegal"><button class="btn btn-default" *ngIf="isLegal" (click)="toggleEdit()">Edit</button></td>
 <td class="cell-allow" *ngIf="edit">
   <button class="btn btn-success" (click)="submitChanges()">Submit</button>
