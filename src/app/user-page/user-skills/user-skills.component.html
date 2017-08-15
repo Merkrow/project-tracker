@@ -1,5 +1,5 @@
 <div class="skills-component col-md-4 col-md-offset-1">
-  <table>
+  <table class="row">
 
     <tr app-skill-component
       *ngFor="let skill of skills"
@@ -21,9 +21,9 @@
         [addSkill]="addSkill.bind(this)"
         [skills]="skills"></tr>
 
-        <div class="col-md-offset-4 col-md-2 skill-button">
+        <tr class="col-md-offset-6 col-md-2 skill-button">
           <button *ngIf="isCurrent || isAdmin || isPm" class="btn btn-primary" type="button" (click)="toggleAddingSkill()">{{ addingSkill ? 'Cancel' : 'Add Skill'}}</button>
-        </div>
+        </tr>
 
   </table>
 </div>

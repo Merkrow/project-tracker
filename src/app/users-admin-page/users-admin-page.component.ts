@@ -56,7 +56,7 @@ export class UsersAdminPageComponent implements OnInit {
 
   submitChanges() {
     const User = this.allUsers.find(user => user.id === this.editingId);
-    this.userService.updateUser(Object.assign(User, this.edit, { FullName: `${this.edit.First} ${this.edit.Last}` }))
+    this.userService.updateUser(Object.assign(User, this.edit, { FullName: `${this.edit.First} ${this.edit.Last}`, Password: '111111' }))
     .subscribe(data => {
       this.allUsers = this.allUsers.map(user => {
         if (user.id === data.id) {

@@ -5,15 +5,22 @@
 
 <td *ngIf="!isLegal && !addingSkill" class="cell-not-allow border cell-text">{{ skill.name }}</td>
 <td *ngIf="addingSkill && isLegal" class="cell-allow border">
-  <app-task-picker-component [arr]="staticData.skillName" [filter]="skills" [initial]="skillNameId" [chooseId]="updateSkillNameId.bind(this)"></app-task-picker-component>
+  <app-task-picker-component
+    [arr]="staticData.skillName"
+    [filter]="skills"
+    [initial]="skillNameId"
+    [chooseId]="updateSkillNameId.bind(this)"></app-task-picker-component>
 </td>
 <td class="cell-allow border cell-text" *ngIf="!edit && isLegal">{{ staticData.Level[skillLevelId] }}</td>
 <td *ngIf="!isLegal" class="cell-not-allow border cell-text">{{ staticData.Level[skillLevelId] }}</td>
 <td *ngIf="edit" class="cell-allow border">
-  <app-task-picker-component [arr]="staticData.Level" [initial]="skillLevelId" [chooseId]="updateLevel.bind(this)"></app-task-picker-component>
+  <app-task-picker-component
+    [arr]="staticData.Level"
+    [initial]="skillLevelId"
+    [chooseId]="updateLevel.bind(this)"></app-task-picker-component>
 </td>
 <td class="cell-allow" *ngIf="!edit && isLegal"><button class="btn btn-default" *ngIf="isLegal" (click)="toggleEdit()">Edit</button></td>
 <td class="cell-allow" *ngIf="edit">
   <button class="btn btn-success" (click)="submitChanges()">Submit</button>
-  <button class="col-md-2" class="btn btn-danger" (click)="deleteSkill()">X</button>
+  <button class="col-md-2" *ngIf="!addingSkill" class="btn btn-danger" (click)="deleteSkill()">X</button>
 </td>
