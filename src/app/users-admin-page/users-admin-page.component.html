@@ -32,12 +32,28 @@
 
 
           <td *ngIf="user.id === editingId">
-            <input class="form-control" type="text" [(ngModel)]="edit.First" placeholder="first name" />
-            <input class="form-control" type="text" [(ngModel)]="edit.Last" placeholder="last name" />
+            <div class="form-group">
+              <input class="form-control" type="text" [(ngModel)]="edit.First" placeholder="first name" />
+            </div>
+            <div class="form-group">
+              <input class="form-control" type="text" [(ngModel)]="edit.Last" placeholder="last name" />
+            </div>
           </td>
-          <td *ngIf="user.id === editingId"><input class="form-control" type="text" [(ngModel)]="edit.Email" placeholder="email" /></td>
-          <td *ngIf="user.id === editingId"><input class="form-control" type="text" [(ngModel)]="edit.Skype" placeholder="skype" /></td>
-          <td *ngIf="user.id === editingId"><input class="form-control" type="text" [(ngModel)]="edit.Phone" placeholder="phone" /></td>
+          <td *ngIf="user.id === editingId">
+            <div class="form-group">
+              <input class="form-control" type="text" [(ngModel)]="edit.Email" placeholder="email" />
+            </div>
+          </td>
+          <td *ngIf="user.id === editingId">
+            <div class="form-group">
+              <input class="form-control" type="text" [(ngModel)]="edit.Skype" placeholder="skype" />
+            </div>
+          </td>
+          <td *ngIf="user.id === editingId">
+            <div class="form-group">
+              <input class="form-control" type="text" [(ngModel)]="edit.Phone" placeholder="phone" />
+            </div>
+          </td>
           <td *ngIf="user.id === editingId">
             <button type="button" class="btn btn-success" (click)="submitChanges()">Submit</button>
             <button type="button" class="btn btn-warning" (click)="closeEdit()">Cancel</button>

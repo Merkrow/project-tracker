@@ -4,7 +4,7 @@ import { Skill, SkillsService } from '../../../shared';
 import staticData from '../../../shared/staticData';
 
 @Component({
-  selector: 'app-skill-component',
+  selector: '[app-skill-component]',
   templateUrl: './skill.component.html',
   styleUrls: ['./skill.component.css']
 })

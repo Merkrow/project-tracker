@@ -13,3 +13,7 @@ b {
 .ng-touched.ng-invalid:not(.form) {
   border: 1px solid red;
 }
+
+div div div div:first-child {
+  line-height: 30px;
+}

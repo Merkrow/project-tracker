@@ -1,15 +1,15 @@
 <div class="skills-component col-md-4 col-md-offset-1">
-  <div class="row">
+  <table>
 
-    <app-skill-component
+    <tr app-skill-component
       *ngFor="let skill of skills"
       [skill]="skill"
       [EmployeeId]="employeeId"
       [removeSkill]="deleteSkill.bind(this)"
       [updateSkill]="updateSkill.bind(this)"
-      [isLegal]="isCurrent || isAdmin || isPm"></app-skill-component>
+      [isLegal]="isCurrent || isAdmin || isPm"></tr>
 
-      <app-skill-component
+      <tr app-skill-component
         *ngIf="addingSkill"
         [skill]="skill"
         [EmployeeId]="employeeId"
@@ -19,11 +19,11 @@
         [isLegal]="isCurrent || isAdmin || isPm"
         [toggleAddingSkill]="toggleAddingSkill.bind(this)"
         [addSkill]="addSkill.bind(this)"
-        [skills]="skills"></app-skill-component>
+        [skills]="skills"></tr>
 
         <div class="col-md-offset-4 col-md-2 skill-button">
           <button *ngIf="isCurrent || isAdmin || isPm" class="btn btn-primary" type="button" (click)="toggleAddingSkill()">{{ addingSkill ? 'Cancel' : 'Add Skill'}}</button>
         </div>
 
-  </div>
+  </table>
 </div>

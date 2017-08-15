@@ -30,15 +30,23 @@
         </td>
 
         <td *ngIf="editingId === project.id">
-          <input type="text" class="form-control" [(ngModel)]="edit.Name">
+          <div class="form-group">
+            <input type="text" class="form-control" [(ngModel)]="edit.Name">
+          </div>
         </td>
         <td *ngIf="editingId === project.id">
-          <input type="text" class="form-control" [(ngModel)]="edit.CustomerName">
+          <div class="form-group">
+            <input type="text" class="form-control" [(ngModel)]="edit.CustomerName">
+          </div>
         </td>
         <td *ngIf="editingId === project.id"><dp-date-picker [(ngModel)]="edit.StartDate"></dp-date-picker></td>
-        <td *ngIf="editingId === project.id"><input type="text" class="form-control" [(ngModel)]="edit.Description"></td>
         <td *ngIf="editingId === project.id">
-          <button type="button" class="btn btn-success" (click)="submitChanges()">Submit</button>
+          <div class="form-group">
+            <input type="text" class="form-control" [(ngModel)]="edit.Description">
+          </div>
+        </td>
+        <td *ngIf="editingId === project.id">
+          <button type="button" class="btn btn-success button-margin" (click)="submitChanges()">Submit</button>
           <button type="button" class="btn btn-warning" (click)="closeEdit()">Cancel</button>
         </td>
       </tr>

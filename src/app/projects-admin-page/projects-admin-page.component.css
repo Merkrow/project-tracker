@@ -21,6 +21,10 @@
   background: transparent;
 }
 
+.button-margin {
+  margin-bottom: 5px;
+}
+
 .button:hover {
   background: transparent;
 }

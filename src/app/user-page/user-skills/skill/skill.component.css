@@ -4,3 +4,15 @@
   height: 34px;
   line-height: 30px;
 }
+
+.cell-allow {
+  width: 33%;
+}
+
+.cell-not-allow {
+  width: 50%;
+}
+
+.cell-text {
+  padding: 0 0 0 10px;
+}

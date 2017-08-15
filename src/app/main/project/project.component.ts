@@ -24,7 +24,7 @@ export class ProjectComponent implements OnInit {
         this.tasks = data;
       });
     } else {
-      this.taskService.searchTask({ ['taskSearch.responsibleId']: this.emplId, ['taskSearch.projectId']: this.project.id })
+      this.taskService.searchTask({ 'taskSearch.responsibleId': this.emplId, 'taskSearch.projectId': this.project.id })
       .subscribe(data => {
         this.tasks = data;
       });

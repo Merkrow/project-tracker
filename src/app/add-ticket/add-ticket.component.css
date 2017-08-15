@@ -1,5 +1,10 @@
 div div div {
-  margin: 5px 0;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+div div div:first-child {
+  line-height: 30px;
 }
 
 .ng-touched.ng-invalid:not(.form) {
